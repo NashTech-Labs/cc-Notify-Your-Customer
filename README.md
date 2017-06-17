@@ -1,4 +1,4 @@
 # PING
-Notify your customers using a single route
+Notify your customers with a single route
 
 

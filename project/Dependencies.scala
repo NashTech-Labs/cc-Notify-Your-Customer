@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
 
-  val finatraVersion = "2.11.0"
+  val finatraVersion = "2.1.2"
   val mockitoVersion = "1.10.19"
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1208"
@@ -23,17 +23,41 @@ object Dependencies {
     "ch.qos.logback" % "logback-classic" % "1.1.6" :: Nil
   }
 
+  /**
+    * Finatra dependencies
+    */
   def finatraHttp = Def.setting {
-    "com.twitter" % "finatra-http_2.11" % finatraVersion :: Nil
+    "com.twitter.finatra" % "finatra-http_2.11" % finatraVersion :: Nil
   }
 
-  def mockito = Def.setting {
-    "org.mockito" % "mockito-core" % mockitoVersion :: Nil
+  def finatraApp = Def.setting {
+    "com.twitter.inject" % "inject-app_2.11" % finatraVersion :: Nil
+  }
+
+  def finatraCore = Def.setting {
+    "com.twitter.inject" % "inject-core_2.11" % finatraVersion :: Nil
+  }
+
+  def finatraModules = Def.setting {
+    "com.twitter.inject" % "inject-modules_2.11" % finatraVersion :: Nil
+  }
+
+  def finatraJackson = Def.setting {
+    "com.twitter.finatra" % "finatra-jackson_2.11" % finatraVersion :: Nil
+  }
+
+  def finatraSwagger = Def.setting {
+    "com.github.xiaodongw" %% "swagger-finatra" % "0.7.2" :: Nil
   }
 
   def json4sNative = Def.setting {
-    "org.json4s" %% "json4s-native" % json4sVersion :: Nil
+    "org.json4s" % "json4s-native_2.11" % json4sVersion :: Nil
   }
+
+
+  /**
+    * Database dependencies
+    */
 
   def postgresDB = Def.setting {
     "org.postgresql" % "postgresql" % postgresVersion :: Nil
@@ -47,5 +71,19 @@ object Dependencies {
     "io.getquill" %% "quill-async-postgres" % quillVersion :: Nil
   }
 
+  /**
+    * Test dependencies
+    */
+  def mockito = Def.setting {
+    "org.mockito" % "mockito-core" % mockitoVersion :: Nil
+  }
+
+  def scalaTest = Def.setting {
+    "org.scalatest" % "scalatest_2.11" % "2.2.4" :: Nil
+  }
+
+  /*def spec2 = Def.setting {
+    "org.specs2" %% "specs2" % "2.3.12" :: Nil
+  }*/
 
 }

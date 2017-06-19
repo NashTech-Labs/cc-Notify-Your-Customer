@@ -8,7 +8,7 @@ object ProjectSettings {
       Defaults.coreDefaultSettings ++
       Seq(
       organization                          := "com.knoldus",
-      scalaVersion in ThisBuild             := "2.11.7",
+      scalaVersion in ThisBuild             := "2.12.0",
       version 			                        := "1.0.0",
 //      scapegoatVersion                      := "1.1.0",
       fork in Test 			                    := true,

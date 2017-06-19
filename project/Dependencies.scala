@@ -2,12 +2,14 @@ import sbt._
 
 object Dependencies {
 
-  val finatraVersion = "2.1.2"
+  val finatraVersion = "2.10.0"
   val mockitoVersion = "1.10.19"
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1208"
   val quillVersion = "1.2.1"
   val h2Version = "1.4.194"
+  val swaggerVersion = "2.9.0"
+  val kafkaVersion = ""
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -27,31 +29,19 @@ object Dependencies {
     * Finatra dependencies
     */
   def finatraHttp = Def.setting {
-    "com.twitter.finatra" % "finatra-http_2.11" % finatraVersion :: Nil
-  }
-
-  def finatraApp = Def.setting {
-    "com.twitter.inject" % "inject-app_2.11" % finatraVersion :: Nil
-  }
-
-  def finatraCore = Def.setting {
-    "com.twitter.inject" % "inject-core_2.11" % finatraVersion :: Nil
-  }
-
-  def finatraModules = Def.setting {
-    "com.twitter.inject" % "inject-modules_2.11" % finatraVersion :: Nil
-  }
-
-  def finatraJackson = Def.setting {
-    "com.twitter.finatra" % "finatra-jackson_2.11" % finatraVersion :: Nil
+    "com.twitter" %% "finatra-http" % finatraVersion :: Nil
   }
 
   def finatraSwagger = Def.setting {
-    "com.github.xiaodongw" %% "swagger-finatra" % "0.7.2" :: Nil
+    "com.jakehschwartz" % "finatra-swagger_2.12" % swaggerVersion :: Nil
   }
 
   def json4sNative = Def.setting {
     "org.json4s" % "json4s-native_2.11" % json4sVersion :: Nil
+  }
+
+  def kafka = Def.setting {
+    "org.apache.kafka" % "kafka_2.12" % "0.10.2.1" :: Nil
   }
 
 

@@ -1,38 +1,64 @@
 package com.ping.api.controller
 
 
-import com.github.xiaodongw.swagger.finatra.SwaggerSupport
-import com.twitter.finagle.http.{Request, Response, Status}
-import com.twitter.finatra.http.{Controller, _}
+import com.google.inject.Inject
+import com.jakehschwartz.finatra.swagger.SwaggerController
+import com.ping.models.Partner
+import com.twitter.finagle.http.Request
 import io.swagger.models.Swagger
 
 
-class DefaultController extends Controller {
-  get("/") { request: Request =>
-    "Welcome to ping!"
+class SampleController@Inject()(s: Swagger) extends SwaggerController {
+  implicit protected val swagger = s
+
+  getWithDoc("/partner/:id") { id =>
+    id.summary("Read the detail information about the partner")
+      .tag("Partner")
+      .routeParam[String]("id", "the partner id")
+      .responseWith[Partner](200, "the partner details")
+      .responseWith(404, "the partner not found")
+  } { (request: Request) =>
+    val PartnerId: Int = request.getParam("id").toInt
+    Partner(Some(PartnerId), "partner1", "ABC")
+  }
+
+  postWithDoc("/partner") { data =>
+    data.summary("Create a new Partner")
+      .tag("Partner")
+      .bodyParam[Partner]("Partner", "the partner details")
+      .responseWith[Partner](200, "the partner details with id")
+      .responseWith(404, "the partner not found")
+  } { (request: Request) =>
+    val PartnerId = math.random().toInt
+    Partner(Some(PartnerId), "partner", "ABC")
+  }
+
+  putWithDoc("/partner/:id") { id =>
+    id.summary("Update a partner")
+      .tag("Partner")
+      .routeParam[String]("id", "the Partner id")
+      .queryParam[String]("name", "the Partner name")
+      .queryParam[String]("designation", "the Partner designation")
+      .responseWith[Partner](200, "the Partner details with id")
+      .responseWith(404, "the Partner not found")
+      .responseWith(500, "internal server error")
+  } { (request: Request) =>
+    val PartnerId: Int = request.getParam("id").toInt
+    val name = request.getParam("name").toString
+    val designation = request.getParam("designation").toString
+    Partner(Some(PartnerId), name, designation)
+  }
+
+  deleteWithDoc("/partner/:id") { id =>
+    id.summary("Delete a partner")
+      .tag("partner")
+      .routeParam[String]("id", "the partner id")
+      .responseWith[Partner](200, "the partner details with id")
+      .responseWith(404, "the partner not found")
+  } { (request: Request) =>
+    val PartnerId: Int = request.getParam("id").toInt
+    val name = request.getParam("name").toString
+    val designation = request.getParam("designation").toString
+    Partner(Some(PartnerId), name, designation)
   }
 }
-/*
-object SampleSwagger extends Swagger
-
-class DefaultController extends Controller with SwaggerSupport{
-
-  implicit protected val swagger = SampleSwagger
-
-  getWithDoc("/students/:id") { o =>
-    o.summary("Read the detail information about the student")
-      .tag("Student")
-      .routeParam[String]("id", "the student id")
-      .responseWith[Student](200, "the student details")
-      .responseWith(404, "the student is not found")
-  }{ request: Request =>
-    info(s"request found.. ${request}")
-    if(0 == "1"){
-      Student("1234", "John")
-    }else{
-      "the student is not found"
-    }
-  }
-}
-
-case class Student(id: String, name: String)*/

@@ -12,8 +12,8 @@ class UserRepo {
 
   val users: Quoted[EntityQuery[User]] = quote(query[User])
 
-  def find(id: Long): Future[Option[User]] = run(users.filter(_.id == lift(id))).map(_.headOption)
+//  def find(id: Long): Future[Option[User]] = run(users.filter(_.id == lift(id))).map(_.headOption)
 
-  def insert(user: User): Future[User] = run(users.insert(lift(user)).returning(_.id)).map(autoIncId => user.copy(id = autoIncId))
+//  def insert(user: User): Future[User] = run(users.insert(lift(user)).returning(_.id)).map(autoIncId => user.copy(id = autoIncId))
 
 }

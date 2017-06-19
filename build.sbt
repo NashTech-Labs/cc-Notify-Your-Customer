@@ -16,7 +16,7 @@ lazy val api = BaseProject("api").settings(
     "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases")).dependsOn(commonUtil)
 
 lazy val persistence = BaseProject("persistence").settings(
-  libraryDependencies ++= compileDependencies(postgresDB.value ++ quill.value ++ logback.value ++ typesafeConfig.value),
+  libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++ logback.value ++ typesafeConfig.value),
   parallelExecution in Test := false,
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"),
     "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases")).dependsOn(commonUtil)

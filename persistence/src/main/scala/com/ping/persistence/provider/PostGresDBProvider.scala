@@ -8,6 +8,6 @@ trait PostGresDBProvider extends DBProvider {
 
   import driver.api._
 
-  val db = Database.forConfig("myPostgresDB")
+  val db = Database.forConfig("db")
 
 }

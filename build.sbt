@@ -58,3 +58,11 @@ lazy val twillio = BaseProject("twillio").settings(
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"),
     "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases")
 )
+
+lazy val partner = BaseProject("partner").settings(
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
+    ++ testDependencies(h2DB.value ::: Nil),
+  parallelExecution in Test := false,
+  resolvers ++= Seq(Resolver.sonatypeRepo("releases"),
+    "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases")
+)

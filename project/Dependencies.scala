@@ -2,11 +2,13 @@ import sbt._
 
 object Dependencies {
 
-  val finatraVersion = "2.11.0"
+  val finatraVersion = "2.10.0"
   val mockitoVersion = "1.10.19"
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1208"
   val h2Version = "1.4.194"
+  val swaggerVersion = "2.9.0"
+  val kafkaVersion = ""
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
 
@@ -24,17 +26,29 @@ object Dependencies {
     "ch.qos.logback" % "logback-classic" % "1.1.6" :: Nil
   }
 
+  /**
+    * Finatra dependencies
+    */
   def finatraHttp = Def.setting {
-    "com.twitter" % "finatra-http_2.11" % finatraVersion :: Nil
+    "com.twitter" %% "finatra-http" % finatraVersion :: Nil
   }
 
-  def mockito = Def.setting {
-    "org.mockito" % "mockito-core" % mockitoVersion :: Nil
+  def finatraSwagger = Def.setting {
+    "com.jakehschwartz" % "finatra-swagger_2.12" % swaggerVersion :: Nil
   }
 
   def json4sNative = Def.setting {
-    "org.json4s" %% "json4s-native" % json4sVersion :: Nil
+    "org.json4s" % "json4s-native_2.11" % json4sVersion :: Nil
   }
+
+  def kafka = Def.setting {
+    "org.apache.kafka" % "kafka_2.12" % "0.10.2.1" :: Nil
+  }
+
+
+  /**
+    * Database dependencies
+    */
 
   def postgresDB = Def.setting {
     "org.postgresql" % "postgresql" % postgresVersion :: Nil
@@ -51,5 +65,19 @@ object Dependencies {
   def slickHickari = Def.setting {
     "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
   }
+  /**
+    * Test dependencies
+    */
+  def mockito = Def.setting {
+    "org.mockito" % "mockito-core" % mockitoVersion :: Nil
+  }
+
+  def scalaTest = Def.setting {
+    "org.scalatest" % "scalatest_2.11" % "2.2.4" :: Nil
+  }
+
+  /*def spec2 = Def.setting {
+    "org.specs2" %% "specs2" % "2.3.12" :: Nil
+  }*/
 
 }

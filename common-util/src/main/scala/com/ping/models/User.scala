@@ -7,3 +7,4 @@ case class User (
                 address: String
                 )
 
+case class Partner(id: Option[Int], name: String, address: String)

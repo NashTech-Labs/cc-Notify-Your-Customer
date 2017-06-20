@@ -1,19 +1,27 @@
 package com.ping.persistence.repo
 
+
+import com.ping.persistence.provider.{PostGresDBProvider, DBProvider}
+import com.ping.persistence.models.UserTable
 import scala.concurrent.ExecutionContext.Implicits.global
-import com.ping.db.DbContext._
-
 import com.ping.models.User
-
 import scala.concurrent.Future
 
-class UserRepo {
+trait UserRepo extends UserTable {
 
+  this: DBProvider =>
 
-  val users: Quoted[EntityQuery[User]] = quote(query[User])
+  import driver.api._
 
-  def find(id: Long): Future[Option[User]] = run(users.filter(_.id == lift(id))).map(_.headOption)
+  def create = db.run(userTableQuery.schema.create)
 
-  def insert(user: User): Future[User] = run(users.insert(lift(user)).returning(_.id)).map(autoIncId => user.copy(id = autoIncId))
+  def insert(user: User) = db.run(userTableQuery += user)
+
+  def delete(id: Long) = {
+    val query = userTableQuery.filter(x => x.id === id)
+    db.run(query.delete)
+  }
 
 }
+
+object UserRepo extends UserRepo with PostGresDBProvider

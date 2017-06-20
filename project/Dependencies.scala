@@ -6,8 +6,9 @@ object Dependencies {
   val mockitoVersion = "1.10.19"
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1208"
-  val quillVersion = "1.2.1"
   val h2Version = "1.4.194"
+  val slickVersion = "3.2.0"
+  val slickHickariVersion = "3.2.0"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -43,9 +44,12 @@ object Dependencies {
     "com.h2database" % "h2" % h2Version :: Nil
   }
 
-  def quill = Def.setting {
-    "io.getquill" %% "quill-async-postgres" % quillVersion :: Nil
+  def slick =Def.setting {
+    "com.typesafe.slick" %% "slick" % slickVersion :: Nil
   }
 
+  def slickHickari = Def.setting {
+    "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
+  }
 
 }

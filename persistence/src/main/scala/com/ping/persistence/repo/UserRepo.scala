@@ -10,6 +10,7 @@ import scala.concurrent.Future
 trait UserRepo extends UserTable {
 
   this: DBProvider =>
+
   import driver.api._
 
   def create = db.run(userTableQuery.schema.create)

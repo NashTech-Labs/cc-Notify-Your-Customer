@@ -49,5 +49,7 @@ object Dependencies {
   }
 
   def slickHickari = Def.setting {
-    "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil  }
+    "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
   }
+
+}

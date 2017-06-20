@@ -10,7 +10,7 @@ trait UserTable {
 
   def userTableQuery = TableQuery[UserTable]
 
-  class UserTable(tag: Tag) extends Table[User](tag, "User") {
+  class UserTable(tag: Tag) extends Table[User](tag, "User1") {
     val id = column[Long]("id", O.PrimaryKey)
     val name = column[String]("name")
     val address = column[String]("address")

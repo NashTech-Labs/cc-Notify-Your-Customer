@@ -2,7 +2,7 @@ package com.ping.persistence.provider
 
 import slick.jdbc.PostgresProfile
 
-trait PostGresDBProvider extends DBProvider {
+trait PostgresDBProvider extends DBProvider {
 
   val driver = PostgresProfile
 

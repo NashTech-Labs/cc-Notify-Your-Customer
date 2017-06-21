@@ -14,8 +14,6 @@ object ProjectSettings {
           fork in IntegrationTest := true,
           parallelExecution in IntegrationTest := false,
           parallelExecution in Test := false,
-          scalaSource in Compile := baseDirectory.value / "src",
-          resourceDirectory in Compile := baseDirectory.value / "resources",
           projectResolvers
         ))
 

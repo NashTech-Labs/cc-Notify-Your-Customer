@@ -44,7 +44,8 @@ lazy val twillio = BaseProject("twillio").settings(
 )
 
 lazy val client = BaseProject("client").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value
+    ++ typesafeConfig.value ++ postgresDB.value ++ slick.value ++ slickHickari.value)
+    ++ testDependencies(h2DB.value ++ scalaTest.value),
   parallelExecution in Test := false
-)
+).dependsOn(commonUtil)

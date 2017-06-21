@@ -3,7 +3,7 @@ package com.ping.models
 import java.sql.Timestamp
 
 
-case class Client(
+case class DBClient(
                    id: Long,
                    name: String,
                    userName: String,
@@ -12,7 +12,7 @@ case class Client(
                    phone: String
                  )
 
-case class ClientAddress(
+case class DBClientAddress(
                           id: Long,
                           clientId: Long,
                           address: String,
@@ -21,8 +21,9 @@ case class ClientAddress(
                         )
 
 
-case class AccessToken(
+case class DBAccessToken(
+                        id: Long,
                         clientId: Long,
-                        accessToken: String,
+                        token: String,
                         createdAt: Timestamp
                       )

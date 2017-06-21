@@ -3,24 +3,3 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(50) NOT NULL,
   address VARCHAR(50) NOT NULL
 );
-
-CREATE TABLE IF NOT EXISTS client (
-  id BIGSERIAL PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  user_name VARCHAR(50) NOT NULL,
-  password VARCHAR(100) NOT NULL,
-  email VARCHAR(60) NOT NULL,
-  phone VARCHAR(15) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS client_address (
-  id BIGSERIAL PRIMARY KEY,
-  address VARCHAR(100) NOT NULL,
-  country VARCHAR(30) NOT NULL,
-  pin_code VARCHAR(11) NOT NULL,
-  client_id BIGINT REFERENCES client(id)
-);
-
-CREATE TABLE IF NOT EXISTS access_token (
-
-)

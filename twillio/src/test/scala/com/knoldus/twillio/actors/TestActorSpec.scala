@@ -7,7 +7,7 @@ import org.scalatest.mockito.MockitoSugar
 
 
 class TestActorSpec extends TestKit(ActorSystem("twillio-actor-ref-factory-test")) with ImplicitSender
-  with AsyncWordSpecLike with MustMatchers with MockitoSugar with BeforeAndAfterAll {
+  with WordSpecLike with MustMatchers with MockitoSugar with BeforeAndAfterAll {
 
   val mockedTestService = mock[TestService]
 
@@ -16,13 +16,14 @@ class TestActorSpec extends TestKit(ActorSystem("twillio-actor-ref-factory-test"
   "get actor 1" when {
 
     "actor name is valid" in {
-      val actorRef = TwillioActorFactoryTest.getReceiver(TwillioActorNames.TEST_ACTOR_NAME1)
+      val actorRef = TwillioActorFactoryTest.getReceiver(TwillioActorNames.TestActorName1)
       actorRef.isInstanceOf[ActorRef] mustBe true
     }
 
     "actor name is invalid" in {
-      val actorRef = TwillioActorFactoryTest.getReceiver("invalid")
-      actorRef.isInstanceOf[ActorRef] mustBe true
+      intercept[IllegalArgumentException] {
+        TwillioActorFactoryTest.getReceiver("invalid")
+      }
     }
 
   }
@@ -30,13 +31,14 @@ class TestActorSpec extends TestKit(ActorSystem("twillio-actor-ref-factory-test"
   "get actor 2" when {
 
     "actor name is valid" in {
-      val actorRef = TwillioActorFactoryTest.getReceiver(TwillioActorNames.TEST_ACTOR_NAME2)
+      val actorRef = TwillioActorFactoryTest.getReceiver(TwillioActorNames.TestActorName2)
       actorRef.isInstanceOf[ActorRef] mustBe true
     }
 
     "actor name is invalid" in {
-      val actorRef = TwillioActorFactoryTest.getReceiver("invalid")
-      actorRef.isInstanceOf[ActorRef] mustBe true
+      intercept[IllegalArgumentException] {
+        TwillioActorFactoryTest.getReceiver("invalid")
+      }
     }
   }
 

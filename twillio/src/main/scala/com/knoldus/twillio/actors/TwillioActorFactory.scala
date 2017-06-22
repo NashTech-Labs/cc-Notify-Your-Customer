@@ -4,7 +4,7 @@ import akka.actor.{ActorRef, ActorRefFactory, Props}
 import akka.routing.RoundRobinPool
 import akka.util.Timeout
 import scala.concurrent.duration._
-
+import TwillioActorNames._
 
 /**
   * TODO
@@ -15,16 +15,14 @@ import scala.concurrent.duration._
   */
 class TwillioActorFactory(testService: TestService) {
 
-  import TwillioActorNames._
-
   implicit val timeout = Timeout(180 seconds)
 
   val availableProcessor = Runtime.getRuntime.availableProcessors()
   val concurrencyFactor = availableProcessor
 
   val actors: Map[String, Props] = Map(
-    TEST_ACTOR_NAME1 -> Props(classOf[TestActor], testService).withRouter(RoundRobinPool(concurrencyFactor)),
-    TEST_ACTOR_NAME2 -> Props(classOf[TestActor], testService).withRouter(RoundRobinPool(concurrencyFactor))
+    TestActorName1 -> Props(classOf[TestActor], testService).withRouter(RoundRobinPool(concurrencyFactor)),
+    TestActorName2 -> Props(classOf[TestActor], testService).withRouter(RoundRobinPool(concurrencyFactor))
   )
 
   def getReceiver(name: String)(implicit system: ActorRefFactory): ActorRef = {
@@ -37,8 +35,8 @@ class TwillioActorFactory(testService: TestService) {
 }
 
 object TwillioActorNames {
-  lazy val TEST_ACTOR_NAME1 = "testActorName1"
-  lazy val TEST_ACTOR_NAME2 = "testActorName2"
+  lazy val TestActorName1 = "testActorName1"
+  lazy val TestActorName2 = "testActorName2"
 }
 
 

@@ -11,6 +11,7 @@ object Dependencies {
   val kafkaVersion = ""
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
+  val scalaTestVersion = "3.0.1"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -34,11 +35,11 @@ object Dependencies {
   }
 
   def finatraSwagger = Def.setting {
-    "com.jakehschwartz" % "finatra-swagger_2.12" % swaggerVersion :: Nil
+    "com.jakehschwartz" %% "finatra-swagger" % swaggerVersion :: Nil
   }
 
   def json4sNative = Def.setting {
-    "org.json4s" % "json4s-native_2.11" % json4sVersion :: Nil
+    "org.json4s" %% "json4s-native" % json4sVersion :: Nil
   }
 
   def kafka = Def.setting {
@@ -73,7 +74,7 @@ object Dependencies {
   }
 
   def scalaTest = Def.setting {
-    "org.scalatest" % "scalatest_2.11" % "2.2.4" :: Nil
+    "org.scalatest" %% "scalatest" % scalaTestVersion :: Nil
   }
 
   /*def spec2 = Def.setting {

@@ -9,9 +9,9 @@ trait UserMapping {
 
   import driver.api._
 
-  protected def userAutoInc = userInfo returning userInfo.map(_.id)
-
   def userInfo: TableQuery[UserMapping] = TableQuery[UserMapping]
+
+  protected def userAutoInc = userInfo returning userInfo.map(_.id)
 
   class UserMapping(tag: Tag) extends Table[User](tag, "User1") {
     def * : ProvenShape[User] = (id, name, address) <> (User.tupled, User.unapply)

@@ -8,10 +8,11 @@ object Dependencies {
   val postgresVersion = "9.4.1208"
   val h2Version = "1.4.194"
   val swaggerVersion = "2.9.0"
-  val kafkaVersion = ""
+  val kafkaVersion = "0.10.2.1"
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
   val scalaTestVersion = "3.0.1"
+  val akkaVersion = "2.5.3"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -43,15 +44,15 @@ object Dependencies {
   }
 
   def kafka = Def.setting {
-    "org.apache.kafka" %% "kafka" % "0.10.2.1" :: Nil
+    "org.apache.kafka" %% "kafka" % kafkaVersion :: Nil
   }
 
   def akka = Def.setting {
-    "com.typesafe.akka" %% "akka-actor" % "2.4.16" :: Nil
+    "com.typesafe.akka" %% "akka-actor" % akkaVersion :: Nil
   }
 
   def akkaTestKit = Def.setting {
-    "com.typesafe.akka" %% "akka-testkit" % "2.5.3" :: Nil
+    "com.typesafe.akka" %% "akka-testkit" % akkaVersion :: Nil
   }
 
 

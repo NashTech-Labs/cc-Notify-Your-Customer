@@ -5,7 +5,7 @@ version := "1.0"
 scalaVersion := "2.12.2"
 
 
-import Dependencies._
+import Dependencies.{scalaTest, _}
 import ProjectSettings._
 
 
@@ -15,8 +15,8 @@ lazy val api = BaseProject("api").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val persistence = BaseProject("persistence").settings(
-  libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++ logback.value ++
-    typesafeConfig.value),
+  libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++
+    logback.value ++ typesafeConfig.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
@@ -38,8 +38,9 @@ lazy val mail = BaseProject("mail").settings(
 )
 
 lazy val twillio = BaseProject("twillio").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
+  kafka.value ++ akka.value)
+    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ::: mockito.value ::: Nil),
   parallelExecution in Test := false
 )
 

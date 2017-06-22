@@ -59,13 +59,14 @@ object Dependencies {
     "com.h2database" % "h2" % h2Version :: Nil
   }
 
-  def slick =Def.setting {
+  def slick = Def.setting {
     "com.typesafe.slick" %% "slick" % slickVersion :: Nil
   }
 
   def slickHickari = Def.setting {
     "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
   }
+
   /**
     * Test dependencies
     */

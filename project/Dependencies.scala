@@ -43,7 +43,15 @@ object Dependencies {
   }
 
   def kafka = Def.setting {
-    "org.apache.kafka" % "kafka_2.12" % "0.10.2.1" :: Nil
+    "org.apache.kafka" %% "kafka" % "0.10.2.1" :: Nil
+  }
+
+  def akka = Def.setting {
+    "com.typesafe.akka" %% "akka-actor" % "2.4.16" :: Nil
+  }
+
+  def akkaTestKit = Def.setting {
+    "com.typesafe.akka" %% "akka-testkit" % "2.5.3" :: Nil
   }
 
 

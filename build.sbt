@@ -28,25 +28,21 @@ lazy val commonUtil = BaseProject("common-util").settings(
 lazy val slack = BaseProject("slack").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
     ++ testDependencies(h2DB.value ::: Nil),
-  parallelExecution in Test := false
-)
+  parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
     ++ testDependencies(h2DB.value ::: Nil),
-  parallelExecution in Test := false
-)
+  parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
   kafka.value ++ akka.value)
     ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ::: mockito.value ::: Nil),
-  parallelExecution in Test := false
-)
+  parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val client = BaseProject("client").settings(
   libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value
     ++ typesafeConfig.value ++ postgresDB.value ++ slick.value ++ slickHickari.value)
     ++ testDependencies(h2DB.value ++ scalaTest.value),
-  parallelExecution in Test := false
-).dependsOn(commonUtil)
+  parallelExecution in Test := false).dependsOn(commonUtil)

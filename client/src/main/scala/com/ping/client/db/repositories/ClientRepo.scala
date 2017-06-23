@@ -1,21 +1,32 @@
 package com.ping.client.db.repositories
 
 import com.ping.client.db.mapping.{AccessTokenMapping, ClientAddressMapping, ClientMapping}
-import com.ping.client.db.provider.DBProvider
-import com.ping.models.DBClient
+import com.ping.client.db.provider.{DBProvider, PostgresDBProvider}
+import com.ping.models.{ClientDetails, DBClient}
+import com.google.inject.{ImplementedBy, Singleton}
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
+@ImplementedBy(classOf[ClientRepoImpl])
 trait ClientRepo extends ClientMapping with AccessTokenMapping with ClientAddressMapping {
   this: DBProvider =>
 
   import driver.api._
 
-  def insertClient(client: DBClient): Future[DBClient] = {
-    db.run(clientAutoInc += client) map { insertId =>
-      client.copy(id = insertId)
+  def insertClient(clientDetails: ClientDetails): Future[ClientDetails] = {
+    val query = for {
+      clientAutoIncId <- clientAutoInc += clientDetails.client
+      addressId <- clientAddressAutoInc += clientDetails.clientAddress.copy(clientId = clientAutoIncId)
+      tokenId <- accessTokenAutoInc += clientDetails.tokenDetails.copy(clientId = clientAutoIncId)
+    } yield {
+      val client = clientDetails.client.copy(id = clientAutoIncId)
+      val address = clientDetails.clientAddress.copy(id = addressId, clientId = clientAutoIncId)
+      val token = clientDetails.tokenDetails.copy(id = tokenId, clientId = clientAutoIncId)
+      ClientDetails(client, address, token)
     }
+
+    db.run(query.transactionally)
   }
 
   def getClientById(id: Long): Future[Option[DBClient]] = {
@@ -34,3 +45,6 @@ trait ClientRepo extends ClientMapping with AccessTokenMapping with ClientAddres
   }
 
 }
+
+@Singleton
+class ClientRepoImpl extends ClientRepo with PostgresDBProvider

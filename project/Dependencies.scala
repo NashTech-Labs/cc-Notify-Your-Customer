@@ -5,7 +5,7 @@ object Dependencies {
   val finatraVersion = "2.10.0"
   val mockitoVersion = "1.10.19"
   val json4sVersion = "3.5.0"
-  val postgresVersion = "9.4.1208"
+  val postgresVersion = "9.4.1212"
   val h2Version = "1.4.194"
   val swaggerVersion = "2.9.0"
   val kafkaVersion = "0.10.2.1"
@@ -85,6 +85,10 @@ object Dependencies {
 
   def scalaTest = Def.setting {
     "org.scalatest" %% "scalatest" % scalaTestVersion :: Nil
+  }
+
+  def jbCrypt = Def.setting {
+    "org.mindrot" % "jbcrypt" % "0.3m" :: Nil
   }
 
   /*def spec2 = Def.setting {

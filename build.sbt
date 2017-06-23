@@ -20,8 +20,8 @@ lazy val persistence = BaseProject("persistence").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-  ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value ++ typesafeConfig.value ++ jbCrypt.value)
+  ++ testDependencies(h2DB.value ++ scalaTest.value),
   parallelExecution in Test := false
 )
 

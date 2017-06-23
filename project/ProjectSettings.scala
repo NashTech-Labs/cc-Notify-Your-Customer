@@ -33,11 +33,4 @@ object ProjectSettings {
     )
   }
 
-  def acdv = {
-    assemblyMergeStrategy in assembly := {
-      case "BUILD" => MergeStrategy.discard
-      case "META-INF/io.netty.versions.properties" => MergeStrategy.last
-      case other => MergeStrategy.defaultMergeStrategy(other)
-    }
-  }
 }

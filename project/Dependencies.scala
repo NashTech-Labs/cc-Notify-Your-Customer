@@ -91,6 +91,10 @@ object Dependencies {
     "org.mindrot" % "jbcrypt" % "0.3m" :: Nil
   }
 
+  def twilio = Def.setting {
+    ("com.twilio.sdk" % "twilio" % "7.10.0").exclude("javax.xml.bind", "jaxb-api") :: Nil
+  }
+
   /*def spec2 = Def.setting {
     "org.specs2" %% "specs2" % "2.3.12" :: Nil
   }*/

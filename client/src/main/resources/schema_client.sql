@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS client_address (
   address VARCHAR(100) NOT NULL,
   country VARCHAR(30) NOT NULL,
   pin_code VARCHAR(11) NOT NULL,
-  client_id BIGINT REFERENCES client(id)
+  client_id BIGINT NOT NULL REFERENCES client(id)
 );
 
 CREATE TABLE IF NOT EXISTS access_token (

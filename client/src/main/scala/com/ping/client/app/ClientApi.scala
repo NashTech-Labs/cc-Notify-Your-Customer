@@ -7,7 +7,6 @@ import com.twitter.finatra.http.routing.HttpRouter
 
 object ClientApi extends HttpServer {
 
-
   override def defaultFinatraHttpPort = ":9000"
 
   override protected def configureHttp(router: HttpRouter): Unit = {

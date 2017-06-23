@@ -15,7 +15,7 @@ class ClientService @Inject()(
 
   def insert(clientReq: ClientRequest): Future[ClientDetails] = {
     val dbClient = DBClient(0, clientReq.name, clientReq.email, clientReq.phone)
-    val dbClientAddress = DBClientAddress(0, 0, clientReq.address, clientReq.country, clientReq.phone)
+    val dbClientAddress = DBClientAddress(0, 0, clientReq.address, clientReq.country, clientReq.pinCode)
     val hashedToken = hasher.getHash(clientReq.name + clientReq.email + clientReq.phone)
     val dbToken = DBAccessToken(0, 0, hashedToken, new java.sql.Timestamp(System.currentTimeMillis))
 

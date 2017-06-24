@@ -42,9 +42,8 @@ lazy val twillio = BaseProject("twillio").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val client = BaseProject("client").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value
-    ++ typesafeConfig.value ++ postgresDB.value ++ slick.value ++ slickHickari.value)
-    ++ testDependencies(h2DB.value ++ scalaTest.value ++ mockito.value ++ finatraHttp.value ++ json4sNative.value
-    ++ googleGuiceTest.value ++ finatraTest.value ++ scalaCheck.value ++ specs2Mock.value)
+  libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value)
+    ++ testDependencies(h2DB.value ++ scalaTest.value ++ googleGuiceTest.value ++
+    finatraTest.value ++ scalaCheck.value ++ specs2Mock.value).map(_.exclude("io.netty", "*"))
     ++ testClassifierDependencies(finatraTest.value),
   parallelExecution in Test := false).dependsOn(commonUtil)

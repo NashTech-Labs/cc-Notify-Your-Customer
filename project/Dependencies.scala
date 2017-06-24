@@ -3,7 +3,7 @@ import sbt._
 object Dependencies {
 
   val finatraVersion = "2.11.0"
-  val mockitoVersion = "1.10.19"
+  val mockitoVersion = "1.9.5"
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1212"
   val h2Version = "1.4.194"
@@ -11,7 +11,7 @@ object Dependencies {
   val kafkaVersion = "0.10.2.1"
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
-  val scalaTestVersion = "3.0.1"
+  val scalaTestVersion = "3.0.0"
   val akkaVersion = "2.5.3"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Compile)
@@ -27,7 +27,7 @@ object Dependencies {
   }
 
   def logback = Def.setting {
-    "ch.qos.logback" % "logback-classic" % "1.1.6" :: Nil
+    "ch.qos.logback" % "logback-classic" % "1.1.7" :: Nil
   }
 
   /**
@@ -35,22 +35,19 @@ object Dependencies {
     */
   def finatraHttp = Def.setting {
     List(
-      "com.twitter" %% "inject-server" % finatraVersion,
-      "com.twitter" %% "inject-app" % finatraVersion,
-      "com.twitter" %% "inject-core" % finatraVersion,
-      "com.twitter" %% "inject-modules" % finatraVersion,
-      "com.twitter" %% "finatra-http" % finatraVersion,
-      "com.twitter" %% "finatra-httpclient" % finatraVersion
+      "com.twitter" %% "finatra-http" % finatraVersion/*,
+      "com.twitter" %% "finatra-httpclient" % finatraVersion*/
     )
   }
 
   def finatraTest = Def.setting {
     List(
       "com.twitter" %% "finatra-http" % finatraVersion,
-      "com.twitter" %% "inject-server" % finatraVersion,
-      "com.twitter" %% "inject-app" % finatraVersion,
       "com.twitter" %% "inject-core" % finatraVersion,
-      "com.twitter" %% "inject-modules" % finatraVersion
+
+      "com.twitter" %% "inject-server" % finatraVersion/*,
+      "com.twitter" %% "inject-app" % finatraVersion,
+      "com.twitter" %% "inject-modules" % finatraVersion*/
     )
   }
 
@@ -83,7 +80,7 @@ object Dependencies {
     "org.postgresql" % "postgresql" % postgresVersion :: Nil
   }
 
-  def h2DB = Def.setting {
+  def   h2DB = Def.setting {
     "com.h2database" % "h2" % h2Version :: Nil
   }
 
@@ -103,7 +100,7 @@ object Dependencies {
   }
 
   def scalaTest = Def.setting {
-    "org.scalatest" %% "scalatest" % scalaTestVersion :: Nil
+    ("org.scalatest" %% "scalatest" % scalaTestVersion) :: Nil
   }
 
   def jbCrypt = Def.setting {

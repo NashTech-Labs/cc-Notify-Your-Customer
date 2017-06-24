@@ -16,6 +16,7 @@ object ProjectSettings {
           fork in IntegrationTest := true,
           parallelExecution in IntegrationTest := false,
           parallelExecution in Test := false,
+//          scalacOptions += "-Ylog-classpath",
           projectResolvers
         ))
 

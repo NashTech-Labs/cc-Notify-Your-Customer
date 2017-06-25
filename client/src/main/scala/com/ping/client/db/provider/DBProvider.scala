@@ -15,7 +15,6 @@ trait DBProvider {
   val db: Database
 
   def withTransaction[R](transactionFunc:  => DBIOAction[R, _ <: dbio.NoStream, _ <: Effect with Transactional]): Future[R] = {
-    val query = transactionFunc
-    db.run(query.transactionally)
+    db.run(transactionFunc.transactionally)
   }
 }

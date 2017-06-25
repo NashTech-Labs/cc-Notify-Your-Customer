@@ -14,8 +14,8 @@ trait ClientRepo extends ClientMapping with AccessTokenMapping with ClientAddres
 
   import driver.api._
 
-  def insertClient(clientDetails: ClientDetails): Future[ClientDetails] = {
-    val query = for {
+  def insertClient(clientDetails: ClientDetails): Future[ClientDetails] = withTransaction {
+    for {
       clientAutoIncId <- clientAutoInc += clientDetails.client
       addressId <- clientAddressAutoInc += clientDetails.clientAddress.copy(clientId = clientAutoIncId)
       tokenId <- accessTokenAutoInc += clientDetails.tokenDetails.copy(clientId = clientAutoIncId)
@@ -26,22 +26,21 @@ trait ClientRepo extends ClientMapping with AccessTokenMapping with ClientAddres
       ClientDetails(client, address, token)
     }
 
-    db.run(query.transactionally)
   }
 
-  def getClientById(id: Long): Future[Option[DBClient]] = {
-    val query = clientInfo.filter(_.id === id).result.headOption
-    db.run(query)
+  def getClientById(id: Long): Future[Option[DBClient]] = withTransaction {
+    clientInfo.filter(_.id === id).result.headOption
+
   }
 
-  def getClientByAccessToken(accessToken: String): Future[Option[DBClient]] = {
+  def getClientByAccessToken(accessToken: String): Future[Option[DBClient]] = withTransaction {
     val query = accessTokenInfo.filter(_.token === accessToken) join clientInfo on {
       case (accToken, client) => accToken.clientId === client.id
     } map {
       case (_, client) => client
     }
 
-    db.run(query.result.headOption)
+    query.result.headOption
   }
 
 }

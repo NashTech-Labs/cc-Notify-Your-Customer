@@ -1,6 +1,9 @@
 package com.ping.client.service
 
+import java.sql.Timestamp
+
 import com.ping.client.db.repositories.ClientRepo
+import com.ping.date.DateUtil
 import com.ping.hasher.Hasher
 import com.ping.models._
 import org.mockito.Mockito._
@@ -14,8 +17,31 @@ class ClientServiceSpec extends AsyncWordSpec with MockitoSugar {
 
   val mockClientRepo = mock[ClientRepo]
   val mockHasher = mock[Hasher]
+  val mockDateUtil = mock[DateUtil]
 
-  val clientServiceObj = new ClientService(mockClientRepo, mockHasher)
+  val clientServiceObj = new ClientService(mockClientRepo, mockHasher, mockDateUtil)
+
+  "insert client" should {
+
+    "return successfully" in {
+      val currentTimestamp = new Timestamp(System.currentTimeMillis)
+      val hashedToken = "hashedString"
+      val clientReq = ClientRequest("Harshit", "harshit@knoldus.com", "9460444006", "NSEZ, Sec. 81, Noida", "India", "201305")
+      val dbClient = DBClient(0, clientReq.name, clientReq.email, clientReq.phone)
+      val dbClientAddress = DBClientAddress(0, 0, clientReq.address, clientReq.country, clientReq.pinCode)
+      val dbToken = DBAccessToken(0, 0, hashedToken, currentTimestamp)
+
+      val clientDetails = ClientDetails(dbClient, dbClientAddress, dbToken)
+
+      when(mockHasher.getHash(clientReq.name + clientReq.email + clientReq.phone)) thenReturn hashedToken
+      when(mockDateUtil.currentTimestamp) thenReturn currentTimestamp
+      when(mockClientRepo.insertClient(clientDetails)) thenReturn Future.successful(clientDetails)
+
+      clientServiceObj.insert(clientReq) map { clientDetails =>
+        assert(clientDetails.tokenDetails.token === hashedToken)
+      }
+    }
+  }
 
 
   "fetching client" should {

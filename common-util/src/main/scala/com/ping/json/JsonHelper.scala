@@ -6,10 +6,12 @@ import org.json4s.{CustomSerializer, JDouble, JInt, JLong, JNothing, JNull, JStr
 
 import scala.util.Try
 
+
+//scalastyle:off
 trait JsonHelper {
 
-  val EMPTY_STRING = ""
-  val JavaNull = null
+  val emptyStr = ""
+  val jNull = null
 
   implicit val formats = new org.json4s.DefaultFormats { List(StringToBigDecimalSerializer) }
 
@@ -17,7 +19,7 @@ trait JsonHelper {
     {
       case JInt(value) => BigDecimal(value.longValue)
       case JLong(value) => BigDecimal(value)
-      case JNull => JavaNull
+      case JNull => jNull
       case JString(value) => Try(BigDecimal(value.toInt)).getOrElse(BigDecimal(0))
     },
     {
@@ -29,11 +31,10 @@ trait JsonHelper {
 
   protected def parse(value: String): JValue = jParser(value)
 
-  protected def pretty(value: String): String = jPretty(render(parse(value)))
-
   implicit protected def extractOrEmptyString(json: JValue): String = json match {
-    case JNothing => EMPTY_STRING
+    case JNothing => emptyStr
     case data     => data.extract[String]
   }
 
 }
+//scalastyle:on

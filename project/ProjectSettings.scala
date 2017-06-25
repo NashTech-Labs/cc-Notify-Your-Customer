@@ -16,17 +16,22 @@ object ProjectSettings {
           fork in IntegrationTest := true,
           parallelExecution in IntegrationTest := false,
           parallelExecution in Test := false,
+//          scalacOptions += "-Ylog-classpath",
           projectResolvers
         ))
 
   def projectResolvers: Def.Setting[Seq[Resolver]] = {
     resolvers ++= Seq(
       Resolver.sonatypeRepo("releases"),
+      Resolver.typesafeRepo("releases"),
+      Resolver.sonatypeRepo("snapshots"),
       "Twitter Maven" at "https://maven.twttr.com",
+      "Finatra Repo" at "http://twitter.github.com/finatra",
       "Typesafe Repository" at "https://repo.typesafe.com/typesafe/releases/",
       "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
       "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases/",
       "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
     )
   }
+
 }

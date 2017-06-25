@@ -16,7 +16,8 @@ lazy val api = BaseProject("api").settings(
 
 lazy val persistence = BaseProject("persistence").settings(
   libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++
-    logback.value ++ typesafeConfig.value),
+    logback.value ++ typesafeConfig.value)
+    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ++ mockito.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
@@ -38,7 +39,7 @@ lazy val mail = BaseProject("mail").settings(
 lazy val twillio = BaseProject("twillio").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
     kafka.value ++ akka.value)
-    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ::: mockito.value ::: Nil),
+    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ++ mockito.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val client = BaseProject("client").settings(

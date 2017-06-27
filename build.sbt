@@ -2,7 +2,7 @@ name := "Ping"
 
 version := "1.0"
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.11.8"
 
 
 import Dependencies.{scalaTest, _}
@@ -31,8 +31,9 @@ lazy val slack = BaseProject("slack").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
+  ++ kafka.value ++ email.value ++ akka.value ::: Nil)
+    ++ testDependencies(scalaTest.value ++ h2DB.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(

@@ -13,6 +13,7 @@ object Dependencies {
   val slickHickariVersion = "3.2.0"
   val scalaTestVersion = "3.0.1"
   val akkaVersion = "2.5.3"
+  val emailVersion="1.4"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -94,5 +95,8 @@ object Dependencies {
   /*def spec2 = Def.setting {
     "org.specs2" %% "specs2" % "2.3.12" :: Nil
   }*/
+ def email=Def.setting{
+   "javax.mail" % "mail" % emailVersion :: Nil
+ }
 
 }

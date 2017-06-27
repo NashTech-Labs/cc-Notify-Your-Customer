@@ -14,7 +14,7 @@ class SampleController extends Controller {
   }
 
   post("/partner") { (request: Request) =>
-    val PartnerId = math.random().toInt
+    val PartnerId = math.random.toInt
     Partner(Some(PartnerId), "partner", "ABC")
   }
 

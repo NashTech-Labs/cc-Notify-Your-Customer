@@ -5,8 +5,9 @@ import com.ping.api.controller.SampleController
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.routing.HttpRouter
 
+object SampleApp
 
-object SampleApp extends HttpServer {
+class SampleApp extends HttpServer {
 
   override def configureHttp(router: HttpRouter) {
     router

@@ -12,7 +12,6 @@ object Dependencies {
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
   val scalaTestVersion = "3.0.1"
-  val logbackVersion = "1.1.3"
   val guiceVersion = "4.0"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
@@ -29,8 +28,17 @@ object Dependencies {
   }
 
   def logback = Def.setting {
-    "ch.qos.logback" % "logback-classic" % logbackVersion :: Nil
+    "ch.qos.logback" % "logback-classic" % "1.1.6" :: Nil
   }
+
+  def slf4j = Def.setting {
+    "org.slf4j" % "slf4j-api" % "1.7.25" :: Nil
+  }
+
+  def log4j = Def.setting {
+    "log4j" % "log4j" % "1.2.17" :: Nil
+  }
+
 
   /**
     * Finatra dependencies

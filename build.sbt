@@ -25,7 +25,8 @@ lazy val persistence = BaseProject("persistence").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
+  ++ kafka.value  ++ slf4j.value ++ log4j.value ++ logback.value)
   ++ testDependencies(h2DB.value ::: Nil),
   parallelExecution in Test := false
 )

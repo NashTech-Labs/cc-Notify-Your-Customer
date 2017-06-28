@@ -6,7 +6,7 @@ import com.ping.logger.PingLogger
 import com.ping.models.EmailInfo
 
 class MailSenderActor extends Actor with PingLogger{
-  override def receive = {
+  override def receive: PartialFunction[Any, Unit] = {
     case email:EmailInfo=>EmailApiImpl.send(email)
     case _=>  error("Error Occured in Mail sender")
   }

@@ -36,7 +36,7 @@ object Dependencies {
   def finatraHttp = Def.setting {
     List(
       "com.twitter" %% "finatra-http" % finatraVersion/*,
-      "com.twitter" %% "finatra-httpclient" % finatraVersion*/
+     "com.twitter" %% "finatra-httpclient" % finatraVersion*/
     )
   }
 
@@ -46,8 +46,8 @@ object Dependencies {
       "com.twitter" %% "inject-core" % finatraVersion,
 
       "com.twitter" %% "inject-server" % finatraVersion/*,
-      "com.twitter" %% "inject-app" % finatraVersion,
-      "com.twitter" %% "inject-modules" % finatraVersion*/
+     "com.twitter" %% "inject-app" % finatraVersion,
+     "com.twitter" %% "inject-modules" % finatraVersion*/
     )
   }
 

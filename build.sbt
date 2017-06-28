@@ -37,7 +37,7 @@ lazy val mail = BaseProject("mail").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++ twilio.value ++
     kafka.value ++ akka.value)
     ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ++ mockito.value),
   parallelExecution in Test := false).dependsOn(commonUtil)

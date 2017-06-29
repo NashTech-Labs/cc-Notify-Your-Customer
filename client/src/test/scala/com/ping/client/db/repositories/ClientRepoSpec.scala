@@ -1,8 +1,7 @@
 package com.ping.client.db.repositories
 
 import com.ping.client.db.ServerSpec
-import com.ping.models.DBClient
-import org.h2.jdbc.JdbcSQLException
+import com.ping.models.{ClientDetails, DBAccessToken, DBClient, DBClientAddress}
 import org.scalatest.AsyncWordSpec
 
 
@@ -10,17 +9,17 @@ class ClientRepoSpec extends AsyncWordSpec with ClientRepo with ServerSpec {
 
   "insert client" when {
 
-    "simply inserting a client successfully" in {
-      val client = DBClient(0, "Harshit Daga", "dagaharshit", "pa55w0rd", "harshit@knoldus.com", "+919460444006")
-      insertClient(client) map { res =>
-        assert(res.id === 2)
+    "simply inserting a client detail successfully" in {
+      val client = DBClient(0, "Harshit Daga", "harshit@knoldus.com", "+919460444006")
+      val address = DBClientAddress(0, 0, "NSEZ, L-11", "India", "201305")
+      val token = DBAccessToken(0, 0, "someHashedToken", new java.sql.Timestamp(System.currentTimeMillis))
+      val clientDetails = ClientDetails(client, address, token)
+      insertClient(clientDetails) map { res =>
+        assert(res.client === client.copy(id = 2))
+        assert(res.clientAddress === address.copy(id =1, clientId = 2))
       }
     }
 
-    "userName is repeated-- failure case" in {
-      val client = DBClient(0, "Harshit Daga", "_girish", "pa55w0rd", "harshit@knoldus.com", "+919460444006")
-      recoverToSucceededIf[JdbcSQLException](insertClient(client))
-    }
   }
 
   "get client" when {

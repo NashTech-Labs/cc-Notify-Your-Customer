@@ -12,11 +12,14 @@ trait UserRepo extends UserMapping {
 
   import driver.api._
 
-  def insert(user: User): Future[Int] = db.run(userInfo += user)
+  def insert(user: User): Future[User] = withTransaction {
+    (userAutoInc += user) map { incId =>
+      user.copy(id = incId)
+    }
+  }
 
-  def delete(id: Long) = {
-    val query = userInfo.filter(x => x.id === id)
-    db.run(query.delete)
+  def delete(id: Long) = withTransaction {
+    userInfo.filter(x => x.id === id).delete
   }
 
 }

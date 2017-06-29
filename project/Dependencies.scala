@@ -7,7 +7,7 @@ object Dependencies {
   val json4sVersion = "3.5.0"
   val postgresVersion = "9.4.1212"
   val h2Version = "1.4.194"
-  val swaggerVersion = "2.9.0"
+  val swaggerVersion = "2.10.0"
   val kafkaVersion = "0.10.2.1"
   val slickVersion = "3.2.0"
   val slickHickariVersion = "3.2.0"
@@ -51,9 +51,9 @@ object Dependencies {
     )
   }
 
-  def finatraSwagger = Def.setting {
-    "com.jakehschwartz" %% "finatra-swagger" % swaggerVersion :: Nil
-  }
+  /*def finatraSwagger = Def.setting {
+    "com.jakehschwartz" % "finatra-swagger_2.12" % swaggerVersion :: Nil
+  }*/
 
   def json4sNative = Def.setting {
     "org.json4s" %% "json4s-native" % json4sVersion :: Nil
@@ -121,6 +121,14 @@ object Dependencies {
 
   def specs2Mock = Def.setting {
     "org.specs2" %% "specs2-mock" % "2.4.17" :: Nil
+  }
+
+  def slackApi = Def.setting {
+    "com.github.gilbertw1" %% "slack-scala-client" % "0.1.8" :: Nil
+  }
+
+  def spec2 = Def.setting {
+    "org.specs2" %% "specs2" % "3.7" :: Nil
   }
 
 }

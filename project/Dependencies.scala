@@ -15,7 +15,9 @@ object Dependencies {
   val akkaVersion = "2.5.3"
   val emailVersion="1.4"
   val logbackVersion = "1.1.3"
+
   val guiceVersion = "4.0"
+  val akkaHttpVersion = "10.0.4"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % "compile")
 
@@ -26,12 +28,33 @@ object Dependencies {
   def testClassifierDependencies(deps: List[ModuleID]) = deps map (_ % "test" classifier "tests")
 
 
+  def akkaHttp = Def.setting {
+    "com.typesafe.akka" %% "akka-http" % akkaHttpVersion :: Nil
+  }
+
+  def akkaHttpTestKit = Def.setting {
+    "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion :: Nil
+  }
+
+
+  def json4sNative = Def.setting {
+    "org.json4s" %% "json4s-native" % json4sVersion :: Nil
+  }
+
+  def json4sEx = Def.setting {
+    ("org.json4s" %% "json4s-ext" % json4sVersion).exclude("joda-time", "joda-time") :: Nil
+  }
+
+  def jodaDate = Def.setting {
+    "joda-time" % "joda-time" % "2.9.2" :: Nil
+  }
+
   def typesafeConfig = Def.setting {
     "com.typesafe" % "config" % "1.3.1" :: Nil
   }
 
   def logback = Def.setting {
-    "ch.qos.logback" % "logback-classic" % logbackVersion :: Nil
+    "ch.qos.logback" % "logback-classic" % "1.1.6" :: Nil
   }
 
   def slf4j = Def.setting {
@@ -41,6 +64,8 @@ object Dependencies {
   def log4j = Def.setting {
     "log4j" % "log4j" % "1.2.17" :: Nil
   }
+
+
 
   /**
     * Finatra dependencies
@@ -67,9 +92,6 @@ object Dependencies {
     "com.jakehschwartz" %% "finatra-swagger" % swaggerVersion :: Nil
   }*/
 
-  def json4sNative = Def.setting {
-    "org.json4s" %% "json4s-native" % json4sVersion :: Nil
-  }
 
   def kafka = Def.setting {
     "org.apache.kafka" %% "kafka" % kafkaVersion :: Nil

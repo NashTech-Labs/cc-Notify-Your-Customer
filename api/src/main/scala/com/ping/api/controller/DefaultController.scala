@@ -2,11 +2,9 @@ package com.ping.api.controller
 
 
 import com.ping.models.Partner
-import com.twitter.finagle.http.Request
-import com.twitter.finatra.http.Controller
 
 
-class SampleController extends Controller {
+class SampleController /*extends Controller {
 
   get("/partner/:id") { (request: Request) =>
     val PartnerId: Int = request.getParam("id").toInt
@@ -32,4 +30,4 @@ class SampleController extends Controller {
     Partner(Some(PartnerId), name, designation)
   }
 
-}
+}*/

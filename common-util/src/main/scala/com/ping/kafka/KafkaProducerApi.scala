@@ -5,7 +5,7 @@ import java.util.Properties
 import com.ping.logs.PingLogger
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord, RecordMetadata}
 import org.apache.kafka.common.serialization.StringSerializer
-
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import scala.util.Try
 

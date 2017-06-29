@@ -1,7 +1,7 @@
 package com.ping.api.producer
 
 import com.ping.config.Configuration
-import com.ping.kafka.Producer
+import com.ping.kafka.{KafkaProducerApi, Producer}
 
 
 trait PingProducer extends Producer {

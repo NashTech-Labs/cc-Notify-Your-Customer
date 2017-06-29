@@ -89,7 +89,7 @@ object Dependencies {
 
 
   def kafka = Def.setting {
-    "org.apache.kafka" % "kafka_2.12" % kafkaVersion :: Nil
+    "org.apache.kafka" % "kafka_2.11" % kafkaVersion :: Nil
   }
 
 

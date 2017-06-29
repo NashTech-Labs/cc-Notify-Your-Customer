@@ -5,7 +5,8 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.ping.api.controller.PingController
-import com.ping.api.services.PingServiceImpl
+import com.ping.api.services.{PingService, PingServiceImpl}
+import com.ping.kafka.{Producer, KafkaProducerApi}
 
 object Api extends App with PingController{
 
@@ -13,7 +14,11 @@ object Api extends App with PingController{
   lazy implicit val executor = system.dispatcher
   lazy implicit val materializer = ActorMaterializer()
 
-  val pingService = PingServiceImpl
+  val pingProducer: KafkaProducerApi = new Producer {
+    val servers = "localhost"
+  }
+
+  val pingService: PingService = PingServiceImpl(pingProducer)
 
   val bindFuture = Http().bindAndHandle(pingRoutes, "localhost", 9001)
 

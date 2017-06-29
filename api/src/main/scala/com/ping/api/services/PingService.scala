@@ -2,6 +2,7 @@ package com.ping.api.services
 
 import com.ping.api.producer.PingProducer
 import com.ping.json.JsonHelper
+import com.ping.kafka.KafkaProducerApi
 import com.ping.kafka.Topics._
 import com.ping.models._
 
@@ -9,7 +10,7 @@ import scala.concurrent.Future
 
 
 trait PingService extends JsonHelper {
-  val pingProducer: PingProducer
+  val pingProducer: KafkaProducerApi
 
 
   def processPing(ping: Ping): Future[PingResponse] = {
@@ -37,9 +38,7 @@ trait PingService extends JsonHelper {
 }
 
 object PingServiceImpl {
-  def apply(serversIds: String) = new PingService {
-    val pingProducer: PingProducer = new PingProducer {
-      override val servers = serversIds
-    }
+  def apply(pingProducerImpl: KafkaProducerApi) = new PingService {
+    val pingProducer: KafkaProducerApi = pingProducerImpl
   }
 }

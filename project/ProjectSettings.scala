@@ -10,7 +10,7 @@ object ProjectSettings {
       Defaults.coreDefaultSettings ++
         Seq(
           organization := "com.knoldus",
-          scalaVersion in ThisBuild := "2.12.0",
+          scalaVersion in ThisBuild := "2.11.8",
           version := "1.0.0",
           fork in Test := true,
           fork in IntegrationTest := true,
@@ -23,7 +23,6 @@ object ProjectSettings {
   def projectResolvers: Def.Setting[Seq[Resolver]] = {
     resolvers ++= Seq(
       Resolver.sonatypeRepo("releases"),
-      Resolver.typesafeRepo("releases"),
       Resolver.sonatypeRepo("snapshots"),
       "Twitter Maven" at "https://maven.twttr.com",
       "Finatra Repo" at "http://twitter.github.com/finatra",

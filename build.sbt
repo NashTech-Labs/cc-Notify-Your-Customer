@@ -2,7 +2,7 @@ name := "Ping"
 
 version := "1.0"
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.11.8"
 
 
 import Dependencies.{scalaTest, _}
@@ -10,7 +10,7 @@ import ProjectSettings._
 
 
 lazy val api = BaseProject("api").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value ++ finatraSwagger.value)
+  libraryDependencies ++= compileDependencies(finatraHttp.value)
     ++ testDependencies(/*spec2.value*/ Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
@@ -26,10 +26,13 @@ lazy val commonUtil = BaseProject("common-util").settings(
   parallelExecution in Test := false
 )
 
+
 lazy val slack = BaseProject("slack").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
-  parallelExecution in Test := false).dependsOn(commonUtil)
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value  ++ typesafeConfig.value)
+    ++ compileDependencies(slackApi.value)
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
+  parallelExecution in Test := false
+)
 
 lazy val mail = BaseProject("mail").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)

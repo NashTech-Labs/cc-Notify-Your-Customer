@@ -8,10 +8,15 @@ scalaVersion := "2.11.8"
 import Dependencies.{scalaTest, _}
 import ProjectSettings._
 
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases"),
+  "Twitter Maven" at "https://maven.twttr.com"
+)
 
 lazy val api = BaseProject("api").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value ++ finatraSwagger.value)
-    ++ testDependencies(/*spec2.value*/Nil),
+  libraryDependencies ++= compileDependencies(finatraHttp.value/* ++ finatraSwagger.value*/)
+    ++ testDependencies(finatraHttpTest.value ++ spec2.value ++ scalaTest.value)
+    ++ testClassifierDependencies(finatraHttpTest.value/*spec2.value*/),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val persistence = BaseProject("persistence").settings(
@@ -31,8 +36,8 @@ lazy val slack = BaseProject("slack").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
-  ++ kafka.value ++ email.value ++ akka.value ::: Nil)
+  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
+  ++ kafka.value ++ email.value ++ akka.value ++ slf4j.value ++ log4j.value ::: Nil)
     ++ testDependencies(scalaTest.value ++ h2DB.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 

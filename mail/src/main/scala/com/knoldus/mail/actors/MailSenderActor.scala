@@ -6,14 +6,12 @@ import com.ping.logger.PingLogger
 import com.ping.models.EmailInfo
 
 class MailSenderActor extends Actor with PingLogger{
-  override def receive: PartialFunction[Any, Unit] = {
-    case email:EmailInfo=>EmailApiImpl.send(email)
-    case _=>  error("Error Occured in Mail sender")
+
+  def receive: PartialFunction[Any, Unit] = {
+    case email:EmailInfo =>
+
+      EmailApiImpl.send(email)
+    case msg =>  error("Error in Mail sender")
   }
 
 }
- object MailSenderActor extends App{
-   val system = ActorSystem("mySystem")
-   val myActor: ActorRef = system.actorOf(Props[MailSenderActor])
-   myActor ! EmailInfo(1,List("himanshu.rajput@knoldus.in"),Nil,Nil,"fga","cvsdrg")
- }

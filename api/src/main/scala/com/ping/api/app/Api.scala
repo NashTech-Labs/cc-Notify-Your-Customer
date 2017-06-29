@@ -1,16 +1,25 @@
 package com.ping.api.app
 
 
-import com.ping.api.controller.SampleController
-import com.twitter.finatra.http.HttpServer
-import com.twitter.finatra.http.routing.HttpRouter
+import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
+import akka.stream.ActorMaterializer
+import com.ping.api.controller.PingController
+import com.ping.api.services.{PingService, PingServiceImpl}
+import com.ping.kafka.{Producer, KafkaProducerApi}
 
+object Api extends App with PingController{
 
-object SampleApp extends HttpServer {
+  implicit val system: ActorSystem = ActorSystem("ping-api-routes")
+  lazy implicit val executor = system.dispatcher
+  lazy implicit val materializer = ActorMaterializer()
 
-  override def configureHttp(router: HttpRouter) {
-    router
-      .add[SampleController]
+  val pingProducer: KafkaProducerApi = new Producer {
+    val servers = "localhost"
   }
+
+  val pingService: PingService = PingServiceImpl(pingProducer)
+
+  val bindFuture = Http().bindAndHandle(pingRoutes, "localhost", 9001)
 
 }

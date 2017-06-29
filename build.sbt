@@ -5,13 +5,19 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 
-import Dependencies.{scalaTest, _}
+import Dependencies._
 import ProjectSettings._
 
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases"),
+  "Twitter Maven" at "https://maven.twttr.com"
+)
 
 lazy val api = BaseProject("api").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value)
-    ++ testDependencies(/*spec2.value*/ Nil),
+  libraryDependencies ++= compileDependencies(akkaHttp.value ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
+    jodaDate.value)
+    ++ testDependencies(spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
+    ++ testClassifierDependencies(Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val persistence = BaseProject("persistence").settings(
@@ -21,8 +27,10 @@ lazy val persistence = BaseProject("persistence").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value ++ typesafeConfig.value ++ jbCrypt.value)
-    ++ testDependencies(h2DB.value ++ scalaTest.value),
+  libraryDependencies ++= compileDependencies(finatraHttp.value ++ jbCrypt.value ++ json4sNative.value ++ logback.value ++ typesafeConfig.value
+  ++ kafka.value  ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
+    jodaDate.value)
+  ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
   parallelExecution in Test := false
 )
 
@@ -31,8 +39,7 @@ lazy val slack = BaseProject("slack").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value  ++ typesafeConfig.value)
     ++ compileDependencies(slackApi.value)
     ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
-  parallelExecution in Test := false
-)
+  parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
@@ -40,10 +47,10 @@ lazy val mail = BaseProject("mail").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
-    kafka.value ++ akka.value)
-    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ++ mockito.value),
+  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
+    ++ testDependencies(h2DB.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
+
 
 lazy val client = BaseProject("client").settings(
   libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value)

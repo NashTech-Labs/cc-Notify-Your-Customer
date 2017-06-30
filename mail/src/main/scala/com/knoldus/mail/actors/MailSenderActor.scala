@@ -1,17 +1,17 @@
 package com.knoldus.mail.actors
-import akka.actor.{Actor, ActorRef, ActorSystem, Props}
-import akka.actor.Actor.Receive
-import com.knoldus.mail.services.EmailApiImpl
+
+import akka.actor.Actor
+import com.knoldus.mail.services.MailService
 import com.ping.logger.PingLogger
 import com.ping.models.EmailInfo
 
-class MailSenderActor extends Actor with PingLogger{
+class MailSenderActor(mailService: MailService, emailInfo: EmailInfo) extends Actor with PingLogger {
 
   def receive: PartialFunction[Any, Unit] = {
-    case email:EmailInfo =>
-
-      EmailApiImpl.send(email)
-    case msg =>  error("Error in Mail sender")
+    case email: EmailInfo => {
+      mailService.sendEmail(emailInfo)
+    }
+    case _ => error("Error in Mail sender")
   }
 
 }

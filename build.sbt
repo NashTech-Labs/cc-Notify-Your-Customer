@@ -5,7 +5,7 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 
-import Dependencies.{scalaTest, _}
+import Dependencies._
 import ProjectSettings._
 
 resolvers ++= Seq(
@@ -14,43 +14,48 @@ resolvers ++= Seq(
 )
 
 lazy val api = BaseProject("api").settings(
-  libraryDependencies ++= compileDependencies(akkaHttp.value/* ++ finatraSwagger.value*/)
-    ++ testDependencies(finatraHttpTest.value ++ spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
-    ++ testClassifierDependencies(finatraHttpTest.value),
+  libraryDependencies ++= compileDependencies(akkaHttp.value ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
+    jodaDate.value)
+    ++ testDependencies(spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
+    ++ testClassifierDependencies(Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val persistence = BaseProject("persistence").settings(
   libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++
-    logback.value ++ typesafeConfig.value),
+    logback.value ++ typesafeConfig.value)
+    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ++ mockito.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val commonUtil = BaseProject("common-util").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
-  ++ kafka.value  ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
+  libraryDependencies ++= compileDependencies(finatraHttp.value ++ jbCrypt.value ++ json4sNative.value ++ logback.value ++ typesafeConfig.value
+    ++ kafka.value  ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
     jodaDate.value)
-  ++ testDependencies(h2DB.value ::: Nil),
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
   parallelExecution in Test := false
 )
 
+
 lazy val slack = BaseProject("slack").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value  ++ typesafeConfig.value)
+    ++ compileDependencies(slackApi.value)
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
-  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value
-  ++ kafka.value ++ email.value ++ akka.value ++ slf4j.value ++ log4j.value ::: Nil)
-    ++ testDependencies(scalaTest.value ++ h2DB.value ::: Nil),
+  libraryDependencies ++= compileDependencies(json4sNative.value ++ json4sEx.value ++ logback.value ++
+    typesafeConfig.value ++ kafka.value ++ email.value ++ akka.value ++ slf4j.value ++ log4j.value ::: Nil)
+    ++ testDependencies(scalaTest.value ++ h2DB.value ++mockito.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(
-  libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++
-  kafka.value ++ akka.value)
-    ++ testDependencies(h2DB.value ++ akkaTestKit.value ++ scalaTest.value ::: mockito.value ::: Nil),
+  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
+    ++ testDependencies(h2DB.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
+
 lazy val client = BaseProject("client").settings(
-  libraryDependencies ++= compileDependencies(finatraHttp.value ++ json4sNative.value ++ logback.value
-    ++ typesafeConfig.value ++ postgresDB.value ++ slick.value ++ slickHickari.value)
-    ++ testDependencies(h2DB.value ++ scalaTest.value),
+  libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value)
+    ++ testDependencies(h2DB.value ++ scalaTest.value ++ googleGuiceTest.value ++
+    finatraTest.value ++ scalaCheck.value ++ specs2Mock.value).map(_.exclude("io.netty", "*"))
+    ++ testClassifierDependencies(finatraTest.value),
   parallelExecution in Test := false).dependsOn(commonUtil)

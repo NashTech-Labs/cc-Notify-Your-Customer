@@ -7,7 +7,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
 trait SlackApi {
-  val token: String = "xoxp-200578436657-201136092306-202488334195-9923032f72d341265af586429fc5ba6a" // replace your Slack API token here
+  val token: String = "" // replace your Slack API token here
   val apiClient: SlackApiClient
 
   /**

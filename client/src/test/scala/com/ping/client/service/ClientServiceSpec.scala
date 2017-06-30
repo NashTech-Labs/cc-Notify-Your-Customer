@@ -4,6 +4,7 @@ import java.sql.Timestamp
 
 import com.ping.client.db.repositories.ClientRepo
 import com.ping.date.DateUtil
+import com.ping.domain._
 import com.ping.hasher.Hasher
 import com.ping.models._
 import org.mockito.Mockito._

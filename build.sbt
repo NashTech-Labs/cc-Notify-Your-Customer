@@ -18,7 +18,7 @@ lazy val api = BaseProject("api").settings(
     jodaDate.value)
     ++ testDependencies(spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
     ++ testClassifierDependencies(Nil),
-  parallelExecution in Test := false).dependsOn(commonUtil)
+  parallelExecution in Test := false).dependsOn(commonUtil, persistence)
 
 lazy val persistence = BaseProject("persistence").settings(
   libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++

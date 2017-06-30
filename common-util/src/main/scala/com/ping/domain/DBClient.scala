@@ -1,4 +1,4 @@
-package com.ping.models
+package com.ping.domain
 
 import java.sql.Timestamp
 

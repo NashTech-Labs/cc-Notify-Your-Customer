@@ -1,8 +1,6 @@
 package com.ping.api.controller
 
 
-import com.ping.models.Partner
-
 
 class SampleController /*extends Controller {
 

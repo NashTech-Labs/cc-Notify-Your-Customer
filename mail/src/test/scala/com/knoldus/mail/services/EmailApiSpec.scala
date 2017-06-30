@@ -12,7 +12,7 @@ class EmailApiSpec extends WordSpec{
     "send mail" should {
 
       "with success" in {
-        val result: Option[Int] = EmailApiImpl.send(emailInfo,"himanshu.rajput32@gmail.com","string.class")
+        val result: Option[Int] = EmailApiImpl.send(emailInfo,"himanshu.rajput32@gmail.com","")
         assert(result.contains(1))
       }
       "with failure" in{

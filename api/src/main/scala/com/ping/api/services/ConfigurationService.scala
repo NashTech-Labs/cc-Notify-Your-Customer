@@ -2,19 +2,21 @@ package com.ping.api.services
 
 import com.ping.domain._
 import com.ping.json.JsonHelper
+import com.ping.logger.PingLogger
 import com.ping.models.{RDClient, RDMailConfig, RDSlackConfig, RDTwilioConfig}
-import com.ping.persistence.repo.{MailConfigRepo, SlackConfigRepo, TwilioConfigRepo}
+import com.ping.persistence.repo.{ClientRepo, MailConfigRepo, SlackConfigRepo, TwilioConfigRepo}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.control.NonFatal
 
 
-trait ConfigurationService extends JsonHelper{
+trait ConfigurationService extends JsonHelper with PingLogger {
 
   val mailConfigRepo: MailConfigRepo
   val slackConfigRepo: SlackConfigRepo
   val twilioConfigRepo: TwilioConfigRepo
+  val clientRepo: ClientRepo
 
   def getConfigStatus(client: RDClient): Future[ConfigUpdateResponse] = {
     for {
@@ -27,6 +29,7 @@ trait ConfigurationService extends JsonHelper{
   }
 
   def createConfig(configRequest: ConfigRequest, client: RDClient): Future[ConfigUpdateResponse] = {
+    info(s"Creating configuration for client id: ${client.id}")
     for {
       mailResponse <- configRequest.mailConfig match {
         case Some(mailConf) => insertMailConfig(mailConf, client)
@@ -46,27 +49,34 @@ trait ConfigurationService extends JsonHelper{
   }
 
   private def insertMailConfig(mailConfig: MailConfig, client: RDClient): Future[Option[String]] = {
+    info(s"Inserting mail config for client: ${client.id}")
     mailConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Mail config already exists, try with put call"))
-      case None => mailConfigRepo.insert(mailConfig.getRDConfig(client.id)).map(_ => Some("Added"))
+      case None => mailConfigRepo.insert(mailConfig.getRDConfig(client.id)).flatMap { _ =>
+        clientRepo.enableMail(client.id).map { _ => Some("Added") }
+      }
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
-  private def insertSlackConfig(slackConfig: SlackConfig, client: RDClient) = {
+  private def insertSlackConfig(slackConfig: SlackConfig, client: RDClient): Future[Option[String]] = {
     slackConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Slack config already exists, try with put call"))
-      case None => slackConfigRepo.insert(slackConfig.getRDConfig(client.id)).map(_ => Some("Added"))
+      case None => slackConfigRepo.insert(slackConfig.getRDConfig(client.id)).flatMap { _ =>
+        clientRepo.enableSlack(client.id).map(_ => Some("Added"))
+      }
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
-  private def insertTwilioConfig(twillioConfig: TwilioConfig, client: RDClient) = {
+  private def insertTwilioConfig(twillioConfig: TwilioConfig, client: RDClient): Future[Option[String]] = {
     twilioConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Twilio config already exists, try with put call"))
-      case None => twilioConfigRepo.insert(twillioConfig.getRDConfig(client.id)).map(_ => Some("Added"))
+      case None => twilioConfigRepo.insert(twillioConfig.getRDConfig(client.id)).flatMap { _ =>
+        clientRepo.enableTwilio(client.id).map(_ => Some("Added"))
+      }
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
@@ -137,4 +147,5 @@ object ConfigurationService extends ConfigurationService {
   val mailConfigRepo: MailConfigRepo = MailConfigRepo
   val slackConfigRepo: SlackConfigRepo = SlackConfigRepo
   val twilioConfigRepo: TwilioConfigRepo = TwilioConfigRepo
+  val clientRepo: ClientRepo = ClientRepo
 }

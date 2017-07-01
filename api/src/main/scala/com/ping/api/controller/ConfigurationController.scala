@@ -76,7 +76,7 @@ trait ConfigurationController extends Security with PingLogger with JsonHelper {
   private def processConfigPutRequest(data: String, client: RDClient): Future[HttpResponse] = {
     parse(data).extractOpt[ConfigRequest] match {
       case Some(configRequest) =>
-        configurationService.createConfig(configRequest, client).map { configResponse =>
+        configurationService.updateConfig(configRequest, client).map { configResponse =>
           HttpResponse(StatusCode.int2StatusCode(200), entity = HttpEntities.create(ContentTypes.`application/json`,
             OK(configResponse)))
         } recover {

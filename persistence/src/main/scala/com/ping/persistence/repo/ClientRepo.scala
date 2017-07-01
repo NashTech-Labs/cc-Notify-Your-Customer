@@ -1,5 +1,6 @@
 package com.ping.persistence.repo
 
+import com.ping.logger.PingLogger
 import com.ping.models.RDClient
 import com.ping.persistence.mapping.ClientMapping
 import com.ping.persistence.provider.{DBProvider, PostgresDBProvider}
@@ -8,7 +9,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 
-trait ClientRepo extends ClientMapping { this: DBProvider =>
+trait ClientRepo extends ClientMapping with PingLogger {
+  this: DBProvider =>
 
   import driver.api._
 
@@ -27,11 +29,24 @@ trait ClientRepo extends ClientMapping { this: DBProvider =>
   }
 
   def update(client: RDClient): Future[Int] = withTransaction {
-    clientInfo.filter(x => x.id === client.id).update(client)
+    clientInfo.filter(_.id === client.id).update(client)
   }
 
+  def enableMail(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.mailEnabled).update(true)
+  }
+
+  def enableSlack(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.slackEnabled).update(true)
+  }
+
+  def enableTwilio(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.twilioEnabled).update(true)
+  }
+
+
   def delete(id: Long): Future[Int] = withTransaction {
-    clientInfo.filter(x => x.id === id).delete
+    clientInfo.filter(_.id === id).delete
   }
 
 }

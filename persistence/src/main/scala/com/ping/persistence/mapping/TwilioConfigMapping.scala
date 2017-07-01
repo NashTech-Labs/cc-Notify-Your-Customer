@@ -28,7 +28,7 @@ trait TwilioConfigMapping {this: DBProvider =>
 
     def token: Rep[String] = column[String]("token")
 
-    def sID: Rep[String] = column[String]("password")
+    def sID: Rep[String] = column[String]("s_id")
 
   }
 

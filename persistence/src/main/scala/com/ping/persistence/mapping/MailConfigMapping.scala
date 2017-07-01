@@ -24,7 +24,7 @@ trait MailConfigMapping {
 
     def email: Rep[String] = column[String]("email")
 
-    def password: Rep[String] = column[String]("address")
+    def password: Rep[String] = column[String]("password")
 
   }
 

@@ -32,7 +32,7 @@ trait PingLogMapping { this: DBProvider =>
 
     def message: Rep[String] = column[String]("message")
 
-    def to: Rep[String] = column[String]("to")
+    def to: Rep[String] = column[String]("sent_to")
 
     def sentAt: Rep[Timestamp] = column[Timestamp]("sent_at")
 

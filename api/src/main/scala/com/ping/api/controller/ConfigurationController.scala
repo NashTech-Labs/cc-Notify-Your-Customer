@@ -1,7 +1,6 @@
 package com.ping.api.controller
 
 import akka.http.javadsl.model.HttpEntities
-import akka.http.scaladsl.model.HttpHeader.ParsingResult.Ok
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.model.{ContentTypes, HttpResponse, StatusCode}
 import akka.http.scaladsl.server.Directives._
@@ -16,6 +15,7 @@ import com.ping.models.RDClient
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.util.Try
 import scala.util.control.NonFatal
 
 /**
@@ -38,7 +38,7 @@ trait ConfigurationController extends Security with PingLogger with JsonHelper {
         post {
           entity(as[String]) { data =>
             secured { client =>
-              info(s"Got config post request with data :: $data")
+              info(s"Got config post request with data :: \n${Try(pretty(data)).getOrElse(data)}")
               processConfigPostRequest(data, client)
             }
           }
@@ -46,7 +46,7 @@ trait ConfigurationController extends Security with PingLogger with JsonHelper {
         put {
           entity(as[String]) { data =>
             secured { client =>
-              info(s"Got config put request with data :: $data")
+              info(s"Got config put request with data :: \n${Try(pretty(data)).getOrElse(data)}")
               processConfigPutRequest(data, client)
             }
           }

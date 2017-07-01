@@ -14,6 +14,7 @@ import com.ping.logs.PingLogger
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.util.Try
 import scala.util.control.NonFatal
 
 trait LogInController extends Security with PingLogger with JsonHelper {
@@ -29,7 +30,7 @@ trait LogInController extends Security with PingLogger with JsonHelper {
       } ~
         post {
           entity(as[String]) { data =>
-            info(s"Got sign up request with data :: $data")
+            info(s"Got sign up request with data :: \n${Try(pretty(data)).getOrElse(data)}")
             complete(processSignUpRequest(data))
           }
         }

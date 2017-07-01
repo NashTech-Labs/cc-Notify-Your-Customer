@@ -30,8 +30,8 @@ trait PingService extends JsonHelper with PingLogger {
         case Some(slack) => sendSlackMessage(slack, client)
         case None => Future.successful(None)
       }
-      message <- ping.mail match {
-        case Some(mail) => sendMail(mail, client)
+      message <- ping.message match {
+        case Some(message) => sendPhoneMessage(message, client)
         case None => Future.successful(None)
       }
     } yield {
@@ -41,7 +41,7 @@ trait PingService extends JsonHelper with PingLogger {
 
   private def sendMail(mail: PingEmail, client: RDClient): Future[Option[RDPingLogView]] = {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.mail, mail.subject + "***" + mail.content,
-      (mail.to :: mail.cc :: mail.bcc).mkString(", "), dateUtil.currentTimestamp, PingStatus.initiated)
+      (mail.to ::: mail.cc ::: mail.bcc).mkString(", "), dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
       dispatchPing(topicMail, write(mail))
       Some(log.getLogView)
@@ -54,7 +54,7 @@ trait PingService extends JsonHelper with PingLogger {
 
   private def sendSlackMessage(slack: PingSlack, client: RDClient) = {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.slack, slack.message,
-      slack.channelId, dateUtil.currentTimestamp, PingStatus.initiated)
+      slack.channelId.getOrElse("default"), dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
       dispatchPing(topicMail, write(slack))
       Some(log.getLogView)
@@ -65,12 +65,12 @@ trait PingService extends JsonHelper with PingLogger {
     }
   }
 
-  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = Future {
+  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.message, message.text,
       message.to, dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
       dispatchPing(topicMail, write(message))
-      log.getLogView
+      Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
         error("Error found while dispatching mail", ex)

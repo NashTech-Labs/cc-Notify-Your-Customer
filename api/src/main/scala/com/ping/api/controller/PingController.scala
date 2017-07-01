@@ -13,8 +13,10 @@ import com.ping.http.PingHttpResponse.ERROR
 import com.ping.json.JsonHelper
 import com.ping.logs.PingLogger
 import com.ping.models.RDClient
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.util.Try
 
 trait PingController extends Security with PingLogger with JsonHelper {
 
@@ -30,7 +32,7 @@ trait PingController extends Security with PingLogger with JsonHelper {
         post {
           entity(as[String]) { data =>
             secured { client =>
-              info(s"Got ping request with data :: $data")
+              info(s"Got ping request with data :: \n${Try(pretty(data)).getOrElse(data)}")
               processPings(data, client)
             }
           }

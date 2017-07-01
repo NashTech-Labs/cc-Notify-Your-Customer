@@ -3,16 +3,16 @@ package com.ping.api.app
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.ping.api.controller.{ConfigurationController, DefaultController, LogInController, PingController}
 import com.ping.api.services.{ConfigurationService, LogInService, PingService, PingServiceImpl}
-import com.ping.kafka.{KafkaProducerApi, Producer}
-import akka.http.scaladsl.server.Directives._
 import com.ping.config.Configuration._
+import com.ping.kafka.Producer
 import com.ping.persistence.repo.ClientRepo
 
 
-object PingApi extends App with DefaultController with PingController with LogInController with ConfigurationController{
+object PingApi extends App with DefaultController with PingController with LogInController with ConfigurationController {
 
   implicit val system: ActorSystem = ActorSystem("ping-api-routes")
   lazy implicit val executor = system.dispatcher

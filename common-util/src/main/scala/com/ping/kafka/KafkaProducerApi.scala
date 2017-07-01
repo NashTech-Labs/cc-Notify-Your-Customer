@@ -1,18 +1,14 @@
 package com.ping.kafka
 
-import java.util.Properties
-
 import com.ping.logs.PingLogger
-import org.apache.kafka.clients.producer.{KafkaProducer}
+import org.apache.kafka.clients.producer.KafkaProducer
 import scala.concurrent.ExecutionContext.Implicits.global
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.clients.producer.RecordMetadata
 import org.apache.kafka.common.serialization.StringSerializer
 import java.util.Properties
 import scala.concurrent.{Promise, Future}
-
 import scala.util.Try
-
 
 
 trait KafkaProducerApi {

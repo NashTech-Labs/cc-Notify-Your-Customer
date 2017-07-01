@@ -8,12 +8,10 @@ import akka.http.scaladsl.server.Route
 import com.ping.api.directives.Security
 import com.ping.api.services.PingService
 import com.ping.domain.Ping
-import com.ping.http.PingHttpResponse._
-import com.ping.http.PingHttpResponse.ERROR
+import com.ping.http.PingHttpResponse.{ERROR, OK}
 import com.ping.json.JsonHelper
 import com.ping.logs.PingLogger
 import com.ping.models.RDClient
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.Try
@@ -43,7 +41,7 @@ trait PingController extends Security with PingLogger with JsonHelper {
   private def processPings(data: String, client: RDClient): Future[HttpResponse] = {
     parse(data).extractOpt[Ping] match {
       case Some(ping) =>
-        pingService.processPing(ping, client) map{ response =>
+        pingService.processPing(ping, client) map { response =>
           HttpResponse(StatusCode.int2StatusCode(200), entity = HttpEntities.create(ContentTypes.`application/json`,
             OK(response)))
         }

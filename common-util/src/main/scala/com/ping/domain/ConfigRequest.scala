@@ -19,14 +19,14 @@ case class MailConfig(
                        email: String,
                        password: String
                      ) {
-  def getRDMailConfig(clientId: Long) = RDMailConfig(0L, clientId, email, password)
+  def getRDMailConfig(clientId: Long): RDMailConfig = RDMailConfig(0L, clientId, email, password)
 }
 
 case class SlackConfig(
                         accessToken: String,
                         defaultChannel: String
                       ) {
-  def getRDSlackConfig(clientId: Long) = RDSlackConfig(0L, clientId, accessToken, defaultChannel)
+  def getRDSlackConfig(clientId: Long): RDSlackConfig = RDSlackConfig(0L, clientId, accessToken, defaultChannel)
 }
 
 case class TwilioConfig(
@@ -34,5 +34,5 @@ case class TwilioConfig(
                          email: String,
                          password: String
                        ) {
-  def getRDTwilioConfig(clientId: Long) = RDTwilioConfig(0L, clientId, phoneNumber, email, password)
+  def getRDTwilioConfig(clientId: Long): RDTwilioConfig = RDTwilioConfig(0L, clientId, phoneNumber, email, password)
 }

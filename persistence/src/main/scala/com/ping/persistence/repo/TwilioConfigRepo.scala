@@ -12,9 +12,9 @@ trait TwilioConfigRepo extends TwilioConfigMapping {
 
   import driver.api._
 
-  def insert(RDTwilioConfig: RDTwilioConfig): Future[RDTwilioConfig] = withTransaction {
-    (twillioConfigInfoAutoInc += RDTwilioConfig) map { incId =>
-      RDTwilioConfig.copy(id = incId)
+  def insert(rdTwilioConfig: RDTwilioConfig): Future[RDTwilioConfig] = withTransaction {
+    (twillioConfigInfoAutoInc += rdTwilioConfig) map { incId =>
+      rdTwilioConfig.copy(id = incId)
     }
   }
 
@@ -22,8 +22,8 @@ trait TwilioConfigRepo extends TwilioConfigMapping {
     twilioConfigInfo.filter(_.id === id).result.headOption
   }
 
-  def update(RDTwilioConfig: RDTwilioConfig): Future[Int] = withTransaction {
-    twilioConfigInfo.filter(_.id === RDTwilioConfig.id).update(RDTwilioConfig)
+  def update(rdTwilioConfig: RDTwilioConfig): Future[Int] = withTransaction {
+    twilioConfigInfo.filter(_.id === rdTwilioConfig.id).update(rdTwilioConfig)
   }
 
   def delete(id: Long): Future[Int] = withTransaction {

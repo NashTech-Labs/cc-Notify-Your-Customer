@@ -13,7 +13,6 @@ trait TwilioConfigMapping {this: DBProvider =>
 
   protected def twillioConfigInfoAutoInc = twilioConfigInfo returning twilioConfigInfo.map(_.id)
 
-
   class TwilioConfigMapping(tag: Tag) extends Table[RDTwilioConfig](tag, "twillio_config") {
 
     def * : ProvenShape[RDTwilioConfig] = (id, clientId, phoneNo, token, sID) <> (RDTwilioConfig.tupled, RDTwilioConfig.unapply)

@@ -38,7 +38,7 @@ lazy val commonUtil = BaseProject("common-util").settings(
 lazy val slack = BaseProject("slack").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value  ++ typesafeConfig.value)
     ++ compileDependencies(slackApi.value)
-    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value ++ akkaTestKit.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(

@@ -28,8 +28,8 @@ case class PingEmail(
                     )
 
 case class PingSlack(
-                      channelId: String,
-                      message: String
+                      channelName: String,
+                      body: String
                     )
 
 

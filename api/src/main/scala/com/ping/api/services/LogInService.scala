@@ -21,3 +21,7 @@ trait LogInService {
 
 
 }
+
+object LogInService extends LogInService{
+  val clientRepo: ClientRepo = ClientRepo
+}

@@ -2,10 +2,10 @@ package com.ping.client.controller
 
 import com.google.inject.Inject
 import com.ping.client.service.ClientService
-import com.ping.domain.{ClientRequest, HttpResponse}
+import com.ping.domain.HttpResponse
+import com.ping.domain.client.ClientRequest
 import com.ping.future.FutureConverters.ScalaFutures
 import com.ping.json.JsonHelper
-import com.ping.models.HttpResponse
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.Controller
 import com.twitter.util.{Future => TwitterFuture}

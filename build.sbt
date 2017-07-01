@@ -15,7 +15,7 @@ resolvers ++= Seq(
 
 lazy val api = BaseProject("api").settings(
   libraryDependencies ++= compileDependencies(akkaHttp.value ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
-    jodaDate.value)
+    jodaDate.value ++ kafka.value)
     ++ testDependencies(spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
     ++ testClassifierDependencies(Nil),
   parallelExecution in Test := false).dependsOn(commonUtil, persistence)

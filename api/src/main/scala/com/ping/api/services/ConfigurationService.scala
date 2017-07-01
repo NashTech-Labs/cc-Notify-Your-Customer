@@ -120,3 +120,9 @@ trait ConfigurationService {
   }
 
 }
+
+object ConfigurationService extends ConfigurationService {
+  val mailConfigRepo: MailConfigRepo = MailConfigRepo
+  val slackConfigRepo: SlackConfigRepo = SlackConfigRepo
+  val twilioConfigRepo: TwilioConfigRepo = TwilioConfigRepo
+}

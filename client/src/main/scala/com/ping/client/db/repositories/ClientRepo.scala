@@ -2,7 +2,6 @@ package com.ping.client.db.repositories
 
 import com.ping.client.db.mapping.{AccessTokenMapping, ClientAddressMapping, ClientMapping}
 import com.ping.client.db.provider.{DBProvider, PostgresDBProvider}
-import com.ping.models.ClientDetails
 import com.google.inject.{ImplementedBy, Singleton}
 import com.ping.domain.{ClientDetails, DBClient}
 

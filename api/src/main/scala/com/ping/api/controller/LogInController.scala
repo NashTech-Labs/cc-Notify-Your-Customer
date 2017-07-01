@@ -19,7 +19,6 @@ import scala.util.control.NonFatal
 trait LogInController extends Security with PingLogger with JsonHelper {
 
   val logInService: LogInService
-  val security: Security
 
   def loginRoutes = signUpRequestPost
 
@@ -55,6 +54,5 @@ trait LogInController extends Security with PingLogger with JsonHelper {
     case ex: Exception =>
       HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR(ex.getMessage)))
   }
-
 
 }

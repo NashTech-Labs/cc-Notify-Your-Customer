@@ -1,31 +1,38 @@
 package com.ping.api.controller
 
+import akka.http.scaladsl.model.HttpResponse
+import akka.http.scaladsl.model.StatusCodes.{BadRequest, OK}
+import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.server.PathMatchers.Segment
+import akka.http.scaladsl.server.Route
 
 
-class SampleController /*extends Controller {
+trait DefaultController {
 
-  get("/partner/:id") { (request: Request) =>
-    val PartnerId: Int = request.getParam("id").toInt
-    Partner(Some(PartnerId), "partner1", "ABC")
+  val singletoneRoute: Route = pathSingleSlash {
+    get {
+      complete {
+        HttpResponse(OK, entity = "Welcome to Ping api!")
+      }
+    } ~
+      post {
+        complete {
+          HttpResponse(OK, entity = "Welcome to Ping api!")
+        }
+      }
   }
 
-  post("/partner") { (request: Request) =>
-    val PartnerId = math.random.toInt
-    Partner(Some(PartnerId), "partner", "ABC")
+  val defaultRoutes: Route = path(Segment) { _ =>
+    get {
+      complete {
+        HttpResponse(BadRequest, entity = "Unknown resource!")
+      }
+    } ~
+      post {
+        complete {
+          HttpResponse(BadRequest, entity = "Unknown resource!")
+        }
+      }
   }
 
-  put("/partner/:id") { (request: Request) =>
-    val PartnerId: Int = request.getParam("id").toInt
-    val name = request.getParam("name").toString
-    val designation = request.getParam("designation").toString
-    Partner(Some(PartnerId), name, designation)
-  }
-
-  delete("/partner/:id") { (request: Request) =>
-    val PartnerId: Int = request.getParam("id").toInt
-    val name = request.getParam("name").toString
-    val designation = request.getParam("designation").toString
-    Partner(Some(PartnerId), name, designation)
-  }
-
-}*/
+}

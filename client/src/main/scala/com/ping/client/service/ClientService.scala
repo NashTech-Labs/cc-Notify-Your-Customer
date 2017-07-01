@@ -3,9 +3,9 @@ package com.ping.client.service
 import com.google.inject.Inject
 import com.ping.client.db.repositories.ClientRepo
 import com.ping.date.DateUtil
-import com.ping.domain._
+import com.ping.domain.{ClientDetails, DBAccessToken, DBClient, DBClientAddress}
+import com.ping.domain.client.ClientRequest
 import com.ping.hasher.Hasher
-import com.ping.models._
 
 import scala.concurrent.Future
 

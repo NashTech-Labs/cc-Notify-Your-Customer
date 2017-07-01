@@ -2,9 +2,7 @@ package com.ping.models
 
 import com.ping.domain.ClientView
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 case class RDClient(
                      id: Long,
                      name: String,

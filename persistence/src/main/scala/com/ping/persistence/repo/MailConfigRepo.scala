@@ -6,9 +6,7 @@ import com.ping.persistence.provider.{DBProvider, PostgresDBProvider}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 trait MailConfigRepo extends MailConfigMapping {
   this: DBProvider =>
 

@@ -2,7 +2,6 @@ package com.ping.client.db.repositories
 
 import com.ping.client.db.ServerSpec
 import com.ping.domain.{ClientDetails, DBAccessToken, DBClient, DBClientAddress}
-import com.ping.models.{ClientDetails, DBAccessToken, DBClientAddress}
 import org.scalatest.AsyncWordSpec
 
 

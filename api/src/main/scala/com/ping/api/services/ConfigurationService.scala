@@ -9,9 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.control.NonFatal
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 trait ConfigurationService extends JsonHelper{
 
   val mailConfigRepo: MailConfigRepo

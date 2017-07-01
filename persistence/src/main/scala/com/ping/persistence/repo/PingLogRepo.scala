@@ -6,9 +6,7 @@ import com.ping.persistence.provider.{DBProvider, PostgresDBProvider}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 trait PingLogRepo extends PingLogMapping { this: DBProvider =>
 
   import driver.api._

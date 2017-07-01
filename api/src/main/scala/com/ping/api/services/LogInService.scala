@@ -8,9 +8,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.control.NonFatal
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 trait LogInService extends PingLogger{
 
   val clientRepo: ClientRepo

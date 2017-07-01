@@ -2,9 +2,7 @@ package com.ping.domain
 
 import com.ping.models.{RDMailConfig, RDSlackConfig, RDTwilioConfig}
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 case class ConfigRequest(
                           mailConfig: Option[MailConfig],
                           slackConfig: Option[SlackConfig],

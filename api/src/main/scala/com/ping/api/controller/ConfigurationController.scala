@@ -18,9 +18,7 @@ import scala.concurrent.Future
 import scala.util.Try
 import scala.util.control.NonFatal
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 trait ConfigurationController extends Security with PingLogger with JsonHelper {
 
   val configurationService: ConfigurationService

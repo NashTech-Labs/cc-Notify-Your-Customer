@@ -3,9 +3,7 @@ package com.ping.http
 import com.ping.json.JsonHelper
 import org.json4s.JValue
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 case class PingHttpResponseData(
                              code: Int,
                              data: Option[JValue] = None,

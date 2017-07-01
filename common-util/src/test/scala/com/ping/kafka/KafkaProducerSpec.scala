@@ -3,9 +3,7 @@ package com.ping.kafka
 import org.apache.kafka.clients.producer.RecordMetadata
 import org.scalatest.AsyncWordSpec
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 class KafkaProducerSpec extends AsyncWordSpec {
 
   val pingProducer = new Producer {

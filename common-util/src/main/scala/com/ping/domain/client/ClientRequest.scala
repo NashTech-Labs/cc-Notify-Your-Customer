@@ -1,8 +1,6 @@
 package com.ping.domain.client
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 case class ClientRequest (
                            name: String,
                            email: String,

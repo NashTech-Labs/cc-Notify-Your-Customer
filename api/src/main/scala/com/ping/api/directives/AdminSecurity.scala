@@ -4,18 +4,16 @@ import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.model.StatusCodes.{BadRequest, Forbidden}
 import akka.http.scaladsl.server.Directives.{complete, extractRequestContext}
 import akka.http.scaladsl.server.Route
-import com.ping.http.PingHttpResponse._
+import com.ping.config.Configuration
+import com.ping.http.PingHttpResponse.ERROR
 import com.ping.models.RDClient
-import com.ping.persistence.repo.ClientRepo
-import scala.concurrent.ExecutionContext.Implicits.global
+
 import scala.concurrent.Future
 
 
-trait Security {
+trait AdminSecurity {
 
-  val clientRepo: ClientRepo
-
-  def secured(func: (RDClient) => Future[HttpResponse]): Route = {
+  def securedWithAdminAccess(func: (String) => Future[HttpResponse]): Route = {
     extractRequestContext { requestContext =>
       complete {
         requestContext.request.headers.find(header => header.name.toLowerCase.equals("accesstoken")) match {
@@ -26,11 +24,12 @@ trait Security {
     }
   }
 
-  private def validateAccessToken(accessToken: String, func: (RDClient) => Future[HttpResponse]) = {
-    clientRepo.getClientByAccessToken(accessToken) map {
-      case Some(client) => func(client)
-      case None => Future.successful(HttpResponse(Forbidden, entity = "Forbidden"))
+  private def validateAccessToken(accessToken: String, func: (String) => Future[HttpResponse]) = {
+    val adminToken: String = Configuration.config.getString("ping.api.admin.token")
+    if(accessToken == adminToken){
+      func(accessToken)
+    }else{
+      Future.successful(HttpResponse(Forbidden, entity = "Unauthorized"))
     }
   }
-
 }

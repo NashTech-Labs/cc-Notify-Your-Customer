@@ -5,7 +5,7 @@ import akka.http.scaladsl.model.StatusCodes.BadRequest
 import akka.http.scaladsl.model.{ContentTypes, HttpResponse, StatusCode}
 import akka.http.scaladsl.server.Directives.{as, complete, get, path, pathPrefix, post, _}
 import akka.http.scaladsl.server.Route
-import com.ping.api.directives.Security
+import com.ping.api.directives.{AdminSecurity, Security}
 import com.ping.api.services.{ConfigurationService, LogInService}
 import com.ping.domain.{ClientRequest, MessageType}
 import com.ping.http.PingHttpResponse._
@@ -17,7 +17,7 @@ import scala.concurrent.Future
 import scala.util.Try
 import scala.util.control.NonFatal
 
-trait LogInController extends Security with PingLogger with JsonHelper {
+trait LogInController extends Security with AdminSecurity with PingLogger with JsonHelper {
 
   val logInService: LogInService
   val configurationService: ConfigurationService
@@ -60,8 +60,10 @@ trait LogInController extends Security with PingLogger with JsonHelper {
   private def getConfigForClient: Route = pathPrefix("v1") {
     path("config" / Segment / Segment) { (clientId, channel) =>
       get {
-        info(s"Got configuration request with clientId: $clientId and channel: $channel")
-        complete(processGetConfigurationRequest(clientId, channel))
+        securedWithAdminAccess { accessToken =>
+          info(s"Got configuration request with access token: $accessToken client id: $clientId and channel: $channel")
+          processGetConfigurationRequest(clientId, channel)
+        }
       }
     }
   }

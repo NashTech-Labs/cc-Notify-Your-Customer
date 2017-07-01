@@ -6,9 +6,7 @@ import com.ping.models.{RDPingLog, RDTwilioConfig}
 import com.ping.persistence.provider.DBProvider
 import slick.lifted.ProvenShape
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 trait PingLogMapping { this: DBProvider =>
 
   import driver.api._

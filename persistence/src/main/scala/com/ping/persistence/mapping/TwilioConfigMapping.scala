@@ -4,9 +4,7 @@ import com.ping.models.{RDMailConfig, RDTwilioConfig}
 import com.ping.persistence.provider.DBProvider
 import slick.lifted.ProvenShape
 
-/**
-  * Created by girish on 30/6/17.
-  */
+
 trait TwilioConfigMapping {this: DBProvider =>
 
   import driver.api._

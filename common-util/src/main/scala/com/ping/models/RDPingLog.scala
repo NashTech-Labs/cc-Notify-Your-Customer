@@ -4,9 +4,7 @@ import java.sql.Timestamp
 
 import com.ping.domain.PingStatus
 
-/**
-  * Created by girish on 1/7/17.
-  */
+
 case class RDPingLog(
                       id: Long,
                       uuid: String,

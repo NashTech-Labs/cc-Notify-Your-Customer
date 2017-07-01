@@ -48,7 +48,7 @@ trait ConfigurationService extends JsonHelper{
   private def insertMailConfig(mailConfig: MailConfig, client: RDClient): Future[Option[String]] = {
     mailConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Mail config already exists, try with put call"))
-      case None => mailConfigRepo.insert(mailConfig.getRDMailConfig(client.id)).map(_ => Some("Added"))
+      case None => mailConfigRepo.insert(mailConfig.getRDConfig(client.id)).map(_ => Some("Added"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
@@ -57,7 +57,7 @@ trait ConfigurationService extends JsonHelper{
   private def insertSlackConfig(slackConfig: SlackConfig, client: RDClient) = {
     slackConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Slack config already exists, try with put call"))
-      case None => slackConfigRepo.insert(slackConfig.getRDSlackConfig(client.id)).map(_ => Some("Added"))
+      case None => slackConfigRepo.insert(slackConfig.getRDConfig(client.id)).map(_ => Some("Added"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
@@ -66,7 +66,7 @@ trait ConfigurationService extends JsonHelper{
   private def insertTwilioConfig(twillioConfig: TwilioConfig, client: RDClient) = {
     twilioConfigRepo.get(client.id) flatMap {
       case Some(_) => Future.successful(Some("Twilio config already exists, try with put call"))
-      case None => twilioConfigRepo.insert(twillioConfig.getRDTwilioConfig(client.id)).map(_ => Some("Added"))
+      case None => twilioConfigRepo.insert(twillioConfig.getRDConfig(client.id)).map(_ => Some("Added"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
@@ -92,19 +92,19 @@ trait ConfigurationService extends JsonHelper{
   }
 
   private def updateMailConfig(mailConfig: MailConfig, client: RDClient): Future[Option[String]] = {
-    mailConfigRepo.update(mailConfig.getRDMailConfig(client.id)).map(_ => Some("Updated")) recover {
+    mailConfigRepo.update(mailConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   private def updateSlackConfig(slackConfig: SlackConfig, client: RDClient) = {
-    slackConfigRepo.update(slackConfig.getRDSlackConfig(client.id)).map(_ => Some("Updated")) recover {
+    slackConfigRepo.update(slackConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   private def updateTwilioConfig(twillioConfig: TwilioConfig, client: RDClient) = {
-    twilioConfigRepo.update(twillioConfig.getRDTwilioConfig(client.id)).map(_ => Some("Updated")) recover {
+    twilioConfigRepo.update(twillioConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }

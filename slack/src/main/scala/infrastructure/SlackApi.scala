@@ -7,7 +7,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
 trait SlackApi {
-  val token: String = "" // replace your Slack API token here
+  val token: String = ""
+  // replace your Slack API token here
   val apiClient: SlackApiClient
 
   /**
@@ -16,6 +17,7 @@ trait SlackApi {
     */
   def send(slackDetail: SlackDetails): Future[Boolean] = {
     val channelId: Future[Option[String]] = getChannelId(slackDetail.channelName)
+
     channelId.map {
       _ match {
         case Some(channelId) =>

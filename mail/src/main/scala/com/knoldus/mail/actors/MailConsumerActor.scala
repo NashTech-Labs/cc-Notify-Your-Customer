@@ -3,8 +3,8 @@ package com.knoldus.mail.actors
 import akka.actor.{Actor, ActorRef, Props}
 import com.ping.kafka.KafkaConsumerApi
 import com.ping.logger.PingLogger
-import scala.concurrent.duration._
 
+import scala.concurrent.duration._
 
 
 class MailConsumerActor(consumer: KafkaConsumerApi, mailSender: ActorRef) extends Actor with PingLogger {

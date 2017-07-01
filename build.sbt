@@ -43,7 +43,7 @@ lazy val slack = BaseProject("slack").settings(
 
 lazy val mail = BaseProject("mail").settings(
   libraryDependencies ++= compileDependencies(json4sNative.value ++ json4sEx.value ++ logback.value ++
-    typesafeConfig.value ++ kafka.value ++ email.value ++ akka.value ++ slf4j.value ++ log4j.value ::: Nil)
+    typesafeConfig.value ++ kafka.value ++ email.value ++ akka.value ++ slf4j.value  ::: Nil)
     ++ testDependencies(scalaTest.value ++ h2DB.value ++mockito.value ::: Nil),
   parallelExecution in Test := false).dependsOn(commonUtil)
 

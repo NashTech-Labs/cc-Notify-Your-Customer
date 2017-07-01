@@ -7,7 +7,7 @@ import org.scalatest.mockito.MockitoSugar
 /**
   * Created by knoldus on 30/6/17.
   */
-class MailServiceSpec extends WordSpec with {
+class MailServiceSpec extends WordSpec{
 
   val emailInfo = EmailInfo(1, List("himanshu.rajput@knoldus.in"), List("kunal.sethi@knoldus.in"), List("himanshu.14mca1061@abes.ac.in"), "Test Email", "testing")
 

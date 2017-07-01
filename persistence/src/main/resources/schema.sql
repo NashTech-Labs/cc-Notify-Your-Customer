@@ -10,7 +10,10 @@ CREATE TABLE IF NOT EXISTS client (
   email VARCHAR(50) NOT NULL,
   address VARCHAR(50),
   password VARCHAR(50) NOT NULL,
-  access_token VARCHAR(50) NOT NULL
+  access_token VARCHAR(50) NOT NULL,
+  mail_enabled BOOLEAN  NOT NULL,
+  slack_enabled BOOLEAN  NOT NULL,
+  twilio_enabled BOOLEAN  NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS mail_config (

@@ -14,6 +14,6 @@ object PingHttpResponse extends JsonHelper {
 
   def OK(data: AnyRef): String = write(PingHttpResponseData(code = 200, data = Some(parse(write(data)))))
 
-  def ERROR(msg: String): String = write(PingHttpResponseData(code = 200, message = Some(msg)))
+  def ERROR(msg: String): String = write(PingHttpResponseData(code = 400, message = Some(msg)))
 
 }

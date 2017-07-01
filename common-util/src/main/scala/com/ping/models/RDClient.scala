@@ -9,7 +9,10 @@ case class RDClient(
                      email: String,
                      address: String,
                      password: String,
-                     accessToken: String
+                     accessToken: String,
+                     mailEnabled: Boolean = false,
+                     slackEnabled: Boolean = false,
+                     twilioEnabled: Boolean = false
                    ){
   def getClientView: ClientView = ClientView(name, email, address, accessToken)
 }

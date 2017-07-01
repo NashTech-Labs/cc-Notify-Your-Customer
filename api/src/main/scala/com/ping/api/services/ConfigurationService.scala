@@ -102,28 +102,37 @@ trait ConfigurationService extends JsonHelper with PingLogger {
   }
 
   private def updateMailConfig(mailConfig: MailConfig, client: RDClient): Future[Option[String]] = {
-    mailConfigRepo.update(mailConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
+    mailConfigRepo.update(mailConfig.getRDConfig(client.id)).flatMap { _ =>
+      clientRepo.enableMail(client.id).map(_ => Some("Updated"))
+    } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   private def updateSlackConfig(slackConfig: SlackConfig, client: RDClient) = {
-    slackConfigRepo.update(slackConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
+    slackConfigRepo.update(slackConfig.getRDConfig(client.id)).flatMap { _ =>
+      clientRepo.enableSlack(client.id).map(_ => Some("Updated"))
+    } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   private def updateTwilioConfig(twillioConfig: TwilioConfig, client: RDClient) = {
-    twilioConfigRepo.update(twillioConfig.getRDConfig(client.id)).map(_ => Some("Updated")) recover {
+    twilioConfigRepo.update(twillioConfig.getRDConfig(client.id)).flatMap { _ =>
+      clientRepo.enableTwilio(client.id).map(_ => Some("Updated"))
+    } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   def deleteConfig(client: RDClient): Future[ConfigUpdateResponse] = {
     for {
-      mailResponse <- mailConfigRepo.delete(client.id).map(_ => "Deleted").recover { case NonFatal(ex) => "Does not exists" }
-      slackResponse <- slackConfigRepo.delete(client.id).map(_ => "Deleted").recover { case NonFatal(ex) => "Does not exists" }
-      twilioResponse <- twilioConfigRepo.delete(client.id).map(_ => "Deleted").recover { case NonFatal(ex) => "Does not exists" }
+      mailResponse <- mailConfigRepo.delete(client.id).flatMap(_ => clientRepo.disableMail(client.id).map(_ => "Deleted"))
+        .recover { case NonFatal(ex) => "Does not exists" }
+      slackResponse <- slackConfigRepo.delete(client.id).flatMap(_ => clientRepo.disableSlack(client.id).map(_ => "Deleted"))
+        .recover { case NonFatal(ex) => "Does not exists" }
+      twilioResponse <- twilioConfigRepo.delete(client.id).flatMap(_ => clientRepo.disableTwilio(client.id).map(_ => "Deleted"))
+        .recover { case NonFatal(ex) => "Does not exists" }
     } yield {
       ConfigUpdateResponse(Some(mailResponse), Some(slackResponse), Some(twilioResponse))
     }

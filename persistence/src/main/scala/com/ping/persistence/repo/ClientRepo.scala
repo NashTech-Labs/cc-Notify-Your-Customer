@@ -44,6 +44,18 @@ trait ClientRepo extends ClientMapping with PingLogger {
     (for {clients <- clientInfo if clients.id === clientId} yield clients.twilioEnabled).update(true)
   }
 
+  def disableMail(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.mailEnabled).update(false)
+  }
+
+  def disableSlack(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.slackEnabled).update(false)
+  }
+
+  def disableTwilio(clientId: Long): Future[Int] = withTransaction {
+    (for {clients <- clientInfo if clients.id === clientId} yield clients.twilioEnabled).update(false)
+  }
+
 
   def delete(id: Long): Future[Int] = withTransaction {
     clientInfo.filter(_.id === id).delete

@@ -1,5 +1,4 @@
-package com.ping.models
-
+package com.ping.domain
 
 case class HttpResponse(
                          code: Int,

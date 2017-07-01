@@ -1,12 +1,13 @@
 package com.ping.kafka
 
-import java.util.Properties
-
 import com.ping.logs.PingLogger
-import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord, RecordMetadata}
-import org.apache.kafka.common.serialization.StringSerializer
+import org.apache.kafka.clients.producer.KafkaProducer
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{Future, Promise}
+import org.apache.kafka.clients.producer.ProducerRecord
+import org.apache.kafka.clients.producer.RecordMetadata
+import org.apache.kafka.common.serialization.StringSerializer
+import java.util.Properties
+import scala.concurrent.{Promise, Future}
 import scala.util.Try
 
 
@@ -28,7 +29,6 @@ trait Producer extends KafkaProducerApi with PingLogger {
   props.put("value.serializer", classOf[StringSerializer].getName)
 
   private val producer: KafkaProducer[String, String] = new KafkaProducer[String, String](props)
-
 
   def send(topic: String, record: String): Future[RecordMetadata] = {
     val message: ProducerRecord[String, String] = new ProducerRecord[String, String](topic, record)

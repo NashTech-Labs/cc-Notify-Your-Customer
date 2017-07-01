@@ -4,8 +4,9 @@ import java.sql.Timestamp
 
 import com.ping.client.db.repositories.ClientRepo
 import com.ping.date.DateUtil
+import com.ping.domain.{ClientDetails, DBAccessToken, DBClient, DBClientAddress}
+import com.ping.domain.client.ClientRequest
 import com.ping.hasher.Hasher
-import com.ping.models._
 import org.mockito.Mockito._
 import org.scalatest.AsyncWordSpec
 import org.scalatest.mockito.MockitoSugar

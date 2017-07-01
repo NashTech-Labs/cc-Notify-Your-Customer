@@ -1,7 +1,7 @@
 package com.ping.client.db.mapping
 
 import com.ping.client.db.provider.DBProvider
-import com.ping.models.DBClientAddress
+import com.ping.domain.DBClientAddress
 import slick.lifted.ProvenShape
 
 

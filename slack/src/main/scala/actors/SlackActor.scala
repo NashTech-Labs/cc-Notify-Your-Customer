@@ -8,10 +8,12 @@ import service.SlackServiceImpl
 import slack.main.scala.SlackDetails
 
 class SlackActor extends Actor with PingLogger with JsonHelper {
+
   override def receive: PartialFunction[Any, Unit] = {
-    case slackNotification: MessageFromKafka =>
-      val slackDetails = parse(slackNotification.record).extract[SlackDetails]
+    case MessageFromKafka(msg: String) =>
+      val slackDetails = parse(msg).extract[SlackDetails]
       SlackServiceImpl.sendSlackMsg(slackDetails)
+
     case _ => error("Error occured in slack")
   }
 

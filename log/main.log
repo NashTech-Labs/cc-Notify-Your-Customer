@@ -1,0 +1,558 @@
+[INFO] - [2017-07-01 18:17:38,211] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 9a049f02-fef0-4d3a-bf09-aaa2c7253017
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 18:17:38,482] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 18:17:38,483] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 18:17:38,491] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:17:38,491] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 18:17:38,623] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 18:17:38,640] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 18:17:38,640] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 18:17:38,665] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 18:17:38,814] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 18:17:49,521] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:00,537] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:11,557] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:18,317] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:22,090] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:33,118] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:44,137] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:18:55,157] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:19:06,178] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:19:17,197] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:19:28,217] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:19:39,237] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:19:50,257] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:20:26,808] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = f9ff5187-990d-4544-8a0f-97c843f11e18
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 18:20:27,139] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 18:20:27,139] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 18:20:27,145] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 18:20:27,148] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:20:27,274] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 18:20:27,291] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 18:20:27,291] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 18:20:27,343] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 18:20:27,345] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 18:20:38,175] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:20:43,109] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:20:54,134] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:21:05,151] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:21:41,162] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = e4b04a95-3386-4587-bf8a-d0754e360bdd
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 18:21:41,470] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 18:21:41,480] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 18:21:41,501] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 18:21:41,511] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:21:41,659] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 18:21:41,673] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 18:21:41,674] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 18:21:41,712] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 18:21:41,714] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 18:21:52,539] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:03,557] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:14,577] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:17,350] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:28,367] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:28,375] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:39,397] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:22:50,417] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:01,437] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:12,457] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:23,477] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:34,497] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:45,518] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:23:56,537] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:24:07,547] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:24:18,567] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:24:29,588] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:24:40,607] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:24:51,627] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:02,647] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:13,667] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:24,690] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:35,717] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:43,560] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:54,577] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:25:55,683] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:26:06,698] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:26:17,717] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:26:37,562] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 2fbc4379-537b-4671-bbc7-bd00dcd492c8
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 18:26:37,890] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 18:26:37,891] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 18:26:37,904] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 18:26:37,905] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:26:38,129] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 18:26:38,163] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 18:26:38,164] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 18:26:38,235] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 18:26:38,237] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 18:26:48,951] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:26:53,404] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:04,418] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:15,438] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:26,448] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:26,804] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:37,818] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:48,828] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:27:59,848] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:28:10,868] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:28:21,888] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:28:32,908] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:28:43,928] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:28:54,948] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:29:05,968] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:29:16,988] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:29:27,999] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:29:39,018] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:29:50,038] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:01,058] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:12,079] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:23,098] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:34,119] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:45,138] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:30:56,159] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:31:07,178] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:31:18,198] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:31:29,218] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:31:40,228] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:31:51,248] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:02,270] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:13,288] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:24,308] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:35,328] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:42,559] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:43,664] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:32:51,682] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:02,698] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:06,179] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:17,199] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:28,218] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:39,238] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:33:50,248] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:01,268] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:12,288] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:23,308] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:34,328] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:45,338] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:50,067] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:34:56,922] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:35:07,939] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:35:18,958] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:35:29,968] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:35:40,990] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:35:52,008] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:03,028] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:14,048] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:25,068] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:27,285] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:38,298] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:36:49,308] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:00,328] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:11,350] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:22,368] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:33,389] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:44,408] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:37:55,428] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:38:06,448] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:38:17,468] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:38:28,478] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:38:39,498] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:38:50,518] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:39:01,538] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:39:12,558] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:39:15,244] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:39:26,266] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:56:17,475] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = c0bbeb1b-97c5-4c27-9557-dc821a842abc
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 18:56:17,764] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 18:56:17,765] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 18:56:17,778] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 18:56:17,782] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:56:18,002] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 18:56:18,026] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 18:56:18,026] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 18:56:18,069] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 18:56:18,074] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 18:56:28,815] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:56:39,833] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:56:50,853] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:01,873] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:07,850] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:18,863] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:29,886] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:40,903] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:57:51,922] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:58:02,942] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:58:13,963] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:58:24,982] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 18:58:35,994] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:01:38,614] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = bffa9285-4fe0-4b9d-a16b-a5cb3fd383e5
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 19:01:38,907] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 19:01:38,907] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 19:01:38,915] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:01:38,934] - [app.SlackApp$] Mail service has been started......
+[INFO] - [2017-07-01 19:01:39,109] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3559:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 19:01:39,121] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 19:01:39,122] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 19:01:39,159] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 1
+[INFO] - [2017-07-01 19:01:39,162] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [slack-0] for group 1
+[INFO] - [2017-07-01 19:01:49,945] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:00,961] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:11,982] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:23,001] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:34,022] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:45,041] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:02:56,062] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:03:07,082] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:03:18,102] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:03:29,121] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:03:40,141] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:03:51,162] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:02,182] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:13,202] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:24,222] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:35,241] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:46,262] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:04:57,282] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:05:08,301] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:05:19,321] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:05:30,342] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:05:41,361] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:05:52,381] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:03,401] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:04,754] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:15,771] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:26,791] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:37,811] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:48,832] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:06:59,852] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:07:10,872] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:07:21,892] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:07:32,911] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)
+[INFO] - [2017-07-01 19:07:43,934] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(slack)

@@ -7,9 +7,10 @@ import com.ping.logger.PingLogger
 import com.ping.kafka.Topics._
 object SlackApp extends App with PingLogger {
   val groupId = "1"
-  val servers = "localhost"
+  val servers = "http://localhost:9092"
   val system = ActorSystem("slack-system")
   val slackSender = system.actorOf(Props[SlackActor])
   val consumerActor = system.actorOf(SlackConsumerActor.props(new Consumer(groupId, servers, List(topicSlack)), slackSender))
   consumerActor ! SlackConsumerActor.Read
+  info("Mail service has been started......")
 }

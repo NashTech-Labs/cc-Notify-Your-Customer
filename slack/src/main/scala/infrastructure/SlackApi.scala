@@ -5,10 +5,12 @@ import slack.main.scala.SlackDetails
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
-
+import com.typesafe.config.ConfigFactory
 trait SlackApi {
-  val token: String = ""
-  // replace your Slack API token here
+
+
+  val token: String = ConfigFactory.load().getString("token")
+
   val apiClient: SlackApiClient
 
   /**

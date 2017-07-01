@@ -1,0 +1,146 @@
+[INFO] - [2017-07-01 20:41:11,655] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 4fedd8ab-4cce-4a59-af36-3f72314a78e2
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 20:41:11,847] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 20:41:11,847] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 20:41:11,857] - [com.ping.app.TwilioApp$] Twilio message service has been started..... :) 
+[INFO] - [2017-07-01 20:41:11,858] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:41:11,976] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 20:41:11,981] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 20:41:11,982] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 20:41:12,016] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 13
+[INFO] - [2017-07-01 20:41:12,019] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [message-0] for group 1
+[INFO] - [2017-07-01 20:41:22,889] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:41:33,906] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:41:44,925] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:41:55,945] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:42:06,965] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:42:17,985] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:42:29,005] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:42:40,026] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:42:51,046] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:43:02,066] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(message)
+[INFO] - [2017-07-01 20:47:18,155] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = cc1926fe-c09c-4065-8a0f-df87e621894d
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 20:47:18,291] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 20:47:18,291] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 20:47:18,298] - [com.ping.app.TwilioApp$] Twilio message service has been started..... :) 
+[INFO] - [2017-07-01 20:47:18,299] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:47:18,378] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 20:47:18,388] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 20:47:18,389] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 20:47:18,402] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 15
+[INFO] - [2017-07-01 20:47:18,404] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [sms-0] for group 1
+[INFO] - [2017-07-01 20:47:29,323] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:47:40,341] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:47:51,360] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:48:02,381] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:48:13,400] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 20:48:24,421] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)

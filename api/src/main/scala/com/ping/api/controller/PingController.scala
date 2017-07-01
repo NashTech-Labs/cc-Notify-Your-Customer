@@ -40,7 +40,6 @@ trait PingController extends Security with PingLogger with JsonHelper {
     }
   }
 
-
   private def processPings(data: String, client: RDClient): Future[HttpResponse] = {
     parse(data).extractOpt[Ping] match {
       case Some(ping) =>

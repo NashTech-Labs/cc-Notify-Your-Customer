@@ -1,8 +1,10 @@
 package com.ping.api.services
 
 import com.ping.domain._
-import com.ping.models.RDClient
+import com.ping.json.JsonHelper
+import com.ping.models.{RDClient, RDMailConfig, RDSlackConfig, RDTwilioConfig}
 import com.ping.persistence.repo.{MailConfigRepo, SlackConfigRepo, TwilioConfigRepo}
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.control.NonFatal
@@ -10,7 +12,7 @@ import scala.util.control.NonFatal
 /**
   * Created by girish on 1/7/17.
   */
-trait ConfigurationService {
+trait ConfigurationService extends JsonHelper{
 
   val mailConfigRepo: MailConfigRepo
   val slackConfigRepo: SlackConfigRepo
@@ -18,9 +20,9 @@ trait ConfigurationService {
 
   def getConfigStatus(client: RDClient): Future[ConfigUpdateResponse] = {
     for {
-      mailResponse <- mailConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(ex) => "Does not exists" }
-      slackResponse <- slackConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(ex) => "Does not exists" }
-      twilioResponse <- twilioConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(ex) => "Does not exists" }
+      mailResponse <- mailConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(_) => "Does not exists" }
+      slackResponse <- slackConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(_) => "Does not exists" }
+      twilioResponse <- twilioConfigRepo.get(client.id).map(_ => "Exists").recover { case NonFatal(_) => "Does not exists" }
     } yield {
       ConfigUpdateResponse(Some(mailResponse), Some(slackResponse), Some(twilioResponse))
     }
@@ -117,6 +119,18 @@ trait ConfigurationService {
     } yield {
       ConfigUpdateResponse(Some(mailResponse), Some(slackResponse), Some(twilioResponse))
     }
+  }
+
+  def getMailConfig(clientId: Long): Future[Option[RDMailConfig]] = {
+    mailConfigRepo.get(clientId)
+  }
+
+  def getSlackConfig(clientId: Long): Future[Option[RDSlackConfig]] = {
+    slackConfigRepo.get(clientId)
+  }
+
+  def getTwilioConfig(clientId: Long): Future[Option[RDTwilioConfig]] = {
+    twilioConfigRepo.get(clientId)
   }
 
 }

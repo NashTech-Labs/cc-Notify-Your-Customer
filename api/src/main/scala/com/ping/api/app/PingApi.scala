@@ -27,6 +27,7 @@ object PingApi extends App with DefaultController with PingController with LogIn
   val logInService: LogInService = LogInService
   val configurationService: ConfigurationService = ConfigurationService
   val clientRepo: ClientRepo = ClientRepo
+
   val pingService: PingService = PingServiceImpl(pingProducer)
 
   val routes = singletoneRoute ~ pingRoutes ~ loginRoutes ~ configRoutes ~ defaultRoutes

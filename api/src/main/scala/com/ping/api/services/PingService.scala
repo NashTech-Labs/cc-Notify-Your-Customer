@@ -66,7 +66,7 @@ trait PingService extends JsonHelper with PingLogger {
   }
 
   private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
-    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.message, message.text,
+    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
       message.to, dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
       dispatchPing(topicMail, write(message))

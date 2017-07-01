@@ -6,8 +6,8 @@ import akka.http.scaladsl.model.{ContentTypes, HttpResponse, StatusCode}
 import akka.http.scaladsl.server.Directives.{as, complete, get, path, pathPrefix, post, _}
 import akka.http.scaladsl.server.Route
 import com.ping.api.directives.Security
-import com.ping.api.services.LogInService
-import com.ping.domain.ClientRequest
+import com.ping.api.services.{ConfigurationService, LogInService}
+import com.ping.domain.{ClientRequest, MessageType}
 import com.ping.http.PingHttpResponse._
 import com.ping.json.JsonHelper
 import com.ping.logs.PingLogger
@@ -20,8 +20,9 @@ import scala.util.control.NonFatal
 trait LogInController extends Security with PingLogger with JsonHelper {
 
   val logInService: LogInService
+  val configurationService: ConfigurationService
 
-  def loginRoutes = signUpRequestPost
+  def loginRoutes = signUpRequestPost ~ getConfigForClient
 
   def signUpRequestPost: Route = pathPrefix("v1") {
     path("signup") {
@@ -37,7 +38,7 @@ trait LogInController extends Security with PingLogger with JsonHelper {
     }
   }
 
-  def processSignUpRequest(data: String): Future[HttpResponse] = {
+  private def processSignUpRequest(data: String): Future[HttpResponse] = {
     parse(data).extractOpt[ClientRequest] match {
       case Some(clientRequest) =>
         logInService.processSignUp(clientRequest).map { clientView =>
@@ -55,5 +56,62 @@ trait LogInController extends Security with PingLogger with JsonHelper {
     case ex: Exception =>
       HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR(ex.getMessage)))
   }
+
+  private def getConfigForClient: Route = pathPrefix("v1") {
+    path("config" / Segment / Segment) { (clientId, channel) =>
+      get {
+        info(s"Got configuration request with clientId: $clientId and channel: $channel")
+        complete(processGetConfigurationRequest(clientId, channel))
+      }
+    }
+  }
+
+  private def processGetConfigurationRequest(clientIdStr: String, channel: String): Future[HttpResponse] = {
+    val clientId = Try(clientIdStr.toLong).getOrElse(throw new Exception("client id should be long value"))
+    channel match {
+      case MessageType.mail => processMailConfigRequest(clientId)
+      case MessageType.slack => processSlackConfigRequest(clientId)
+      case MessageType.twilio => processTwilioConfigRequest(clientId)
+      case _ => Future.successful(HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`,
+        ERROR("Unknown channel type, Only mail, slack, twilio are provided"))))
+    }
+  } recover {
+    case NonFatal(ex) =>
+      HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR(ex.getMessage)))
+  }
+
+  private def processMailConfigRequest(clientId: Long): Future[HttpResponse] = {
+    configurationService.getMailConfig(clientId) map {
+      case Some(config) =>
+        HttpResponse(StatusCode.int2StatusCode(200), entity = HttpEntities.create(ContentTypes.`application/json`,
+          OK(config)))
+      case None =>
+        HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR("No configuration" +
+          s" found for client with id: $clientId")))
+    }
+  }
+
+  private def processSlackConfigRequest(clientId: Long): Future[HttpResponse] = {
+    configurationService.getSlackConfig(clientId) map {
+      case Some(config) =>
+        HttpResponse(StatusCode.int2StatusCode(200), entity = HttpEntities.create(ContentTypes.`application/json`,
+          OK(config)))
+      case None =>
+        HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR("No configuration" +
+          s" found for client with id: $clientId")))
+    }
+  }
+
+  private def processTwilioConfigRequest(clientId: Long): Future[HttpResponse] = {
+    configurationService.getTwilioConfig(clientId) map {
+      case Some(config) =>
+        HttpResponse(StatusCode.int2StatusCode(200), entity = HttpEntities.create(ContentTypes.`application/json`,
+          OK(config)))
+      case None =>
+        HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`, ERROR("No configuration" +
+          s" found for client with id: $clientId")))
+    }
+  }
+
 
 }

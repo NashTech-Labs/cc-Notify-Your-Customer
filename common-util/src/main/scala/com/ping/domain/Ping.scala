@@ -38,7 +38,7 @@ case class PingSlack(
 object MessageType {
   val mail = "mail"
   val slack = "slack"
-  val message = "phone_mgs"
+  val twilio = "twilio"
 }
 
 object PingStatus {

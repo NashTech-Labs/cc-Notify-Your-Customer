@@ -1,22 +1,20 @@
 package infrastructure
 
+import akka.actor.ActorSystem
 import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import com.ping.config.Configuration
-import com.ping.http.{HttpWebClient, PingHttpResponseData}
+import com.ping.http.{PingHttpResponseData, WebClient}
 import com.ping.models.RDMailConfig
-
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 
-trait PingClientApi extends HttpWebClient {
+trait PingClientApi extends WebClient {
 
   val clientApiHost = Configuration.config.getString("client.api.host")
-  //localhost:9001
   val clientApiUrl = Configuration.config.getString("client.api.url")
-  ///v1/config/slack/
   val accessToken = Configuration.config.getString("client.api.access.token")
-  //dsfdsf-dsfsdfd-dsfdsfsdew
   val url = clientApiHost + clientApiUrl
 
   def getClientConfig(clientId: String): Future[Option[RDMailConfig]] = {
@@ -50,4 +48,8 @@ trait PingClientApi extends HttpWebClient {
   }
 }
 
-object PingClientApi extends PingClientApi
+object PingClientApiFactory {
+  def apply(actorSystem: ActorSystem) = new PingClientApi {
+    val system: ActorSystem = actorSystem
+  }
+}

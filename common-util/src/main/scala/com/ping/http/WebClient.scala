@@ -14,10 +14,10 @@ import com.typesafe.sslconfig.akka.AkkaSSLConfig
 
 import scala.concurrent.{Future, ExecutionContextExecutor}
 
-private[http] trait WebClient extends PingLogger with JsonHelper {
+trait WebClient extends PingLogger with JsonHelper {
 
-  def connectionFlow(host: String)(implicit system: ActorSystem, materializer: ActorMaterializer, ec: ExecutionContextExecutor)
-  : Flow[HttpRequest, HttpResponse, Future[OutgoingConnection]]
+  implicit val system: ActorSystem
+  implicit lazy val materializer = ActorMaterializer()
 
   def getRequest(url: String, header: Map[String, String] = Map.empty[String, String])
                 (implicit system: ActorSystem, materializer: ActorMaterializer, ec: ExecutionContextExecutor)
@@ -46,10 +46,3 @@ private[http] trait WebClient extends PingLogger with JsonHelper {
   }
 
 }
-
-trait HttpWebClient extends WebClient {
-
-  override def connectionFlow(host: String)(implicit system: ActorSystem, materializer: ActorMaterializer, ec: ExecutionContextExecutor)
-  : Flow[HttpRequest, HttpResponse, Future[OutgoingConnection]] = Http().outgoingConnection(host)
-}
-

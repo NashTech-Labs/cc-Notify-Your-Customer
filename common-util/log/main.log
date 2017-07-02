@@ -1,4 +1,4 @@
-[INFO] - [2017-07-01 20:13:17,183] - [org.apache.kafka.clients.producer.ProducerConfig] ProducerConfig values: 
+[INFO] - [2017-07-02 08:57:44,364] - [org.apache.kafka.clients.producer.ProducerConfig] ProducerConfig values: 
 	acks = all
 	batch.size = 16384
 	block.on.buffer.full = false
@@ -51,11 +51,11 @@
 	timeout.ms = 30000
 	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
 
-[INFO] - [2017-07-01 20:13:17,605] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
-[INFO] - [2017-07-01 20:13:17,606] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
-[INFO] - [2017-07-01 20:13:17,757] - [com.ping.logger.PingLoggerTest] Some info message...
-[WARN] - [2017-07-01 20:13:17,762] - [com.ping.logger.PingLoggerTest] Some warn message...
-[WARN] - [2017-07-01 20:13:17,774] - [com.ping.logger.PingLoggerTest] Some warn message...
+[INFO] - [2017-07-02 08:57:45,089] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-02 08:57:45,091] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-02 08:57:45,355] - [com.ping.logger.PingLoggerTest] Some info message...
+[WARN] - [2017-07-02 08:57:45,360] - [com.ping.logger.PingLoggerTest] Some warn message...
+[WARN] - [2017-07-02 08:57:45,394] - [com.ping.logger.PingLoggerTest] Some warn message...
 java.lang.Exception: some exception
 	at com.ping.logger.PingLoggerTest$$anonfun$5.apply(PingLoggerTest.scala:25)
 	at com.ping.logger.PingLoggerTest$$anonfun$5.apply(PingLoggerTest.scala:25)
@@ -97,8 +97,8 @@ java.lang.Exception: some exception
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
-[ERROR] - [2017-07-01 20:13:17,786] - [com.ping.logger.PingLoggerTest] Some warn message...
-[ERROR] - [2017-07-01 20:13:17,791] - [com.ping.logger.PingLoggerTest] Some warn message...
+[ERROR] - [2017-07-02 08:57:45,408] - [com.ping.logger.PingLoggerTest] Some warn message...
+[ERROR] - [2017-07-02 08:57:45,417] - [com.ping.logger.PingLoggerTest] Some warn message...
 java.lang.Exception: some exception
 	at com.ping.logger.PingLoggerTest$$anonfun$7.apply(PingLoggerTest.scala:33)
 	at com.ping.logger.PingLoggerTest$$anonfun$7.apply(PingLoggerTest.scala:33)

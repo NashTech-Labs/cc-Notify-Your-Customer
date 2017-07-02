@@ -7,8 +7,8 @@ trait MailService extends EmailApi {
 
   def sendEmail(emailInfo: EmailInfo): Option[Int] = {
     //TODO fetch client configuration
-    val userId = "emailId to be loaded from configuration"
-    val password = "password to be loaded from configuration"
+    val userId = ""
+    val password = ""
     send(emailInfo, userId, password)
   }
 

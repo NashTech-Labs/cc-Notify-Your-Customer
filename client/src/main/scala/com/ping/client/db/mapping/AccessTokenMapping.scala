@@ -3,7 +3,7 @@ package com.ping.client.db.mapping
 import java.sql.Timestamp
 
 import com.ping.client.db.provider.DBProvider
-import com.ping.models.DBAccessToken
+import com.ping.domain.DBAccessToken
 import slick.lifted.ProvenShape
 
 

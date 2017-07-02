@@ -10,9 +10,11 @@ trait PingLogger {
 
   protected def debug(message: String, exception: Throwable): Unit = logger.debug(message, exception)
 
+
   protected def info(message: String, exception: Throwable): Unit = logger.info(message, exception)
 
   protected def info(message: String): Unit = logger.info(message)
+
 
   protected def warn(message: String): Unit = logger.warn(message)
 

@@ -1,4 +1,4 @@
-package com.ping.models
+package com.ping.domain
 
 import java.sql.Timestamp
 
@@ -6,8 +6,6 @@ import java.sql.Timestamp
 case class DBClient(
                    id: Long,
                    name: String,
-                   userName: String,
-                   password: String,
                    email: String,
                    phone: String
                  )
@@ -27,3 +25,9 @@ case class DBAccessToken(
                         token: String,
                         createdAt: Timestamp
                       )
+
+case class ClientDetails (
+                         client: DBClient,
+                         clientAddress: DBClientAddress,
+                         tokenDetails: DBAccessToken
+                         )

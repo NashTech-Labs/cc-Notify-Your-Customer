@@ -1,8 +1,8 @@
 package com.ping.client.db.mapping
 
 import com.ping.client.db.provider.DBProvider
+import com.ping.domain.DBClient
 import slick.lifted.ProvenShape
-import com.ping.models.DBClient
 
 private[db] trait ClientMapping {
   this: DBProvider =>
@@ -14,15 +14,11 @@ private[db] trait ClientMapping {
   protected def clientAutoInc = clientInfo returning clientInfo.map(_.id)
 
   class ClientMapping(tag: Tag) extends Table[DBClient](tag, "client") {
-    def * : ProvenShape[DBClient] = (id, name, userName, password, email, phone) <> (DBClient.tupled, DBClient.unapply)
+    def * : ProvenShape[DBClient] = (id, name, email, phone) <> (DBClient.tupled, DBClient.unapply)
 
     def id: Rep[Long] = column[Long]("id", O.PrimaryKey, O.AutoInc)
 
     def name: Rep[String] = column[String]("name")
-
-    def userName: Rep[String] = column[String]("user_name")
-
-    def password: Rep[String] = column[String]("password")
 
     def email: Rep[String] = column[String]("email")
 

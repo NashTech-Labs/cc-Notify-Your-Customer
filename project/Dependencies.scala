@@ -12,9 +12,11 @@ object Dependencies {
   val slickHickariVersion = "3.2.0"
   val scalaTestVersion = "3.0.1"
   val guiceVersion = "4.0"
+  val akkaVersion = "2.4.17"
   val akkaHttpVersion = "10.0.4"
-  val akkaVersion = "2.5.3"
-  val emailVersion="1.4"
+
+
+  val emailVersion = "1.4"
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Compile)
 
@@ -22,8 +24,8 @@ object Dependencies {
 
   def testDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Test)
 
-  def testClassifierDependencies(deps: List[ModuleID]) = deps map (_ % "test" classifier "tests")
 
+  def testClassifierDependencies(deps: List[ModuleID]) = deps map (_ % "test" classifier "tests")
 
   def akkaHttp = Def.setting {
     "com.typesafe.akka" %% "akka-http" % akkaHttpVersion :: Nil
@@ -68,7 +70,7 @@ object Dependencies {
     */
   def finatraHttp = Def.setting {
     List(
-      "com.twitter" %% "finatra-http" % finatraVersion/*,
+      "com.twitter" %% "finatra-http" % finatraVersion /*,
       "com.twitter" %% "finatra-httpclient" % finatraVersion*/
     )
   }
@@ -78,14 +80,16 @@ object Dependencies {
       "com.twitter" %% "finatra-http" % finatraVersion,
       "com.twitter" %% "inject-core" % finatraVersion,
 
-      "com.twitter" %% "inject-server" % finatraVersion/*,
+      "com.twitter" %% "inject-server" % finatraVersion /*,
       "com.twitter" %% "inject-app" % finatraVersion,
       "com.twitter" %% "inject-modules" % finatraVersion*/
     )
   }
 
   def kafka = Def.setting {
+
     "org.apache.kafka" %% "kafka" % kafkaVersion :: Nil
+
   }
 
   def akka = Def.setting {
@@ -105,7 +109,7 @@ object Dependencies {
     "org.postgresql" % "postgresql" % postgresVersion :: Nil
   }
 
-  def   h2DB = Def.setting {
+  def h2DB = Def.setting {
     "com.h2database" % "h2" % h2Version :: Nil
   }
 
@@ -117,7 +121,7 @@ object Dependencies {
     "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
   }
 
-  def email=Def.setting{
+  def email = Def.setting {
     "javax.mail" % "mail" % emailVersion :: Nil
   }
 

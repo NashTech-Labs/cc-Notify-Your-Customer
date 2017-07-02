@@ -58,7 +58,7 @@ trait LogInController extends Security with AdminSecurity with PingLogger with J
   }
 
   private def getConfigForClient: Route = pathPrefix("v1") {
-    path("config" / Segment / Segment) { (clientId, channel) =>
+    path("config" / Segment / Segment) { (channel, clientId) =>
       get {
         securedWithAdminAccess { accessToken =>
           info(s"Got configuration request with access token: $accessToken client id: $clientId and channel: $channel")

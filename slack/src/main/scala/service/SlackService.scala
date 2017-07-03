@@ -1,7 +1,8 @@
 package service
 
+import akka.actor.ActorSystem
+import com.ping.domain.PingSlack
 import infrastructure.{SlackApi, SlackApiImpl}
-import slack.main.scala.SlackDetails
 
 import scala.concurrent.Future
 
@@ -14,11 +15,13 @@ trait SlackService {
     *
     * this method calls the send(..) method of the SlackApi
     */
-  def sendSlackMsg(slackDetails: SlackDetails): Future[Boolean] = {
+  def sendSlackMsg(slackDetails: PingSlack): Future[String] = {
     slackApi.send(slackDetails)
   }
 }
 
-object SlackServiceImpl extends SlackService {
-  val slackApi: SlackApi = SlackApiImpl
+object SlackServiceImpl {
+  def apply(system: ActorSystem) = new SlackService {
+    val slackApi: SlackApi = SlackApiImpl(system)
+  }
 }

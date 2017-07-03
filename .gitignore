@@ -25,3 +25,4 @@ logs/*
 .cache-main
 .cache-tests
 .class
+log/*

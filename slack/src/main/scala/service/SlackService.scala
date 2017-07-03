@@ -1,7 +1,7 @@
 package service
 
+import com.ping.domain.PingSlack
 import infrastructure.{SlackApi, SlackApiImpl}
-import slack.main.scala.SlackDetails
 
 import scala.concurrent.Future
 
@@ -14,7 +14,7 @@ trait SlackService {
     *
     * this method calls the send(..) method of the SlackApi
     */
-  def sendSlackMsg(slackDetails: SlackDetails): Future[Boolean] = {
+  def sendSlackMsg(slackDetails: PingSlack): Future[Boolean] = {
     slackApi.send(slackDetails)
   }
 }

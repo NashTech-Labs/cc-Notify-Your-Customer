@@ -2,9 +2,9 @@ package actors
 
 import akka.actor.{Actor, ActorSystem}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit}
+import com.ping.domain.PingSlack
 import com.ping.json.JsonHelper
 import com.ping.kafka.{KafkaConsumerApi, MessageFromKafka}
-import com.ping.models.PingSlack
 import org.scalatest.{BeforeAndAfterAll, MustMatchers, WordSpecLike}
 
 
@@ -17,7 +17,7 @@ class SlackConsumerActorTest extends TestKit(ActorSystem("SlackConsumerActorTest
     def read(): List[MessageFromKafka] =
       if (counter < 5) {
         counter = counter + 1
-        List(MessageFromKafka(write(PingSlack("general", "hello"))))
+        List(MessageFromKafka(write(PingSlack(Some("general"), "hello"))))
       } else {
         Nil
       }

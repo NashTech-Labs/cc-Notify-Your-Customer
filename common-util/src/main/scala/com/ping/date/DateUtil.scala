@@ -9,3 +9,13 @@ trait DateUtil {
   def currentTimestamp: Timestamp = new Timestamp(currentTime)
 
 }
+
+trait UUIDHelper{
+
+  def getRandomUUID: String = java.util.UUID.randomUUID().toString
+
+}
+
+object DateUtil extends DateUtil
+
+object UUIDHelper extends UUIDHelper

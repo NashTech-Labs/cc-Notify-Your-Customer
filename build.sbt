@@ -15,10 +15,10 @@ resolvers ++= Seq(
 
 lazy val api = BaseProject("api").settings(
   libraryDependencies ++= compileDependencies(akkaHttp.value ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
-    jodaDate.value)
+    jodaDate.value ++ kafka.value)
     ++ testDependencies(spec2.value ++ scalaTest.value ++ akkaHttpTestKit.value)
     ++ testClassifierDependencies(Nil),
-  parallelExecution in Test := false).dependsOn(commonUtil)
+  parallelExecution in Test := false).dependsOn(commonUtil, persistence)
 
 lazy val persistence = BaseProject("persistence").settings(
   libraryDependencies ++= compileDependencies(postgresDB.value ++ slick.value ++ slickHickari.value ++
@@ -29,7 +29,7 @@ lazy val persistence = BaseProject("persistence").settings(
 lazy val commonUtil = BaseProject("common-util").settings(
   libraryDependencies ++= compileDependencies(finatraHttp.value ++ jbCrypt.value ++ json4sNative.value ++ logback.value ++ typesafeConfig.value
   ++ kafka.value  ++ slf4j.value ++ log4j.value ++ logback.value ++ json4sNative.value ++ json4sEx.value ++
-    jodaDate.value)
+    jodaDate.value ++ akka.value ++ akkaHttp.value)
   ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
   parallelExecution in Test := false
 )

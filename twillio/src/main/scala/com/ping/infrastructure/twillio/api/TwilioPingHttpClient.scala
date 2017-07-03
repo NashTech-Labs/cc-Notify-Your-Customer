@@ -1,11 +1,11 @@
-package com.ping.infrastructure.twilio.api
+package com.ping.infrastructure.twillio.api
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import com.ping.config.Configuration
 import com.ping.http.{PingHttpResponseData, WebClient}
-import com.ping.models.{RDTwilioConfig, RDMailConfig, RDSlackConfig}
+import com.ping.models.RDTwilioConfig
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

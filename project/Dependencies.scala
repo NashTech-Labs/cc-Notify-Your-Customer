@@ -16,11 +16,14 @@ object Dependencies {
   val akkaHttpVersion = "10.0.4"
 
 
+  val emailVersion = "1.4"
+
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Compile)
 
   def providedDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Provided)
 
   def testDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Test)
+
 
   def testClassifierDependencies(deps: List[ModuleID]) = deps map (_ % "test" classifier "tests")
 
@@ -67,7 +70,7 @@ object Dependencies {
     */
   def finatraHttp = Def.setting {
     List(
-      "com.twitter" %% "finatra-http" % finatraVersion/*,
+      "com.twitter" %% "finatra-http" % finatraVersion /*,
       "com.twitter" %% "finatra-httpclient" % finatraVersion*/
     )
   }
@@ -77,14 +80,16 @@ object Dependencies {
       "com.twitter" %% "finatra-http" % finatraVersion,
       "com.twitter" %% "inject-core" % finatraVersion,
 
-      "com.twitter" %% "inject-server" % finatraVersion/*,
+      "com.twitter" %% "inject-server" % finatraVersion /*,
       "com.twitter" %% "inject-app" % finatraVersion,
       "com.twitter" %% "inject-modules" % finatraVersion*/
     )
   }
 
   def kafka = Def.setting {
-    "org.apache.kafka" % "kafka-clients" % kafkaVersion :: Nil
+
+    "org.apache.kafka" %% "kafka" % kafkaVersion :: Nil
+
   }
 
   def akka = Def.setting {
@@ -104,7 +109,7 @@ object Dependencies {
     "org.postgresql" % "postgresql" % postgresVersion :: Nil
   }
 
-  def   h2DB = Def.setting {
+  def h2DB = Def.setting {
     "com.h2database" % "h2" % h2Version :: Nil
   }
 
@@ -114,6 +119,10 @@ object Dependencies {
 
   def slickHickari = Def.setting {
     "com.typesafe.slick" %% "slick-hikaricp" % slickHickariVersion :: Nil
+  }
+
+  def email = Def.setting {
+    "javax.mail" % "mail" % emailVersion :: Nil
   }
 
   /**

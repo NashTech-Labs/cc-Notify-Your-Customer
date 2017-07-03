@@ -1,7 +1,7 @@
 package com.ping.json
 import java.text.SimpleDateFormat
 
-import com.ping.date.DateUtil
+import com.ping.date.{DateHelper, DateUtil}
 import org.joda.time.DateTime
 import org.json4s._
 import org.json4s.native.JsonMethods.{parse => jParser}
@@ -9,24 +9,31 @@ import org.json4s.native.JsonMethods.{render, pretty => jPretty}
 import org.json4s.native.Serialization.{write => jWrite}
 
 import scala.util.Try
-import scala.language.implicitConversions
-
 
 
 trait JsonHelper{
 
-  val empty = ""
-  val javaNull = null
-
   implicit val formats = new org.json4s.DefaultFormats {
     override def dateFormatter: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd")
-  } ++ org.json4s.ext.JodaTimeSerializers.all ++ List(StringToBigDecimalSerializer)
+  } ++ org.json4s.ext.JodaTimeSerializers.all ++ List(IntToDateTimeSerializer, StringToBigDecimalSerializer)
+
+  case object IntToDateTimeSerializer extends CustomSerializer[DateTime](format => (
+    {
+      case JInt(value) => new DateTime(value.longValue)
+      case JLong(value) => new DateTime(value)
+      case JNull => null
+      case JString(value) => DateHelper.getDateTime(value)
+    },
+    {
+      case d: DateTime => JString(d.toString)
+    }
+  ))
 
   case object StringToBigDecimalSerializer extends CustomSerializer[BigDecimal](format => (
     {
       case JInt(value) => BigDecimal(value.longValue)
       case JLong(value) => BigDecimal(value)
-      case JNull => javaNull
+      case JNull => null
       case JString(value) => Try(BigDecimal(value.toInt)).getOrElse(BigDecimal(0))
     },
     {
@@ -41,7 +48,7 @@ trait JsonHelper{
   protected def pretty(value: String): String = jPretty(render(parse(value)))
 
   implicit protected def extractOrEmptyString(json: JValue): String = json match {
-    case JNothing => empty
+    case JNothing => ""
     case data     => data.extract[String]
   }
 

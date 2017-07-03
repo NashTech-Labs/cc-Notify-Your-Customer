@@ -21,14 +21,16 @@ trait SmsService extends PingLogger {
           if (smsDetail.text.contains("###")) {
             smsDetail.text.split("###").toList.map { msg =>
               info(s"Sending message to twilio: $msg")
-              twillioApi.send(config.phoneNumber, smsDetail.to, msg)
+              val isSent = twillioApi.send(config.phoneNumber, smsDetail.to, msg)
+              to -> isSent
             }
           } else {
             val splitedSms = smsDetail.text.grouped(152).toList
             (1 to splitedSms.length).map { num =>
               val sms = (if (splitedSms.length > 1) s"($num/${splitedSms.length})\n" else "") + splitedSms(num - 1)
               info(s"Sending message to twilio with length > 160 chars: $num")
-              twillioApi.send(config.phoneNumber, smsDetail.to, sms)
+              val isSent = twillioApi.send(config.phoneNumber, smsDetail.to, sms)
+              to -> isSent
             }
           }
         }.toMap

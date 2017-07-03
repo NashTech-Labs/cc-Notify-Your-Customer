@@ -5,19 +5,20 @@ import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import com.ping.config.Configuration
 import com.ping.http.{PingHttpResponseData, WebClient}
-import com.ping.models.RDMailConfig
+import com.ping.models.{RDMailConfig, RDSlackConfig}
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 
-trait PingClientApi extends WebClient {
+trait SlackPingHttpClient extends WebClient {
 
   val clientApiHost = Configuration.config.getString("client.api.host")
   val clientApiUrl = Configuration.config.getString("client.api.url")
   val accessToken = Configuration.config.getString("client.api.access.token")
   val url = clientApiHost + clientApiUrl
 
-  def getClientConfig(clientId: String): Future[Option[RDMailConfig]] = {
+  def getClientConfig(clientId: String): Future[Option[RDSlackConfig]] = {
     getRequest(url + clientId, Map("accessToken" -> accessToken)).flatMap { response =>
       unmarshal(response).map {
         case Some(responseCart) => clientConfigResponseHandler(responseCart)
@@ -27,13 +28,13 @@ trait PingClientApi extends WebClient {
     }
   }
 
-  private def clientConfigResponseHandler(responseCart: PingHttpResponseData): Option[RDMailConfig] = {
-    responseCart.data match {
-      case Some(data) => data.extractOpt[RDMailConfig]
-      case None => responseCart.message match {
+  private def clientConfigResponseHandler(clientResponse: PingHttpResponseData): Option[RDSlackConfig] = {
+    clientResponse.data match {
+      case Some(data) => data.extractOpt[RDSlackConfig]
+      case None => clientResponse.message match {
         case Some(msg) => warn(s"Error during config look up. Response found: $msg")
           None
-        case None => warn(s"Unexpected response state: $responseCart")
+        case None => warn(s"Unexpected response state: $clientResponse")
           None
       }
     }
@@ -48,7 +49,7 @@ trait PingClientApi extends WebClient {
 }
 
 object PingClientApiFactory {
-  def apply(actorSystem: ActorSystem) = new PingClientApi {
+  def apply(actorSystem: ActorSystem) = new SlackPingHttpClient {
     val system: ActorSystem = actorSystem
   }
 }

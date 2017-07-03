@@ -21,7 +21,7 @@ trait SlackPingHttpClient extends WebClient {
   def getClientConfig(clientId: String): Future[Option[RDSlackConfig]] = {
     getRequest(url + clientId, Map("accessToken" -> accessToken)).flatMap { response =>
       unmarshal(response).map {
-        case Some(responseCart) => clientConfigResponseHandler(responseCart)
+        case Some(clientResponse) => clientConfigResponseHandler(clientResponse)
         case None => warn(s"Response from client api: $response")
           None
       }

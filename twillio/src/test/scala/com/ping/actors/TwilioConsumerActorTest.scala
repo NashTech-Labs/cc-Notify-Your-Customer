@@ -22,7 +22,7 @@ class TwilioConsumerActorTest extends TestKit(ActorSystem("TwilioConsumerActorTe
     def read(): List[MessageFromKafka] =
       if (counter < 5) {
         counter = counter + 1
-        List(MessageFromKafka(write(SmsDetail(1, List("+919671701006"), "Hello customer",Some("+13523584605")))))
+        List(MessageFromKafka(write(SmsDetail("1", List("+919671701006"), "Hello customer",Some("+13523584605")))))
       } else {
         Nil
       }

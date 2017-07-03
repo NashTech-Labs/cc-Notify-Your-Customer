@@ -20,13 +20,13 @@ class SmsServiceTest extends WordSpecLike with MustMatchers with MockitoSugar {
 
     "send notification with sms " in {
       when(mocktwillioApi.send("+13523584605", "+919671701006", "Hello Customer")).thenReturn(true)
-      val response = MockSmsServiceTestObject.send(SmsDetail(1, List("+919671701006"), "Hello Customer"))
+      val response = MockSmsServiceTestObject.send(SmsDetail("1", List("+919671701006"), "Hello Customer"))
       response mustBe Map("+919671701006" -> true)
     }
 
     "not send notification with sms " in {
-      when(mocktwillioApi.send("+18442080503", "+919910630243", "Your flight was just support+%s@%s.(1/1)###fight got disrupted####")).thenReturn(false)
-      val response = MockSmsServiceTestObject.send(SmsDetail(2, List("+919910630243"), "Your flight was just support+%s@%s.(1/1)###fight got disrupted####"))
+      when(mocktwillioApi.send("+18442080503", "+919910630243", "+%s@%s.(1/1)### hey ####")).thenReturn(false)
+      val response = MockSmsServiceTestObject.send(SmsDetail("2", List("+919910630243"), "+%s@%s.(1/1)### hey ####"))
       response mustBe Map("+919910630243" -> false)
     }
 
@@ -36,7 +36,7 @@ class SmsServiceTest extends WordSpecLike with MustMatchers with MockitoSugar {
       val secondPart = "(2/2)\n" + "wxyz"
       when(mocktwillioApi.send("+13523584605", "+919671701006", firstPart)).thenReturn(true)
       when(mocktwillioApi.send("+13523584605", "+919671701006", secondPart)).thenReturn(true)
-      val response = MockSmsServiceTestObject.send(SmsDetail(3, List("+919671701006"), longMessage))
+      val response = MockSmsServiceTestObject.send(SmsDetail("3", List("+919671701006"), longMessage))
       response mustBe Map("+919671701006" -> true)
     }
 

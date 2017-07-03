@@ -144,3 +144,532 @@
 [INFO] - [2017-07-01 20:48:02,381] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
 [INFO] - [2017-07-01 20:48:13,400] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
 [INFO] - [2017-07-01 20:48:24,421] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:29:45,878] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 1e84283c-8dea-45b7-9fdc-d07e254bab76
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 22:29:46,031] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 22:29:46,032] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 22:29:46,038] - [com.ping.app.TwilioApp$] Twilio message service has been started..... :) 
+[INFO] - [2017-07-01 22:29:46,039] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:29:46,124] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 22:29:46,130] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 22:29:46,130] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 22:29:46,145] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 17
+[INFO] - [2017-07-01 22:29:46,147] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [sms-0] for group 1
+[INFO] - [2017-07-01 22:29:46,557] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:29:57,574] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:30:08,591] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:30:19,610] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:30:30,631] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:30:41,650] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:30:52,670] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:03,690] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:14,710] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:25,731] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:36,750] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:47,770] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:47,776] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:31:58,790] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:09,810] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:20,831] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:31,850] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:42,870] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:53,890] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:32:54,257] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:33:05,270] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:33:16,281] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:33:27,300] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:33:38,320] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:33:49,340] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:00,360] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:11,380] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:22,400] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:33,420] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:44,440] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:34:55,460] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:35:06,480] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:35:17,500] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:35:28,520] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:35:39,540] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:35:50,561] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:01,580] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:12,600] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:23,620] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:34,641] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:45,660] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:36:56,680] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:37:07,700] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:37:18,720] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:37:29,740] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:37:40,760] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:37:51,770] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:02,790] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:13,810] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:24,830] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:35,840] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:46,860] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:38:57,871] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:39:08,890] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:39:19,911] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:39:30,930] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:39:41,950] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:39:52,971] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:03,990] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:15,010] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:26,030] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:37,050] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:48,070] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:40:59,090] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:41:10,111] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:41:21,130] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:41:32,150] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:41:43,170] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:41:54,190] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:42:05,210] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:42:16,230] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:42:27,250] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:42:38,270] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:42:49,290] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:00,310] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:11,330] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:22,350] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:33,370] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:44,381] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:43:55,401] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:44:06,421] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:44:17,440] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:44:28,461] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:44:39,480] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:44:50,501] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:01,520] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:12,541] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:23,560] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:34,580] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:45,601] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:45:56,620] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:46:07,640] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:46:18,660] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:46:29,670] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:46:40,690] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:46:51,710] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:02,730] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:13,749] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:24,770] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:35,790] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:46,810] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:47:57,831] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:48:08,850] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:48:19,870] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:48:30,890] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:48:41,911] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:48:52,930] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:03,941] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:14,960] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:25,981] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:37,000] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:48,011] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:49:59,030] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:50:10,050] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:50:21,070] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:50:32,090] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:50:43,111] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:50:54,131] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:51:05,150] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:51:16,170] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:51:27,191] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:51:38,211] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:51:49,230] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:00,250] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:11,271] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:22,290] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:33,311] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:44,330] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:52:55,351] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:53:06,370] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:53:17,380] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:53:28,400] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:53:39,420] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:53:50,440] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:01,460] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:12,480] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:23,500] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:34,510] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:45,520] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:54:56,540] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:55:07,550] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:55:18,560] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:55:29,580] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:55:40,600] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:55:51,620] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:02,640] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:13,660] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:24,680] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:35,700] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:46,720] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:56:57,740] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:57:08,760] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:57:19,780] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:57:30,800] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:57:41,820] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:57:52,840] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:03,860] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:14,880] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:25,900] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:36,920] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:47,941] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:58:58,960] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:59:09,980] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:59:21,000] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:59:32,020] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:59:43,040] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 22:59:54,060] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:00:05,080] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:00:16,100] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:00:27,120] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:00:38,140] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:00:49,160] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:00,180] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:11,200] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:22,220] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:33,240] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:44,260] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:01:55,280] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:02:06,301] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:02:17,321] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:02:28,339] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:02:39,360] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:02:50,370] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:01,390] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:12,410] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:23,420] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:34,440] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:45,460] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:03:56,480] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:04:07,500] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:04:18,520] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:04:29,540] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:04:40,560] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:04:51,580] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:02,600] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:13,620] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:24,639] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:35,660] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:46,680] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:05:57,700] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:06:08,720] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:06:19,740] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:06:30,760] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:06:41,780] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:06:52,800] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:03,820] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:14,830] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:25,851] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:36,871] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:47,890] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:07:58,910] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:08:09,931] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:08:20,950] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:08:31,970] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:08:42,990] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:08:54,010] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:09:05,030] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:09:16,050] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:09:27,060] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:09:38,080] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:09:49,100] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:00,120] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:11,140] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:22,160] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:33,170] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:44,190] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:10:55,210] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:11:06,230] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:11:17,250] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:11:28,270] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:11:39,280] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:11:50,300] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:13,374] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 9442ef0a-d78d-478e-96d3-935be596ef3b
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 23:13:13,543] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 23:13:13,543] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 23:13:13,549] - [com.ping.app.TwilioApp$] Twilio message service has been started..... :) 
+[INFO] - [2017-07-01 23:13:13,551] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:13,642] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 23:13:13,647] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 23:13:13,647] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 23:13:13,658] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 19
+[INFO] - [2017-07-01 23:13:13,661] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [sms-0] for group 1
+[INFO] - [2017-07-01 23:13:13,696] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:24,719] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:35,736] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:46,756] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:13:57,775] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:14:08,796] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:14:16,033] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:14:27,055] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:14:38,076] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:14:49,096] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:00,116] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:11,136] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:22,156] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:33,176] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:44,195] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:15:55,216] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:16:06,236] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:16:17,256] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:16:28,276] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:16:39,295] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:16:50,315] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:01,325] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:12,346] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:21,882] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:32,896] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:43,915] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:17:54,936] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:05,956] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:16,976] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:27,996] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:39,016] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:50,036] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:18:50,915] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:19:01,936] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:19:12,955] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:19:23,976] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:28:21,371] - [org.apache.kafka.clients.consumer.ConsumerConfig] ConsumerConfig values: 
+	auto.commit.interval.ms = 900
+	auto.offset.reset = latest
+	bootstrap.servers = [http://localhost:9092]
+	check.crcs = true
+	client.id = 410d70ce-be40-4525-80d4-2a61510aea6f
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+[INFO] - [2017-07-01 23:28:21,619] - [org.apache.kafka.common.utils.AppInfoParser] Kafka version : 0.10.2.1
+[INFO] - [2017-07-01 23:28:21,619] - [org.apache.kafka.common.utils.AppInfoParser] Kafka commitId : e89bffd6b2eff799
+[INFO] - [2017-07-01 23:28:21,628] - [com.ping.app.TwilioApp$] Twilio message service has been started..... :) 
+[INFO] - [2017-07-01 23:28:21,629] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:28:21,753] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Discovered coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) for group 1.
+[INFO] - [2017-07-01 23:28:21,758] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Revoking previously assigned partitions [] for group 1
+[INFO] - [2017-07-01 23:28:21,759] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] (Re-)joining group 1
+[INFO] - [2017-07-01 23:28:21,770] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Successfully joined group 1 with generation 21
+[INFO] - [2017-07-01 23:28:21,772] - [org.apache.kafka.clients.consumer.internals.ConsumerCoordinator] Setting newly assigned partitions [sms-0] for group 1
+[INFO] - [2017-07-01 23:28:21,813] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:28:32,830] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:28:43,848] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:28:54,868] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:05,888] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:16,908] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:26,601] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:37,618] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:48,637] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:29:59,658] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:30:10,678] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:30:21,698] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:30:32,718] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:30:43,738] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:30:49,482] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:00,498] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:11,518] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:22,538] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:33,557] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:44,578] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:31:55,599] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:32:06,618] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:32:13,142] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[ERROR] - [2017-07-01 23:32:17,074] - [com.ping.infrastructure.twillio.api.TwillioApiImpl$] Failed sending SMS from +13523584605 to +917015455785 for: Hey how are you
+com.twilio.exception.ApiException: The number +917015455785 is unverified. Trial accounts cannot send messages to unverified numbers; verify +917015455785 at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.
+	at com.twilio.rest.api.v2010.account.MessageCreator.create(MessageCreator.java:333)
+	at com.twilio.rest.api.v2010.account.MessageCreator.create(MessageCreator.java:25)
+	at com.twilio.base.Creator.create(Creator.java:45)
+	at com.ping.infrastructure.twillio.api.TwilioApi$class.send(TwilioApi.scala:17)
+	at com.ping.infrastructure.twillio.api.TwillioApiImpl$.send(TwilioApi.scala:26)
+	at com.ping.services.SmsService$$anonfun$send$1$$anonfun$apply$2.apply(SmsService.scala:25)
+	at com.ping.services.SmsService$$anonfun$send$1$$anonfun$apply$2.apply(SmsService.scala:23)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.immutable.Range.foreach(Range.scala:160)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.AbstractTraversable.map(Traversable.scala:104)
+	at com.ping.services.SmsService$$anonfun$send$1.apply(SmsService.scala:23)
+	at com.ping.services.SmsService$$anonfun$send$1.apply(SmsService.scala:15)
+	at scala.collection.immutable.List.flatMap(List.scala:327)
+	at com.ping.services.SmsService$class.send(SmsService.scala:15)
+	at com.ping.services.SmsServiceImpl$.send(SmsService.scala:35)
+	at com.ping.actors.TwilioMessageSenderActor$$anonfun$receive$1.applyOrElse(TwilioActor.scala:23)
+	at akka.actor.Actor$class.aroundReceive(Actor.scala:513)
+	at com.ping.actors.TwilioMessageSenderActor.aroundReceive(TwilioActor.scala:12)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:527)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:496)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+[INFO] - [2017-07-01 23:32:24,158] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:32:35,178] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:32:46,198] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:32:57,218] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:08,238] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:19,258] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:30,277] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:41,298] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:44,330] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:33:55,348] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:34:06,368] - [com.ping.kafka.Consumer] Reading from kafka queue ...... List(sms)
+[INFO] - [2017-07-01 23:34:14,629] - [org.apache.kafka.clients.consumer.internals.AbstractCoordinator] Marking the coordinator knoldus-Vostro-3546:9092 (id: 2147483647 rack: null) dead for group 1

@@ -15,7 +15,6 @@ class TwilioConsumerActor(consumer: KafkaConsumerApi, twilioWorker: ActorRef) ex
 
   def receive: Receive = {
     case Read =>
-      println("we are in consumer now ...")
       val records = consumer.read()
       records foreach { message => twilioWorker ! message }
       if (records.isEmpty) {

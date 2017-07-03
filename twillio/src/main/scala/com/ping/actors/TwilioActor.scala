@@ -17,7 +17,6 @@ class TwilioMessageSenderActor(smsService: SmsService) extends Actor with PingLo
   def receive: Receive = {
     case MessageFromKafka(message: String) => {
       val smsInfo = parse(message).extract[TwilioMessage]
-      println(smsInfo)
       smsService.send(smsInfo)
     }
     case otherMsg => info(s"Oops.! Could not understand message.! $otherMsg")

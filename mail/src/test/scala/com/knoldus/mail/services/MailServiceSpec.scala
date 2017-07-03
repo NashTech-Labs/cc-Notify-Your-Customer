@@ -13,7 +13,8 @@ import scala.concurrent.duration.Duration
 
 class MailServiceSpec extends WordSpecLike with MockitoSugar {
   val mockedEmailApi: EmailApi = mock[EmailApi]
-  val emailInfo =PingEmail(1, List("himanshu.rajput@knoldus.in"), List("kunal.sethi@knoldus.in"), List("himanshu.14mca1061@abes.ac.in"), "Test Email", "testing")
+  val emailInfo =PingEmail(List("himanshu.rajput@knoldus.in"), List("kunal.sethi@knoldus.in"), List("himanshu.14mca1061@abes.ac.in"),
+    "Test Email", "testing", 1L)
 
 
 

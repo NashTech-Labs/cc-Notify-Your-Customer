@@ -23,7 +23,6 @@ case class TwilioMessage(
                       )
 
 case class PingEmail(
-                      clientId: Long,
                       to: List[String],
                       cc: List[String],
                       bcc: List[String],

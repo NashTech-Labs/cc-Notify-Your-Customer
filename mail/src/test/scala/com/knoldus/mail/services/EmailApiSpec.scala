@@ -8,7 +8,9 @@ import org.scalatest.mockito.MockitoSugar
 
 class EmailApiSpec extends WordSpec with MockitoSugar {
   val emailApi = mock[EmailApi]
-  val emailInfo = PingEmail(1, List("himanshu.rajput@knoldus.in"), List("kunal.sethi@knoldus.in"), List("himanshu.14mca1061@abes.ac.in"), "Test Email", "testing")
+  val emailInfo = PingEmail(List("himanshu.rajput@knoldus.in"), List("kunal.sethi@knoldus.in"),
+    List("himanshu.14mca1061@abes.ac.in"), "Test Email", "testing", 1L)
+
   "Mail Api" can {
     "send mail" should {
 

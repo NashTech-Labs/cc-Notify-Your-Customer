@@ -20,30 +20,29 @@ trait PingClientApi extends WebClient {
   def getClientConfig(clientId: String): Future[Option[RDMailConfig]] = {
     getRequest(url + clientId, Map("accessToken" -> accessToken)).flatMap { response =>
       unmarshal(response).map {
-        case Some(responseCart) => flightLookUpResponseHandler(responseCart)
+        case Some(responseCart) => clientConfigResponseHandler(responseCart)
         case None => warn(s"Response from client api: $response")
           None
       }
     }
   }
 
-  private def flightLookUpResponseHandler(responseCart: PingHttpResponseData): Option[RDMailConfig] = {
+  private def clientConfigResponseHandler(responseCart: PingHttpResponseData): Option[RDMailConfig] = {
     responseCart.data match {
       case Some(data) => data.extractOpt[RDMailConfig]
       case None => responseCart.message match {
-        case Some(msg) => warn(s"Error during flight look up. Response found: $msg")
+        case Some(msg) => warn(s"Error during config look up. Response found: $msg")
           None
-        case None => warn(s"Unexpected response cart state: $responseCart")
+        case None => warn(s"Unexpected response state: $responseCart")
           None
       }
-
     }
   }
 
   private def unmarshal(response: HttpResponse): Future[Option[PingHttpResponseData]] = {
-    Unmarshal(response.entity).to[String].map { flightStatsResponseJSON =>
-      debug("Json response from client api: " + flightStatsResponseJSON)
-      parse(flightStatsResponseJSON).extractOpt[PingHttpResponseData]
+    Unmarshal(response.entity).to[String].map { clientResponse =>
+      debug("Json response from client api: " + clientResponse)
+      parse(clientResponse).extractOpt[PingHttpResponseData]
     }
   }
 }

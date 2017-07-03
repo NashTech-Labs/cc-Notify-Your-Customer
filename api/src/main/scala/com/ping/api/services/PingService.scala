@@ -66,7 +66,7 @@ trait PingService extends JsonHelper with PingLogger {
       (mail.to ::: mail.cc ::: mail.bcc).mkString(", "), dateUtil.currentTimestamp, PingStatus.initiated)
 
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(mail))
+      dispatchPing(topicMail, write(mail.copy(clientId = client.id)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -79,7 +79,20 @@ trait PingService extends JsonHelper with PingLogger {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.slack, slack.message,
       slack.channelId.getOrElse("default"), dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(slack))
+      dispatchPing(topicMail, write(slack.copy(clientId = client.id)))
+      Some(log.getLogView)
+    } recover {
+      case NonFatal(ex) =>
+        error("Error found while dispatching mail", ex)
+        None
+    }
+  }
+
+  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
+    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
+      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
+    pingLogRepo.insert(pingLog) map { log =>
+      dispatchPing(topicMail, write(message.copy(clientId = client.id)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -89,20 +102,7 @@ trait PingService extends JsonHelper with PingLogger {
   }
 
   private def dispatchPing(topic: String, message: String) = Future {
-    pingProducer.send(topicMessage, write(message))
-  }
-
-  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
-    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
-      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
-    pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(message))
-      Some(log.getLogView)
-    } recover {
-      case NonFatal(ex) =>
-        error("Error found while dispatching mail", ex)
-        None
-    }
+    pingProducer.send(topicMessage, message)
   }
 
 }

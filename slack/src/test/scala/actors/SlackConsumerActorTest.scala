@@ -12,15 +12,12 @@ class SlackConsumerActorTest extends TestKit(ActorSystem("SlackConsumerActorTest
   with MustMatchers with BeforeAndAfterAll with JsonHelper {
 
   val mockedKafkaConsumer = new KafkaConsumerApi {
-    var counter = 0
+
 
     def read(): List[MessageFromKafka] =
-      if (counter < 5) {
-        counter = counter + 1
+
+
         List(MessageFromKafka(write(PingSlack(Some("general"), "hello"))))
-      } else {
-        Nil
-      }
 
     def close(): Unit = {}
   }

@@ -17,7 +17,6 @@ case class PingResponse(
                        )
 
 case class TwilioMessage(
-                        clientId: String,
                         to: String,
                         text: String,
                         clientId: Long = 0L
@@ -33,7 +32,6 @@ case class PingEmail(
                     )
 
 case class PingSlack(
-                      clientId : String,
                       channelId: Option[String],
                       message: String,
                       clientId: Long = 0L

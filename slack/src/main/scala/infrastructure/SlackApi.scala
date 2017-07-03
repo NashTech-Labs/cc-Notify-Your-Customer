@@ -16,7 +16,7 @@ trait SlackApi {
     * this method sends a msgBody on the channel named channelName as user
     */
   def send(slackDetail: PingSlack): Future[String] = {
-    pingApiClient.getClientConfig(slackDetail.clientId).flatMap {
+    pingApiClient.getClientConfig(slackDetail.clientId.toString).flatMap {
       case Some(config) => {
         val slackClient: SlackApiClient = new SlackApiClient(config.token)
         getChannelId(slackDetail.channelId.getOrElse("general"), slackClient).flatMap {

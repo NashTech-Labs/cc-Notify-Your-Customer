@@ -17,7 +17,7 @@ class SlackConsumerActorTest extends TestKit(ActorSystem("SlackConsumerActorTest
     def read(): List[MessageFromKafka] =
 
 
-        List(MessageFromKafka(write(PingSlack("1",Some("general"), "hello"))))
+        List(MessageFromKafka(write(PingSlack(Some("general"), "hello", 1L))))
 
     def close(): Unit = {}
   }

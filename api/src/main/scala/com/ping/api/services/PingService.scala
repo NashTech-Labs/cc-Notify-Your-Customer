@@ -23,13 +23,11 @@ trait PingService extends JsonHelper with PingLogger {
 
   def processPing(ping: Ping, client: RDClient): Future[PingResponse] = {
     for {
-      mail <- ping.mail match {
-        case Some(mail) => if (validate(client, MessageType.mail)) {
-          sendMail(mail, client)
-        } else {
-          Future.successful(None)
+      mail <- if (validate(client, MessageType.mail)) {
+        ping.mail match {
+          case Some(mail) => sendMail(mail, client)
+          case None => Future.successful(None)
         }
-        case None => Future.successful(None)
       }
       slack <- if (validate(client, MessageType.slack)) {
         ping.slack match {
@@ -79,7 +77,20 @@ trait PingService extends JsonHelper with PingLogger {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.slack, slack.message,
       slack.channelId.getOrElse("default"), dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(slack.copy(clientId = client.id)))
+      dispatchPing(topicSlack, write(slack.copy(clientId = client.id)))
+      Some(log.getLogView)
+    } recover {
+      case NonFatal(ex) =>
+        error("Error found while dispatching mail", ex)
+        None
+    }
+  }
+
+  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
+    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
+      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
+    pingLogRepo.insert(pingLog) map { log =>
+      dispatchPing(topicMessage, write(message.copy(clientId = client.id)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -90,19 +101,6 @@ trait PingService extends JsonHelper with PingLogger {
 
   private def dispatchPing(topic: String, message: String) = Future {
     pingProducer.send(topic, write(message))
-  }
-
-  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
-    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
-      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
-    pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(message.copy(clientId = client.id)))
-      Some(log.getLogView)
-    } recover {
-      case NonFatal(ex) =>
-        error("Error found while dispatching mail", ex)
-        None
-    }
   }
 
 }

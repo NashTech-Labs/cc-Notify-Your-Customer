@@ -14,7 +14,7 @@ trait SmsService extends PingLogger {
 
   def send(smsDetail: TwilioMessage): Future[Boolean] = {
 
-    twilioPingHttpClient.getClientConfig(smsDetail.clientId).map {
+    twilioPingHttpClient.getClientConfig(smsDetail.clientId.toString).map {
       case Some(config) =>
         smsDetail.to.flatMap { to =>
           if (smsDetail.text.contains("###")) {

@@ -15,7 +15,7 @@ class TwilioApiTest extends TestKit(ActorSystem("NotificationSenderTest")) with 
   "Twillio Api " should {
 
     "send sms to customs" in {
-
+pending
       val isSent = TwillioApiTestObj.send("+13523584605", "+919671701006", "Hey How are you ??")
       assert(isSent)
 

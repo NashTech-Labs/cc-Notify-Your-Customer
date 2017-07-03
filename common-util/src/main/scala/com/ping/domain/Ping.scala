@@ -17,9 +17,9 @@ case class PingResponse(
                        )
 
 case class TwilioMessage(
-                        to: String,
-                        text: String,
-                        clientId: Long = 0L
+                          to: String,
+                          text: String,
+                          clientId: Long = 0L
                       )
 
 case class PingEmail(

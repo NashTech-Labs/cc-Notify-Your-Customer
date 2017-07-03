@@ -28,6 +28,8 @@ trait PingService extends JsonHelper with PingLogger {
           case Some(mail) => sendMail(mail, client)
           case None => Future.successful(None)
         }
+      } else {
+        Future.successful(None)
       }
       slack <- if (validate(client, MessageType.slack)) {
         ping.slack match {

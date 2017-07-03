@@ -17,15 +17,13 @@ class SlackConsumerActorTest extends TestKit(ActorSystem("SlackConsumerActorTest
     def read(): List[MessageFromKafka] =
 
 
-        List(MessageFromKafka(write(PingSlack(Some("general"), "hello"))))
+        List(MessageFromKafka(write(PingSlack("1",Some("general"), "hello"))))
 
     def close(): Unit = {}
   }
   val workerActor = TestActorRef(new Actor {
     def receive = {
-      case msg =>
-        info(s"slack message found $msg")
-    }
+      case msg => }
   })
   val consumerActor = system.actorOf(SlackConsumerActor.props(mockedKafkaConsumer, workerActor))
 

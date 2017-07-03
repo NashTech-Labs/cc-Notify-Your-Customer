@@ -30,6 +30,7 @@ case class PingEmail(
                     )
 
 case class PingSlack(
+                      clientId : String,
                       channelId: Option[String],
                       message: String
                     )

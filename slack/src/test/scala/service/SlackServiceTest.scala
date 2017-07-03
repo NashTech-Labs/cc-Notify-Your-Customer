@@ -21,8 +21,8 @@ class SlackServiceTest extends WordSpecLike with MustMatchers with MockitoSugar 
   "Slack Service " should {
 
     "send notification on slack" in {
-      when(mockedSlackApi.send(PingSlack (Some("general"), "hey there !!"))).thenReturn(Future.successful(true))
-      assert(Await.result(MockSlackServiceTestObject.sendSlackMsg(PingSlack(Some("general"), "hey there !!")), Duration(20, "seconds")))
+      when(mockedSlackApi.send(PingSlack ("1",Some("general"), "hey there !!"))).thenReturn(Future.successful(""))
+      assert(Await.result(MockSlackServiceTestObject.sendSlackMsg(PingSlack("1",Some("general"), "hey there !!")), Duration(20, "seconds"))=="")
     }
 
   }

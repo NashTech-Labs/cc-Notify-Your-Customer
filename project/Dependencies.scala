@@ -12,8 +12,9 @@ object Dependencies {
   val slickHickariVersion = "3.2.0"
   val scalaTestVersion = "3.0.1"
   val guiceVersion = "4.0"
+  val akkaVersion = "2.4.17"
   val akkaHttpVersion = "10.0.4"
-  val akkaVersion = "2.5.3"
+
 
   def compileDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Compile)
 
@@ -22,7 +23,6 @@ object Dependencies {
   def testDependencies(deps: List[ModuleID]): Seq[ModuleID] = deps map (_ % Test)
 
   def testClassifierDependencies(deps: List[ModuleID]) = deps map (_ % "test" classifier "tests")
-
 
   def akkaHttp = Def.setting {
     "com.typesafe.akka" %% "akka-http" % akkaHttpVersion :: Nil
@@ -84,7 +84,7 @@ object Dependencies {
   }
 
   def kafka = Def.setting {
-    "org.apache.kafka" %% "kafka" % kafkaVersion :: Nil
+    "org.apache.kafka" % "kafka-clients" % kafkaVersion :: Nil
   }
 
   def akka = Def.setting {

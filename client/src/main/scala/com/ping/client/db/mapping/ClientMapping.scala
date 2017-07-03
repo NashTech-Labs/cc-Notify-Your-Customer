@@ -1,8 +1,8 @@
 package com.ping.client.db.mapping
 
 import com.ping.client.db.provider.DBProvider
+import com.ping.domain.DBClient
 import slick.lifted.ProvenShape
-import com.ping.models.DBClient
 
 private[db] trait ClientMapping {
   this: DBProvider =>

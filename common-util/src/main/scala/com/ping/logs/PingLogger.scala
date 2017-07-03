@@ -2,8 +2,6 @@ package com.ping.logs
 
 import org.slf4j.{Logger, LoggerFactory}
 
-import scala.util.Try
-
 
 trait PingLogger {
 

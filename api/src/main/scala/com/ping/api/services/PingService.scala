@@ -89,7 +89,7 @@ trait PingService extends JsonHelper with PingLogger {
   }
 
   private def dispatchPing(topic: String, message: String) = Future {
-    pingProducer.send(topicMessage, write(message))
+    pingProducer.send(topic, write(message))
   }
 
   private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {

@@ -6,6 +6,8 @@ import javax.mail.{Address, Message, Session}
 
 import com.ping.models.EmailInfo
 
+import scala.util.Try
+
 trait EmailApi extends {
 
   private val host: String = "smtp.gmail.com"
@@ -15,7 +17,7 @@ trait EmailApi extends {
   private val starttls: String = "true"
 
   def send(emailInfo: EmailInfo, emailId: String, password: String): Option[Int] = {
-    try {
+    Try {
       val props = new Properties
       props.put("mail.smtp.port", port)
       props.setProperty("mail.transport.protocol", protocol)
@@ -40,11 +42,10 @@ trait EmailApi extends {
       val transport = session.getTransport(protocol)
       transport.connect(host, emailId, password)
       transport.sendMessage(msg, msg.getAllRecipients)
-      Some(emailInfo.to.length)
-    } catch {
-      case exception: Exception =>
-        println("Error found while sending mail: ", exception)
-        None
+      emailInfo.to.length
+    }.toOption match{
+      case Some(x) => Some(x)
+      case None => None
     }
   }
 }

@@ -5,10 +5,11 @@ import javax.mail.internet.{InternetAddress, MimeMessage}
 import javax.mail.{Address, Message, Session}
 
 import com.ping.domain.PingEmail
+import com.ping.logger.PingLogger
 
 import scala.util.Try
 
-trait EmailApi  {
+trait EmailApi extends PingLogger{
 
   private val host: String = "smtp.gmail.com"
   private val protocol: String = "smtp"
@@ -44,8 +45,12 @@ trait EmailApi  {
       transport.sendMessage(msg, msg.getAllRecipients)
       emailInfo.to.length
     }.toOption match {
-      case Some(x) => Some(x)
-      case None => None
+      case Some(x) =>
+        info("Message sent successfully")
+        Some(x)
+      case None =>
+        error("Error found while sending mail")
+        None
     }
   }
 }

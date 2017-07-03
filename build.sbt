@@ -40,7 +40,7 @@ lazy val commonUtil = BaseProject("common-util").settings(
 lazy val slack = BaseProject("slack").settings(
   libraryDependencies ++= providedDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
     ++ compileDependencies(slackApi.value)
-    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value),
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value ++ akkaTestKit.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val mail = BaseProject("mail").settings(
@@ -50,8 +50,8 @@ lazy val mail = BaseProject("mail").settings(
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 lazy val twillio = BaseProject("twillio").settings(
-  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value)
-    ++ testDependencies(h2DB.value ::: Nil),
+  libraryDependencies ++= compileDependencies(json4sNative.value ++ logback.value ++ typesafeConfig.value ++ twilio.value)
+    ++ testDependencies(h2DB.value ++ mockito.value ++ scalaTest.value ++ spec2.value ++ akkaTestKit.value),
   parallelExecution in Test := false).dependsOn(commonUtil)
 
 

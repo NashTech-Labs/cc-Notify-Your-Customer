@@ -88,6 +88,10 @@ trait PingService extends JsonHelper with PingLogger {
     }
   }
 
+  private def dispatchPing(topic: String, message: String) = Future {
+    pingProducer.send(topic, write(message))
+  }
+
   private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
       message.to, dateUtil.currentTimestamp, PingStatus.initiated)
@@ -99,10 +103,6 @@ trait PingService extends JsonHelper with PingLogger {
         error("Error found while dispatching mail", ex)
         None
     }
-  }
-
-  private def dispatchPing(topic: String, message: String) = Future {
-    pingProducer.send(topicMessage, message)
   }
 
 }

@@ -17,24 +17,24 @@ case class PingResponse(
                        )
 
 case class TwilioMessage(
-                        clientId: String,
                         to: String,
-                        text: String
+                        text: String,
+                        clientId: Long = 0L
                       )
 
 case class PingEmail(
-                      clientId: Long,
                       to: List[String],
                       cc: List[String],
                       bcc: List[String],
                       subject: String,
-                      content: String
+                      content: String,
+                      clientId: Long = 0L
                     )
 
 case class PingSlack(
-                      clientId : String,
                       channelId: Option[String],
-                      message: String
+                      message: String,
+                      clientId: Long = 0L
                     )
 
 

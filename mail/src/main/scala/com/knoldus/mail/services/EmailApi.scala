@@ -4,11 +4,11 @@ import java.util.Properties
 import javax.mail.internet.{InternetAddress, MimeMessage}
 import javax.mail.{Address, Message, Session}
 
-import com.ping.models.EmailInfo
+import com.ping.domain.PingEmail
 
 import scala.util.Try
 
-trait EmailApi extends {
+trait EmailApi  {
 
   private val host: String = "smtp.gmail.com"
   private val protocol: String = "smtp"
@@ -16,7 +16,7 @@ trait EmailApi extends {
   private val port: String = "587"
   private val starttls: String = "true"
 
-  def send(emailInfo: EmailInfo, emailId: String, password: String): Option[Int] = {
+  def send(emailInfo: PingEmail, emailId: String, password: String): Option[Int] = {
     Try {
       val props = new Properties
       props.put("mail.smtp.port", port)
@@ -43,7 +43,7 @@ trait EmailApi extends {
       transport.connect(host, emailId, password)
       transport.sendMessage(msg, msg.getAllRecipients)
       emailInfo.to.length
-    }.toOption match{
+    }.toOption match {
       case Some(x) => Some(x)
       case None => None
     }

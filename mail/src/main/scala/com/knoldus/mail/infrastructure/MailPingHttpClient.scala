@@ -10,7 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 
-trait MailClientApi extends WebClient {
+trait MailPingHttpClient extends WebClient {
 
   val clientApiHost = Configuration.config.getString("client.api.host")
   val clientApiUrl = Configuration.config.getString("client.api.url")
@@ -20,14 +20,14 @@ trait MailClientApi extends WebClient {
   def getClientConfig(clientId: String): Future[Option[RDMailConfig]] = {
     getRequest(url + clientId, Map("accessToken" -> accessToken)).flatMap { response =>
       unmarshal(response).map {
-        case Some(responseCart) => flightLookUpResponseHandler(responseCart)
+        case Some(responseCart) => clientConfigResponseHandler(responseCart)
         case None => warn(s"Response from client api: $response")
           None
       }
     }
   }
 
-  private def flightLookUpResponseHandler(responseCart: PingHttpResponseData): Option[RDMailConfig] = {
+  private def clientConfigResponseHandler(responseCart: PingHttpResponseData): Option[RDMailConfig] = {
     responseCart.data match {
       case Some(data) => data.extractOpt[RDMailConfig]
       case None => responseCart.message match {
@@ -49,7 +49,7 @@ trait MailClientApi extends WebClient {
 }
 
 object PingClientApiFactory {
-  def apply(actorSystem: ActorSystem) = new MailClientApi  {
+  def apply(actorSystem: ActorSystem) = new MailPingHttpClient  {
     val system: ActorSystem = actorSystem
   }
 }

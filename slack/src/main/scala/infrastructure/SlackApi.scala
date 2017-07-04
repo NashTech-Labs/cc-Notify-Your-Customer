@@ -1,30 +1,30 @@
 package infrastructure
 
+import akka.actor.ActorSystem
+import com.ping.domain.PingSlack
 import slack.api.SlackApiClient
-import slack.main.scala.SlackDetails
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
 trait SlackApi {
-  val token: String = "" // replace your Slack API token here
-  val apiClient: SlackApiClient
+
+  val pingApiClient: SlackPingHttpClient
 
   /**
     *
     * this method sends a msgBody on the channel named channelName as user
     */
-  def send(slackDetail: SlackDetails): Future[Boolean] = {
-    val channelId: Future[Option[String]] = getChannelId(slackDetail.channelName)
-    channelId.map {
-      _ match {
-        case Some(channelId) =>
-          apiClient.postChatMessage(channelId, slackDetail.body, slackDetail.user)
-          true
-        case None =>
-          false
-
+  def send(slackDetail: PingSlack): Future[String] = {
+    pingApiClient.getClientConfig(slackDetail.clientId.toString).flatMap {
+      case Some(config) => {
+        val slackClient: SlackApiClient = new SlackApiClient(config.token)
+        getChannelId(slackDetail.channelId.getOrElse("general"), slackClient).flatMap {
+          case Some(channel) => slackClient.postChatMessage(channel, slackDetail.message)
+          case None => Future.successful("Channel id not found")
+        }
       }
+      case None => Future.successful("Config not found")
     }
   }
 
@@ -32,10 +32,10 @@ trait SlackApi {
     *
     * this method returns the channel id of the channel named channelName
     */
-  def getChannelId(channelName: String): Future[Option[String]] = {
-    val channelsFuture: Future[Seq[Option[String]]] = apiClient.listChannels().map(channels =>
+  def getChannelId(channelId: String, slackClient: SlackApiClient): Future[Option[String]] = {
+    val channelsFuture: Future[Seq[Option[String]]] = slackClient.listChannels().map(channels =>
       channels.map(channel =>
-        if (channel.name == channelName) {
+        if (channel.name == channelId) {
           Some(channel.id)
         }
         else {
@@ -44,8 +44,11 @@ trait SlackApi {
       ))
     channelsFuture.map(channels => channels.find(channel => channel.isDefined).flatten)
   }
+
 }
 
-object SlackApiImpl extends SlackApi {
-  val apiClient: SlackApiClient = SlackApiClient(token)
+object SlackApiImpl {
+  def apply(system: ActorSystem) = new SlackApi {
+    val pingApiClient: SlackPingHttpClient = PingClientApiFactory(system)
+  }
 }

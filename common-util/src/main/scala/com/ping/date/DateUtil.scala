@@ -4,13 +4,13 @@ import java.sql.Timestamp
 
 trait DateUtil {
 
-  def currentTime: Long = System.currentTimeMillis
-
   def currentTimestamp: Timestamp = new Timestamp(currentTime)
+
+  def currentTime: Long = System.currentTimeMillis
 
 }
 
-trait UUIDHelper{
+trait UUIDHelper {
 
   def getRandomUUID: String = java.util.UUID.randomUUID().toString
 

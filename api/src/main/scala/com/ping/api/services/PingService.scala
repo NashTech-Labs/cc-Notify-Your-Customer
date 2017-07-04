@@ -23,13 +23,13 @@ trait PingService extends JsonHelper with PingLogger {
 
   def processPing(ping: Ping, client: RDClient): Future[PingResponse] = {
     for {
-      mail <- ping.mail match {
-        case Some(mail) => if (validate(client, MessageType.mail)) {
-          sendMail(mail, client)
-        } else {
-          Future.successful(None)
+      mail <- if (validate(client, MessageType.mail)) {
+        ping.mail match {
+          case Some(mail) => sendMail(mail, client)
+          case None => Future.successful(None)
         }
-        case None => Future.successful(None)
+      } else {
+        Future.successful(None)
       }
       slack <- if (validate(client, MessageType.slack)) {
         ping.slack match {
@@ -65,8 +65,10 @@ trait PingService extends JsonHelper with PingLogger {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.mail, mail.subject + "***" + mail.content,
       (mail.to ::: mail.cc ::: mail.bcc).mkString(", "), dateUtil.currentTimestamp, PingStatus.initiated)
 
+    info("Inserting ping log for ping")
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(mail))
+      info(s"Dispatching ping: $mail")
+      dispatchPing(topicMail, write(mail.copy(clientId = client.id)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -78,8 +80,27 @@ trait PingService extends JsonHelper with PingLogger {
   private def sendSlackMessage(slack: PingSlack, client: RDClient) = {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.slack, slack.message,
       slack.channelId.getOrElse("default"), dateUtil.currentTimestamp, PingStatus.initiated)
+
+    info("Inserting ping log for ping")
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMessage, write(slack))
+      info(s"Dispatching ping: $slack")
+      dispatchPing(topicSlack, write(slack.copy(clientId = client.id)))
+      Some(log.getLogView)
+    } recover {
+      case NonFatal(ex) =>
+        error("Error found while dispatching mail", ex)
+        None
+    }
+  }
+
+  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
+    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
+      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
+
+    info("Inserting ping log for ping")
+    pingLogRepo.insert(pingLog) map { log =>
+      info(s"Dispatching ping: $message")
+      dispatchPing(topicMessage, write(message.copy(clientId = client.id)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -89,21 +110,7 @@ trait PingService extends JsonHelper with PingLogger {
   }
 
   private def dispatchPing(topic: String, message: String) = Future {
-    info(s"Dispatching ping...........${topic}, ${message}")
-    pingProducer.send(topic, write(message))
-  }
-
-  private def sendPhoneMessage(message: TwilioMessage, client: RDClient) = {
-    val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
-      message.to, dateUtil.currentTimestamp, PingStatus.initiated)
-    pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMessage, write(message.copy(clientId = client.id.toString)))
-      Some(log.getLogView)
-    } recover {
-      case NonFatal(ex) =>
-        error("Error found while dispatching mail", ex)
-        None
-    }
+    pingProducer.send(topic, message)
   }
 
 }

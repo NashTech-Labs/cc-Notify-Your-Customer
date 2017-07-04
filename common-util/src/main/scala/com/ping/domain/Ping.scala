@@ -19,8 +19,8 @@ case class PingResponse(
 case class TwilioMessage(
                           to: String,
                           text: String,
-                          clientId: String = "0"
-                        )
+                          clientId: Long = 0L
+                      )
 
 case class PingEmail(
                       to: List[String],
@@ -55,10 +55,10 @@ object PingStatus {
 
 
 case class PingLog(
-                    uuid: String,
-                    messageType: String,
-                    message: String,
-                    to: String,
-                    sentAt: DateTime,
-                    status: String = PingStatus.initiated
-                  )
+                     uuid: String,
+                     messageType: String,
+                     message: String,
+                     to: String,
+                     sentAt: DateTime,
+                     status: String = PingStatus.initiated
+                   )

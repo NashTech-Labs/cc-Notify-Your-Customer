@@ -1,14 +1,13 @@
 package com.ping.json
-
 import java.text.SimpleDateFormat
 
-import com.ping.date.DateHelper
+import com.ping.date.{DateHelper, DateUtil}
 import org.joda.time.DateTime
-import org.json4s.JsonAST.{JInt, JLong}
-import org.json4s.{CustomSerializer, JDouble, JNothing, JNull, JString, JValue}
+import org.json4s._
 import org.json4s.native.JsonMethods.{parse => jParser}
-import org.json4s.native.JsonMethods.{pretty=> jPretty, render}
+import org.json4s.native.JsonMethods.{render, pretty => jPretty}
 import org.json4s.native.Serialization.{write => jWrite}
+
 import scala.util.Try
 
 

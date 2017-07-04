@@ -32,7 +32,7 @@ trait Producer extends KafkaProducerApi with PingLogger {
 
   def send(topic: String, record: String): Future[RecordMetadata] = {
     val message: ProducerRecord[String, String] = new ProducerRecord[String, String](topic, record)
-    debug("Sending message to kafka cluster .....")
+    info(s"Sending message to kafka cluster ..... Topic: $topic,Record: $record")
     val recordMetadataResponse = producer.send(message)
     val promise = Promise[RecordMetadata]()
     Future {

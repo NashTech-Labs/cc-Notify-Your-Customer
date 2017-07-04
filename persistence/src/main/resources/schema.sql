@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS mail_config (
 CREATE TABLE IF NOT EXISTS slack_config (
   id BIGSERIAL PRIMARY KEY,
   client_id BIGINT REFERENCES client(id),
-  token VARCHAR(50) NOT NULL,
-  defaul_channel VARCHAR(50)
+  token VARCHAR(150) NOT NULL,
+  default_channel VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS twillio_config (

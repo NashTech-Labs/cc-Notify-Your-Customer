@@ -25,7 +25,7 @@ class SmsServiceTest extends AsyncWordSpecLike with  MustMatchers with MockitoSu
     "send notification with sms " in {
       when(mocktwillioApi.send("+13523584605", "+919671701006", "Hello Customer")).thenReturn(true)
       when(mockTwilioHttpClient.getClientConfig("1")).thenReturn(Future.successful(Some(RDTwilioConfig(1, 1, "+919671701006", "abcde", "sid"))))
-      val response: Future[Boolean] = MockSmsServiceTestObject.send(TwilioMessage("+919671701006", "Hello Customer", Some("1")))
+      val response: Future[Boolean] = MockSmsServiceTestObject.send(TwilioMessage("+919671701006", "Hello Customer", 1L))
       //response mustBe Map("+919671701006" -> true)
       response.map( res =>
         assert(res ==true )
@@ -35,7 +35,7 @@ class SmsServiceTest extends AsyncWordSpecLike with  MustMatchers with MockitoSu
     "not send notification with sms " in {
       when(mocktwillioApi.send("+18442080503", "+919910630243", "+%s@%s.(1/1)### hey ####")).thenReturn(false)
       when(mockTwilioHttpClient.getClientConfig("2")).thenReturn(Future.successful(Some(RDTwilioConfig(2, 2, "+919671701006", "abcde", "sid"))))
-      val response = MockSmsServiceTestObject.send(TwilioMessage("+919910630243", "+%s@%s.(1/1)### hey ####", Some("2")))
+      val response = MockSmsServiceTestObject.send(TwilioMessage("+919910630243", "+%s@%s.(1/1)### hey ####", 2L))
       response.map{ res =>
         assert(res ==true )
     }
@@ -48,7 +48,7 @@ class SmsServiceTest extends AsyncWordSpecLike with  MustMatchers with MockitoSu
       when(mockTwilioHttpClient.getClientConfig("3")).thenReturn(Future.successful(Some(RDTwilioConfig(3, 3, "+919671701006", "abcde", "sid"))))
       when(mocktwillioApi.send("+13523584605", "+919671701006", firstPart)).thenReturn(true)
       when(mocktwillioApi.send("+13523584605", "+919671701006", secondPart)).thenReturn(true)
-      val response = MockSmsServiceTestObject.send(TwilioMessage( "+919671701006", longMessage, Some("3")))
+      val response = MockSmsServiceTestObject.send(TwilioMessage("+919671701006", longMessage, 3L))
       response.map{ res =>
         assert(res ==true )
       }

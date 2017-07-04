@@ -2,12 +2,13 @@ package service
 
 import akka.actor.ActorSystem
 import com.ping.domain.PingSlack
+import com.ping.logger.PingLogger
 import infrastructure.{SlackApi, SlackApiImpl}
 
 import scala.concurrent.Future
 
 
-trait SlackService {
+trait SlackService extends PingLogger{
 
   val slackApi: SlackApi
 
@@ -16,6 +17,7 @@ trait SlackService {
     * this method calls the send(..) method of the SlackApi
     */
   def sendSlackMsg(slackDetails: PingSlack): Future[String] = {
+    info(s"Processing message: $slackDetails")
     slackApi.send(slackDetails)
   }
 }

@@ -1,6 +1,7 @@
 package com.ping.services
 
 import akka.actor.ActorSystem
+import com.ping.config.Configuration
 import com.ping.domain.TwilioMessage
 import com.ping.infrastructure.twillio.api.{TwilioApi, TwilioPingClientApiFactory, TwilioPingHttpClient, TwillioApiImpl}
 import com.ping.logger.PingLogger
@@ -14,7 +15,7 @@ trait SmsService extends PingLogger {
 
   def send(smsDetail: TwilioMessage): Future[Boolean] = {
 
-    twilioPingHttpClient.getClientConfig(smsDetail.clientId).map {
+    twilioPingHttpClient.getClientConfig(smsDetail.clientId.toString).map {
       case Some(config) =>
         smsDetail.to.flatMap { to =>
           if (smsDetail.text.contains("###")) {

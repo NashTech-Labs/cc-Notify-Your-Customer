@@ -42,6 +42,7 @@ trait PingController extends Security with PingLogger with JsonHelper {
   private def processPings(data: String, client: RDClient): Future[HttpResponse] = {
     parse(data).extractOpt[Ping] match {
       case Some(ping) =>
+        info(s"Ping...............$ping")
         pingService.processPing(ping, client) map { response =>
           if (response.mail.isEmpty && response.slack.isEmpty && response.message.isEmpty) {
             HttpResponse(BadRequest, entity = HttpEntities.create(ContentTypes.`application/json`,

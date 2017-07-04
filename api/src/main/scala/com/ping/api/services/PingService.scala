@@ -79,7 +79,7 @@ trait PingService extends JsonHelper with PingLogger {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.slack, slack.message,
       slack.channelId.getOrElse("default"), dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(slack))
+      dispatchPing(topicMessage, write(slack))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>
@@ -89,6 +89,7 @@ trait PingService extends JsonHelper with PingLogger {
   }
 
   private def dispatchPing(topic: String, message: String) = Future {
+    info(s"Dispatching ping...........${topic}, ${message}")
     pingProducer.send(topic, write(message))
   }
 
@@ -96,7 +97,7 @@ trait PingService extends JsonHelper with PingLogger {
     val pingLog = RDPingLog(0L, uuidHelper.getRandomUUID, client.id, MessageType.twilio, message.text,
       message.to, dateUtil.currentTimestamp, PingStatus.initiated)
     pingLogRepo.insert(pingLog) map { log =>
-      dispatchPing(topicMail, write(message))
+      dispatchPing(topicMessage, write(message.copy(clientId = client.id.toString)))
       Some(log.getLogView)
     } recover {
       case NonFatal(ex) =>

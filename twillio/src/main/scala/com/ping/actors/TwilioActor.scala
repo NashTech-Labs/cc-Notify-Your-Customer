@@ -8,6 +8,8 @@ import com.ping.kafka.{Consumer, MessageFromKafka}
 import com.ping.logger.PingLogger
 import com.ping.services.{SmsService}
 
+import scala.util.control.NonFatal
+
 
 class TwilioMessageSenderActor(smsService: SmsService) extends Actor with PingLogger with JsonHelper {
 
@@ -15,9 +17,18 @@ class TwilioMessageSenderActor(smsService: SmsService) extends Actor with PingLo
   implicit val materializer = ActorMaterializer()
 
   def receive: Receive = {
-    case MessageFromKafka(message: String) => {
-      val smsInfo = parse(message).extract[TwilioMessage]
-      smsService.send(smsInfo)
+    case message: String => {
+      info(s"message received........$message")
+      val smsInfo = try{
+        val msg = parse(write(message)).extract[TwilioMessage]
+        info(s"Got message to deliver.........${msg}")
+        smsService.send(msg)
+      }
+      catch{
+        case NonFatal(ex) =>
+          error(s"Error found............${ex.printStackTrace()}")
+      }
+
     }
     case otherMsg => info(s"Oops.! Could not understand message.! $otherMsg")
   }

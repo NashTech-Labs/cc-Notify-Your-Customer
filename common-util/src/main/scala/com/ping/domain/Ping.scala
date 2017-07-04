@@ -17,22 +17,24 @@ case class PingResponse(
                        )
 
 case class TwilioMessage(
-                        clientId: String,
-                        to: String,
-                        text: String
-                      )
+                          to: String,
+                          text: String,
+                          clientId: String = "0"
+                        )
 
 case class PingEmail(
                       to: List[String],
                       cc: List[String],
                       bcc: List[String],
                       subject: String,
-                      content: String
+                      content: String,
+                      clientId: Long = 0L
                     )
 
 case class PingSlack(
                       channelId: Option[String],
-                      message: String
+                      message: String,
+                      clientId: Long = 0L
                     )
 
 
@@ -53,10 +55,10 @@ object PingStatus {
 
 
 case class PingLog(
-                     uuid: String,
-                     messageType: String,
-                     message: String,
-                     to: String,
-                     sentAt: DateTime,
-                     status: String = PingStatus.initiated
-                   )
+                    uuid: String,
+                    messageType: String,
+                    message: String,
+                    to: String,
+                    sentAt: DateTime,
+                    status: String = PingStatus.initiated
+                  )

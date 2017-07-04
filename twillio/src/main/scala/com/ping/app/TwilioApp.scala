@@ -1,7 +1,7 @@
 package com.ping.app
 
-import akka.actor.{ActorSystem, Props}
-import com.ping.actors.{TwilioMessageSenderActorFactory, TwilioMessageSenderActor, TwilioConsumerActor}
+import akka.actor.ActorSystem
+import com.ping.actors.{TwilioConsumerActor, TwilioMessageSenderActorFactory}
 import com.ping.kafka.{Consumer, Topics}
 import com.ping.logger.PingLogger
 import com.ping.services.SmsServiceImpl

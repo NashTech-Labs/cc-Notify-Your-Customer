@@ -16,7 +16,8 @@ class TwilioConsumerActor(consumer: KafkaConsumerApi, twilioWorker: ActorRef) ex
   def receive: Receive = {
     case Read =>
       val records = consumer.read()
-      records foreach { message => twilioWorker ! message }
+      info(s"message received...............$records")
+      records foreach { message => twilioWorker ! message.record }
       if (records.isEmpty) {
         context.system.scheduler.scheduleOnce(waitingTime, self, Read)
       } else {

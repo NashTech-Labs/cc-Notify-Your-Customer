@@ -102,24 +102,36 @@ trait ConfigurationService extends JsonHelper with PingLogger {
   }
 
   private def updateMailConfig(mailConfig: MailConfig, client: RDClient): Future[Option[String]] = {
-    mailConfigRepo.update(mailConfig.getRDConfig(client.id)).flatMap { _ =>
-      clientRepo.enableMail(client.id).map(_ => Some("Updated"))
+    mailConfigRepo.getByClientId(client.id).flatMap {
+      case Some(config) =>
+        mailConfigRepo.update(mailConfig.getUpdatedConfig(config.id, client.id)).flatMap { _ =>
+          clientRepo.enableMail(client.id).map(_ => Some("Updated"))
+        }
+      case None => Future.successful(Some("No existing config found"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
-  private def updateSlackConfig(slackConfig: SlackConfig, client: RDClient) = {
-    slackConfigRepo.update(slackConfig.getRDConfig(client.id)).flatMap { _ =>
-      clientRepo.enableSlack(client.id).map(_ => Some("Updated"))
+  private def updateSlackConfig(slackConfig: SlackConfig, client: RDClient): Future[Some[String]] = {
+    slackConfigRepo.getByClientId(client.id).flatMap {
+      case Some(conf) =>
+        slackConfigRepo.update(slackConfig.getUpdatedConfig(conf.id, client.id)).flatMap { _ =>
+          clientRepo.enableSlack(client.id).map(_ => Some("Updated"))
+        }
+      case None => Future.successful(Some("No existing config found"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }
   }
 
   private def updateTwilioConfig(twillioConfig: TwilioConfig, client: RDClient) = {
-    twilioConfigRepo.update(twillioConfig.getRDConfig(client.id)).flatMap { _ =>
-      clientRepo.enableTwilio(client.id).map(_ => Some("Updated"))
+    twilioConfigRepo.getByClientId(client.id).flatMap {
+      case Some(config) =>
+        twilioConfigRepo.update(twillioConfig.getUpdatedConfig(config.id, client.id)).flatMap { _ =>
+          clientRepo.enableTwilio(client.id).map(_ => Some("Updated"))
+        }
+      case None => Future.successful(Some("No existing config found"))
     } recover {
       case NonFatal(ex) => Some(ex.getMessage)
     }

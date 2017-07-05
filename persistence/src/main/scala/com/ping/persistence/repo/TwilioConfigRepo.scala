@@ -22,6 +22,10 @@ trait TwilioConfigRepo extends TwilioConfigMapping {
     twilioConfigInfo.filter(_.id === id).result.headOption
   }
 
+  def getByClientId(clientId: Long): Future[Option[RDTwilioConfig]] = withTransaction {
+    twilioConfigInfo.filter(_.clientId === clientId).result.headOption
+  }
+
   def update(rdTwilioConfig: RDTwilioConfig): Future[Int] = withTransaction {
     twilioConfigInfo.filter(_.id === rdTwilioConfig.id).update(rdTwilioConfig)
   }

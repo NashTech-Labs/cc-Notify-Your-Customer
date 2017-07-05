@@ -18,7 +18,11 @@ trait MailConfigRepo extends MailConfigMapping {
     }
   }
 
-  def get(clientId: Long): Future[Option[RDMailConfig]] = withTransaction {
+  def get(id: Long): Future[Option[RDMailConfig]] = withTransaction {
+    mailConfigInfo.filter(_.id === id).result.headOption
+  }
+
+  def getByClientId(clientId: Long): Future[Option[RDMailConfig]] = withTransaction {
     mailConfigInfo.filter(_.clientId === clientId).result.headOption
   }
 

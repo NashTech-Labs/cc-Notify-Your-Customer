@@ -22,8 +22,12 @@ trait SlackConfigRepo extends SlackConfigMapping {
     slackConfigInfo.filter(_.id === id).result.headOption
   }
 
+  def getByClientId(clientId: Long): Future[Option[RDSlackConfig]] = withTransaction {
+    slackConfigInfo.filter(_.clientId === clientId).result.headOption
+  }
+
   def update(rdSlackConfig: RDSlackConfig): Future[Int] = withTransaction {
-    slackConfigInfo.filter(_.id === rdSlackConfig.id).update(rdSlackConfig)
+    slackConfigInfo.filter(_.clientId === rdSlackConfig.clientId).update(rdSlackConfig)
   }
 
   def delete(id: Long): Future[Int] = withTransaction {

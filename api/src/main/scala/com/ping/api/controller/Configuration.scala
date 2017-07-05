@@ -19,7 +19,7 @@ import scala.util.Try
 import scala.util.control.NonFatal
 
 
-trait ConfigurationController extends Security with PingLogger with JsonHelper {
+trait Configuration extends Security with PingLogger with JsonHelper {
 
   val configurationService: ConfigurationService
 

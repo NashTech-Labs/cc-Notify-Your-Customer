@@ -7,7 +7,7 @@ import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
 
 
-trait DefaultController {
+trait Default {
 
   val singletoneRoute: Route = pathSingleSlash {
     get {

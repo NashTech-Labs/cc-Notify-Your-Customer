@@ -17,12 +17,12 @@ import scala.concurrent.Future
 import scala.util.Try
 import scala.util.control.NonFatal
 
-trait LogInController extends Security with AdminSecurity with PingLogger with JsonHelper {
+trait Client extends Security with AdminSecurity with PingLogger with JsonHelper {
 
   val logInService: LogInService
   val configurationService: ConfigurationService
 
-  def loginRoutes = signUpRequestPost ~ getConfigForClient
+  def clientRoutes = signUpRequestPost ~ getConfigForClient
 
   def signUpRequestPost: Route = pathPrefix("v1") {
     path("signup") {

@@ -1,5 +1,10 @@
 # Ping:
 
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/13af6eb9248f417bb32901309a276d7b)](https://www.codacy.com/app/dagaharshit/cc-Notify-Your-Customer?utm_source=github.com&utm_medium=referral&utm_content=knoldus/cc-Notify-Your-Customer&utm_campaign=badger)
+
+Notify your customers with a single route
+
 Notify your customers with single route
 
 # Description:
@@ -13,7 +18,7 @@ There are many ways through which organizations can notify their customers for v
 3. Twilio
 
 
-# Table of Contents: 
+# Table of Contents:
 1. Installation
 2. Usage
 3. Contributing
@@ -35,7 +40,7 @@ There are many ways through which organizations can notify their customers for v
 2. Configure services
 3. Ping your customers with single route
 
-# Contributing: 
+# Contributing:
 
 # Credits:
 

@@ -25,3 +25,6 @@ logs/*
 .cache-main
 .cache-tests
 .class
+log/*
+log/error.log
+log/main.log

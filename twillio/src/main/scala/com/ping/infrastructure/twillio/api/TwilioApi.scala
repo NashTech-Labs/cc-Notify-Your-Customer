@@ -11,8 +11,8 @@ import scala.util.Try
 
 trait TwilioApi extends PingLogger{
 
-  val accountSid: String = sys.env.getOrElse("TWILIO_ACCOUNT_SID", "KnoldusTwilio@gmail.com")
-  val authToken: String = sys.env.getOrElse("TWILIO_AUTH_TOKEN", "Fake@12ss3d4f6r")
+  val accountSid: String
+  val authToken: String
 
 
   def send(fromNumber: String, toNumber: String, text: String): Boolean = Try {
@@ -27,4 +27,4 @@ trait TwilioApi extends PingLogger{
 
 }
 
-object TwillioApiImpl extends TwilioApi
+//object TwillioApiImpl extends TwilioApi

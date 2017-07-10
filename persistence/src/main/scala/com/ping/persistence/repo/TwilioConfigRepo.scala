@@ -18,8 +18,8 @@ trait TwilioConfigRepo extends TwilioConfigMapping {
     }
   }
 
-  def get(id: Long): Future[Option[RDTwilioConfig]] = withTransaction {
-    twilioConfigInfo.filter(_.id === id).result.headOption
+  def get(clientId: Long): Future[Option[RDTwilioConfig]] = withTransaction {
+    twilioConfigInfo.filter(_.clientId === clientId).result.headOption
   }
 
   def getByClientId(clientId: Long): Future[Option[RDTwilioConfig]] = withTransaction {

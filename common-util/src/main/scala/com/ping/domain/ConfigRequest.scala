@@ -33,9 +33,9 @@ case class SlackConfig(
 
 case class TwilioConfig(
                          phoneNumber: String,
-                         email: String,
-                         password: String
+                         token: String,
+                         sId: String
                        ) {
-  def getRDConfig(clientId: Long): RDTwilioConfig = RDTwilioConfig(0L, clientId, phoneNumber, email, password)
-  def getUpdatedConfig(id: Long, clientId: Long): RDTwilioConfig = RDTwilioConfig(id, clientId, phoneNumber, email, password)
+  def getRDConfig(clientId: Long): RDTwilioConfig = RDTwilioConfig(0L, clientId, phoneNumber, token, sId)
+  def getUpdatedConfig(id: Long, clientId: Long): RDTwilioConfig = RDTwilioConfig(id, clientId, phoneNumber, token, sId)
 }

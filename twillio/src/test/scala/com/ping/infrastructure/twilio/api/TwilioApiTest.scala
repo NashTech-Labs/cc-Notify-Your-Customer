@@ -10,7 +10,10 @@ import org.scalatest.{BeforeAndAfterAll, MustMatchers, WordSpecLike}
 class TwilioApiTest extends TestKit(ActorSystem("NotificationSenderTest")) with ImplicitSender with WordSpecLike with MustMatchers
   with BeforeAndAfterAll with MockitoSugar {
 
-  object TwillioApiTestObj extends TwilioApi
+  object TwillioApiTestObj extends TwilioApi{
+    val accountSid: String = sys.env.getOrElse("TWILIO_ACCOUNT_SID", "KnoldusTwilio@gmail.com")
+    val authToken: String = sys.env.getOrElse("TWILIO_AUTH_TOKEN", "Fake@12ss3d4f6r")
+  }
 
   "Twillio Api " should {
 

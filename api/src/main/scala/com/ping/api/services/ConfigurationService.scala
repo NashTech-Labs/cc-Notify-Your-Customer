@@ -151,7 +151,7 @@ trait ConfigurationService extends JsonHelper with PingLogger {
   }
 
   def getMailConfig(clientId: Long): Future[Option[RDMailConfig]] = {
-    mailConfigRepo.get(clientId)
+    mailConfigRepo.getByClientId(clientId)
   }
 
   def getSlackConfig(clientId: Long): Future[Option[RDSlackConfig]] = {
